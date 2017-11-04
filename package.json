@@ -1,7 +1,7 @@
 {
-  "name": "zorko-web-client",
+  "name": "zorko-web-app",
   "version": "1.0.0-alpha.1",
-  "description": "Zorko Web Client App",
+  "description": "Zorko Web App",
   "author": "nesterone <igornester@gmail.com>",
   "scripts": {
     "dev": "node build/dev-server.js",

@@ -1,6 +1,6 @@
-# zorko-web-client
+# zorko-web-app
 
-> Zorko Web Client App
+> Zorko Web App
 
 ## Build Setup
 
