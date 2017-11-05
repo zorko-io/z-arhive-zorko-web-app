@@ -33,7 +33,7 @@
   import AppLoading from '@/components/AppLoading'
   import AppNavigation from '@/components/AppNavigation'
 
-  const baseUri = process.env.ZORKO_API_BASE_URI
+  const apiBaseUri = process.env.ZORKO_API_BASE_URI
 
   export default {
     components: {
@@ -44,7 +44,7 @@
 
     created () {
       axios
-        .get(baseUri + '/auth/account', {withCredentials: true})
+        .get(apiBaseUri + '/auth/account', {withCredentials: true})
         .then((account) => {
           console.log(account)
           this.isLoading = false

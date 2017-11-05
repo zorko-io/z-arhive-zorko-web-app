@@ -24,11 +24,13 @@
 </template>
 
 <script>
+  const apiBaseUri = process.env.ZORKO_API_BASE_URI
+
   export default {
     name: 'AppLogin',
     methods: {
       navigateToAuth () {
-        location.href = 'http://localhost:3000/auth/github'
+        location.href = apiBaseUri + '/auth/github'
       }
     },
     data () {
