@@ -7,7 +7,7 @@ import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import './stylus/main.styl'
 
-import App from './App'
+import App from '@/components/App'
 import routes from './router'
 
 Vue.config.productionTip = false
