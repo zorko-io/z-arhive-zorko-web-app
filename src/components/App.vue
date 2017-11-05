@@ -1,16 +1,29 @@
 <template>
   <v-app>
-    <app-navigation v-show="isAppReady"></app-navigation>
-    <main>
-      <v-content>
-        <app-loading v-if="isLoading"></app-loading>
-        <app-login v-show="isLoginRequired"></app-login>
-        <router-view v-show="isAppReady"></router-view>
-      </v-content>
-    </main>
-    <v-footer app v-show="isAppReady">
-      <span>{{ footerText }}</span>
-    </v-footer>
+
+    <template v-if="isLoading">
+      <main>
+          <app-loading></app-loading>
+      </main>
+    </template>
+
+    <template v-if="isLoginRequired">
+      <main>
+        <app-login></app-login>
+      </main>
+    </template>
+
+    <template v-if="isAppReady">
+      <app-navigation></app-navigation>
+      <main>
+        <v-content>
+          <router-view></router-view>
+        </v-content>
+      </main>
+      <v-footer app>
+        <span>{{ footerText }}</span>
+      </v-footer>
+    </template>
   </v-app>
 </template>
 
