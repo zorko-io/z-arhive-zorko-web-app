@@ -16,6 +16,8 @@
   import axios from 'axios'
   import AppNavigation from '@/components/AppNavigation'
 
+  const baseUri = process.env.ZORKO_API_BASE_URI
+
   export default {
     components: {
       AppNavigation
@@ -23,7 +25,7 @@
 
     created () {
       axios
-        .get('http://localhost:3000/auth/account', {withCredentials: true})
+        .get(baseUri + '/auth/account', {withCredentials: true})
         .then((account) => console.log(account))
         .catch((error) => console.error(error))
     },
