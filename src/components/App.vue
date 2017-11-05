@@ -45,10 +45,17 @@
     created () {
       axios
         .get(apiBaseUri + '/auth/account', {withCredentials: true})
-        .then((account) => {
-          console.log(account)
+        .then((response) => {
+          let {name, login} = response.data.user._json
+
+          console.log(response)
           this.isLoading = false
           this.isAnonymSession = false
+
+          this.$store.commit('setAccount', {
+            name,
+            login
+          })
         })
         .catch((error) => {
           console.log(error)

@@ -217,6 +217,9 @@
           path: '/account',
           component: 'group-item',
           children: [{
+            title: 'Profile',
+            path: '/account/profile'
+          }, {
             title: 'Repositories',
             path: '/account/repositories'
           }]

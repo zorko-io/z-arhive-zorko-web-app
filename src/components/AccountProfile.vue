@@ -7,29 +7,27 @@
             <v-container fluid>
               <v-layout row>
                 <v-flex xs4>
-                  <v-subheader>Name</v-subheader>
+                  <v-subheader>Login</v-subheader>
                 </v-flex>
                 <v-flex xs8>
                   <v-text-field
                     name="input-1-3"
                     label="Hint Text"
-                    value="Joe User"
-                    disabled
+                    :value="login"
                     single-line
                   ></v-text-field>
                 </v-flex>
               </v-layout>
               <v-layout row>
                 <v-flex xs4>
-                  <v-subheader>Email</v-subheader>
+                  <v-subheader>Full Name</v-subheader>
                 </v-flex>
                 <v-flex xs8>
                   <v-text-field
                     name="input-2-3"
                     label="Hint Text"
-                    value="joeuser@example.com"
+                    :value="fullName"
                     class="input-group--focused"
-                    disabled
                     single-line
                   ></v-text-field>
                 </v-flex>
@@ -46,18 +44,22 @@
   import AppSubLayout from '@/components/AppSubLayout'
 
   export default {
-    name: 'Account',
+    name: 'AccountProfile',
     components: {
       AppSubLayout
     },
+    computed: {
+      login () {
+        return this.$store.state.account.login
+      },
+      fullName () {
+        return this.$store.state.account.name
+      }
+    },
+
     data () {
       return {
-        fullUserName: 'Joe User',
-        msg: 'I`m an account',
-        title: 'Account',
-        rules: [
-          () => 'Username or Password is incorrect'
-        ]
+        title: 'Profile'
       }
     }
   }

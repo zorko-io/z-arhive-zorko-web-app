@@ -5,9 +5,9 @@ import ModelDocumentation from '@/components/ModelDocumentation'
 import ModelDefinition from '@/components/ModelDefinition'
 import ModelView from '@/components/ModelView'
 import Admin from '@/components/Admin'
-import Account from '@/components/Account'
 import Connection from '@/components/Connection'
-import Repositories from '@/components/Repositories'
+import AccountProfile from '@/components/AccountProfile'
+import AccountRepositories from '@/components/AccountRepositories'
 import Look from '@/components/Look'
 
 export default {
@@ -55,12 +55,12 @@ export default {
       component: Connection
     },
     {
-      path: '/account',
-      component: Account
+      path: '/account/profile',
+      component: AccountProfile
     },
     {
       path: '/account/repositories',
-      component: Repositories
+      component: AccountRepositories
     },
     {
       path: '/library',
