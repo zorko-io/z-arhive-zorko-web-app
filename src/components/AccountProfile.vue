@@ -32,6 +32,11 @@
                   ></v-text-field>
                 </v-flex>
               </v-layout>
+              <v-layout row>
+                <v-flex xs4>
+                  <v-btn @click="doLogout">Log Out</v-btn>
+                </v-flex>
+              </v-layout>
             </v-container>
           </v-card-text>
         </v-card>
@@ -42,6 +47,8 @@
 
 <script>
   import AppSubLayout from '@/components/AppSubLayout'
+
+  const apiBaseUri = process.env.ZORKO_API_BASE_URI
 
   export default {
     name: 'AccountProfile',
@@ -54,6 +61,12 @@
       },
       fullName () {
         return this.$store.state.account.name
+      }
+    },
+
+    methods: {
+      doLogout () {
+        location.href = apiBaseUri + '/auth/logout'
       }
     },
 
