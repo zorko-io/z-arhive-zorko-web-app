@@ -143,7 +143,7 @@ export default {
         }]
     },
     workspaceNavigation: {
-      visible: false,
+      visible: true,
       items: [
         {
           icon: 'list',
