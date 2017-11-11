@@ -3,11 +3,11 @@
 
     <template v-if="isLoading">
       <main>
-          <app-loading></app-loading>
+        <app-loading></app-loading>
       </main>
     </template>
 
-    <template v-if="isLoginRequired">
+    <template v-if="!isAuthenticated">
       <main>
         <app-login></app-login>
       </main>
@@ -28,12 +28,10 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import AppLogin from '@/components/AppLogin'
   import AppLoading from '@/components/AppLoading'
   import AppNavigation from '@/components/AppNavigation'
-
-  const apiBaseUri = process.env.ZORKO_API_BASE_URI
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     components: {
@@ -42,42 +40,32 @@
       AppNavigation
     },
 
+    computed: {
+      ...mapGetters([
+        'isAuthenticated'
+      ]),
+
+      isLoading () {
+        return this.$store.state.isLoading
+      },
+
+      isAppReady () {
+        return !this.isLoading && this.isAuthenticated
+      }
+    },
+    methods: {
+      ...mapActions([
+        'gatherAccountInfo'
+      ])
+    },
+
     created () {
-      axios
-        .get(apiBaseUri + '/auth/account', {withCredentials: true})
-        .then((response) => {
-          let {name, login} = response.data.user._json
-
-          console.log(response)
-          this.isLoading = false
-          this.isAnonymSession = false
-
-          this.$store.commit('setAccount', {
-            name,
-            login
-          })
-        })
-        .catch((error) => {
-          console.log(error)
-          this.isLoading = false
-          this.isAnonymSession = true
-        })
+      this.gatherAccountInfo()
     },
 
     data () {
       return {
-        footerText: '2017',
-        isLoading: true,
-        isAnonymSession: true
-      }
-    },
-
-    computed: {
-      isAppReady () {
-        return !this.isLoading && !this.isAnonymSession
-      },
-      isLoginRequired () {
-        return !this.isLoading && this.isAnonymSession
+        footerText: '2017'
       }
     }
   }

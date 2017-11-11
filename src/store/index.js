@@ -1,10 +1,11 @@
+import { isEmpty } from 'lodash'
+import zorkoApi from '@/api/zorkoApi'
+
 export default {
   strict: true,
   state: {
-    account: {
-      name: '',
-      login: ''
-    },
+    isLoading: true,
+    account: null,
     workspace: {
       scopeId: 'uuid-scope-1',
       repositories: [
@@ -140,14 +141,45 @@ export default {
     }
   },
   getters: {
+    doesAnyAccountInfoAvailable (state) {
+      return !isEmpty(state.account)
+    },
+    isAnonymAccount (state) {
+      return state.account.name === '' && state.account.login === ''
+    },
+
     isAuthenticated (state) {
-      return state.account.name && state.account.login
+      return state.account && state.account.name && state.account.login
     }
   },
   mutations: {
+    stopLoading (state) {
+      state.isLoading = false
+    },
     setAccount (state, account) {
-      state.account.name = account.name
-      state.account.login = account.login
+      state.account = account
+    }
+  },
+  actions: {
+    gatherAccountInfo ({ commit, state, getters }) {
+      const ANONYM_ACCOUNT = {name: '', login: ''}
+
+      if (!getters.doesAnyAccountInfoAvailable) {
+        zorkoApi
+          .fetchAccountInfo()
+          .then((account) => {
+            console.log('Account', account)
+            commit('setAccount', account)
+            commit('stopLoading')
+          })
+          .catch((error) => {
+            console.error(error)
+            commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
+            commit('stopLoading')
+          })
+      } else {
+        commit('stopLoading')
+      }
     }
   }
 }
