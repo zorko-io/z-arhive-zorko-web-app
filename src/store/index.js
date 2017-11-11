@@ -56,70 +56,73 @@ export default {
             views: [{
               name: 'seattle.view.json'
             }]
-          }],
-          explores: [{
-            id: 'uuid-explore-group-1',
-            type: 'group',
-            title: 'Cars',
-            children: [{
-              id: 'uuid-explore-1',
-              title: 'Horsepower'
-            }, {
-              id: 'uuid-explore-2',
-              title: 'The Min/Max Whiskers'
-            }]
-          },
-          {
-            id: 'uuid-explore-group-2',
-            title: 'Population',
-            type: 'group',
-            children: [{
-              id: 'uuid-explore-3',
-              title: 'Gender',
-              dimentions: [{
-                title: 'Name'
-              }, {
-                title: 'Origin'
-              }, {
-                title: 'Year'
-              }],
-              mesures: [{
-                title: 'Miles per Gallon'
-              }, {
-                title: 'Cylinders'
-              }, {
-                title: 'Displacement'
-              }, {
+          }
+          ],
+          explores: [
+            {
+              id: 'uuid-explore-group-1',
+              type: 'group',
+              title: 'Cars',
+              children: [{
+                id: 'uuid-explore-1',
                 title: 'Horsepower'
               }, {
-                title: 'Weight in lbs'
-              }, {
-                title: 'Acceleration'
+                id: 'uuid-explore-2',
+                title: 'The Min/Max Whiskers'
               }
               ]
             },
             {
-              id: 'uuid-explore-group-3',
-              title: 'Weather',
+              id: 'uuid-explore-group-2',
+              title: 'Population',
               type: 'group',
               children: [{
-                id: 'uuid-explore-4',
-                title: 'Seattle'
-              }]
-            }],
-            looks: [{
-              name: 'age-per-gender-for-2000',
-              title: 'Age per Gender for 2000',
-              model: {name: 'population'},
-              explore: {id: 'uuid-explore-3'}
+                id: 'uuid-explore-3',
+                title: 'Gender',
+                dimentions: [{
+                  title: 'Name'
+                }, {
+                  title: 'Origin'
+                }, {
+                  title: 'Year'
+                }],
+                mesures: [{
+                  title: 'Miles per Gallon'
+                }, {
+                  title: 'Cylinders'
+                }, {
+                  title: 'Displacement'
+                }, {
+                  title: 'Horsepower'
+                }, {
+                  title: 'Weight in lbs'
+                }, {
+                  title: 'Acceleration'
+                }
+                ]
+              },
+              {
+                id: 'uuid-explore-group-3',
+                title: 'Weather',
+                type: 'group',
+                children: [{
+                  id: 'uuid-explore-4',
+                  title: 'Seattle'
+                }]
+              }],
+              looks: [{
+                name: 'age-per-gender-for-2000',
+                title: 'Age per Gender for 2000',
+                model: {name: 'population'},
+                explore: {id: 'uuid-explore-3'}
 
-            }, {
-              name: 'year-weather-in-seattle',
-              title: 'Year Weather in Seattle',
-              model: {name: 'weather'},
-              explore: {id: 'uuid-explore-4'}
-            }]
-          }
+              }, {
+                name: 'year-weather-in-seattle',
+                title: 'Year Weather in Seattle',
+                model: {name: 'weather'},
+                explore: {id: 'uuid-explore-4'}
+              }]
+            }
           ]
         },
         {
@@ -138,6 +141,84 @@ export default {
           explores: [],
           looks: []
         }]
+    },
+    workspaceNavigation: {
+      visible: false,
+      items: [
+        {
+          icon: 'list',
+          component: 'item',
+          title: 'Library',
+          path: '/library'
+        },
+        {
+          icon: 'highlight',
+          title: 'Explore',
+          component: 'explore',
+          path: '/explore',
+          children: [{
+            title: 'Cats',
+            children: [{
+              title: 'Horsepower',
+              path: '/explore/1'
+            }, {
+              title: 'The Min/Max Whiskers',
+              path: '/explore/2'
+            }]
+          }, {
+            title: 'Population',
+            children: [{
+              title: 'Gender',
+              path: '/explore/3'
+            }]
+          }, {
+            title: 'Weather',
+            children: [{
+              title: 'Seattle',
+              path: '/explore/4'
+            }]
+          }]
+        },
+        {
+          icon: 'bubble_chart',
+          title: 'Model',
+          path: '/model',
+          component: 'model',
+          children: [{
+            title: 'Cars',
+            path: '/model/1'
+          }, {
+            title: 'Population',
+            path: '/model/2'
+          }, {
+            title: 'Weather',
+            path: '/model/3'
+          }]
+        },
+        {
+          icon: 'build',
+          title: 'Admin',
+          path: '/admin',
+          component: 'group-item',
+          children: [{
+            title: 'Connections',
+            path: '/admin/connections/'
+          }]
+        },
+        {
+          icon: 'perm_identity',
+          title: 'Account',
+          path: '/account',
+          component: 'group-item',
+          children: [{
+            title: 'Profile',
+            path: '/account/profile'
+          }, {
+            title: 'Repositories',
+            path: '/account/repositories'
+          }]
+        }
+      ]
     }
   },
   getters: {
@@ -161,7 +242,7 @@ export default {
     }
   },
   actions: {
-    gatherAccountInfo ({ commit, state, getters }) {
+    gatherAccountInfo ({commit, state, getters}) {
       const ANONYM_ACCOUNT = {name: '', login: ''}
 
       if (!getters.doesAnyAccountInfoAvailable) {

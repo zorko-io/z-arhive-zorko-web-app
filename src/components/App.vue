@@ -14,7 +14,7 @@
     </template>
 
     <template v-if="isAppReady">
-      <app-navigation></app-navigation>
+      <app-navigation v-if="isNavigationVisible"></app-navigation>
       <main>
         <v-content>
           <router-view></router-view>
@@ -44,6 +44,10 @@
       ...mapGetters([
         'isAuthenticated'
       ]),
+
+      isNavigationVisible () {
+        return this.$store.state.workspaceNavigation.visible
+      },
 
       isLoading () {
         return this.$store.state.isLoading

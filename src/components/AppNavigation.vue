@@ -19,14 +19,14 @@
     </v-toolbar>
     <v-divider></v-divider>
 
-   <!--<v-list>-->
-     <!--<component-->
-       <!--v-for="(item, i) in items"-->
-       <!--:is="item.component"-->
-       <!--:item="item"-->
-     <!--&gt;-->
-     <!--</component>-->
-   <!--</v-list>-->
+    <!--<v-list>-->
+    <!--<component-->
+    <!--v-for="(item, i) in items"-->
+    <!--:is="item.component"-->
+    <!--:item="item"-->
+    <!--&gt;-->
+    <!--</component>-->
+    <!--</v-list>-->
 
 
     <v-list>
@@ -91,14 +91,14 @@
           <template v-for="(exploreGroup, i) in item.children">
             <v-subheader v-text="exploreGroup.title"></v-subheader>
             <v-list-tile
-            v-for="(explore, i) in exploreGroup.children"
-            @click=""
-            :key="i"
-            :to="explore.path"
+              v-for="(explore, i) in exploreGroup.children"
+              @click=""
+              :key="i"
+              :to="explore.path"
             >
-            <v-list-tile-content>
-              <v-list-tile-title>{{ explore.title }}</v-list-tile-title>
-            </v-list-tile-content>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ explore.title }}</v-list-tile-title>
+              </v-list-tile-content>
             </v-list-tile>
           </template>
 
@@ -140,8 +140,15 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     name: 'AppNavigation',
+
+    computed: mapState({
+      items: state => state.workspaceNavigation.items
+    }),
+
     data () {
       return {
         path: '/model',
@@ -150,80 +157,7 @@
         drawer: true,
         fixed: false,
         miniVariant: false,
-        miniVariantWidth: 106,
-        items: [{
-          icon: 'list',
-          component: 'item',
-          title: 'Library',
-          path: '/library'
-        },
-        {
-          icon: 'highlight',
-          title: 'Explore',
-          component: 'explore',
-          path: '/explore',
-          children: [{
-            title: 'Cats',
-            children: [{
-              title: 'Horsepower',
-              path: '/explore/1'
-            }, {
-              title: 'The Min/Max Whiskers',
-              path: '/explore/2'
-            }]
-          }, {
-            title: 'Population',
-            children: [{
-              title: 'Gender',
-              path: '/explore/3'
-            }]
-          }, {
-            title: 'Weather',
-            children: [{
-              title: 'Seattle',
-              path: '/explore/4'
-            }]
-          }]
-        },
-        {
-          icon: 'bubble_chart',
-          title: 'Model',
-          path: '/model',
-          component: 'model',
-          children: [{
-            title: 'Cars',
-            path: '/model/1'
-          }, {
-            title: 'Population',
-            path: '/model/2'
-          }, {
-            title: 'Weather',
-            path: '/model/3'
-          }]
-        },
-        {
-          icon: 'build',
-          title: 'Admin',
-          path: '/admin',
-          component: 'group-item',
-          children: [{
-            title: 'Connections',
-            path: '/admin/connections/'
-          }]
-        },
-        {
-          icon: 'perm_identity',
-          title: 'Account',
-          path: '/account',
-          component: 'group-item',
-          children: [{
-            title: 'Profile',
-            path: '/account/profile'
-          }, {
-            title: 'Repositories',
-            path: '/account/repositories'
-          }]
-        }]
+        miniVariantWidth: 106
       }
     }
   }
