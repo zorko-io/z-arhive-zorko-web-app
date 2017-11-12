@@ -1,0 +1,8 @@
+[
+  {
+    "icon": "list",
+    "component": "item",
+    "title": "Library",
+    "path": "/library"
+  }
+]
