@@ -1,0 +1,39 @@
+[
+  {
+    "id": "uuid-explore-group-1",
+    "type": "group",
+    "title": "Cars",
+    "children": [
+      {
+        "id": "uuid-explore-1",
+        "title": "Horsepower"
+      },
+      {
+        "id": "uuid-explore-2",
+        "title": "The Min/Max Whiskers"
+      }
+    ]
+  },
+  {
+    "id": "uuid-explore-group-2",
+    "title": "Population",
+    "type": "group",
+    "children": [
+      {
+        "id": "uuid-explore-3",
+        "title": "Gender"
+      }
+    ]
+  },
+  {
+    "id": "uuid-explore-group-3",
+    "type": "group",
+    "title": "Weather",
+    "children": [
+      {
+        "id": "uuid-explore-4",
+        "title": "Seattle"
+      }
+    ]
+  }
+]

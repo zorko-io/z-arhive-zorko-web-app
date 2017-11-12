@@ -4,5 +4,44 @@
     "component": "item",
     "title": "Library",
     "path": "/library"
+  },
+  {
+    "icon": "highlight",
+    "title": "Explore",
+    "component": "explore",
+    "path": "/explore",
+    "children": [
+      {
+        "title": "Cats",
+        "children": [
+          {
+            "title": "Horsepower",
+            "path": "/explore/1"
+          },
+          {
+            "title": "The Min/Max Whiskers",
+            "path": "/explore/2"
+          }
+        ]
+      },
+      {
+        "title": "Population",
+        "children": [
+          {
+            "title": "Gender",
+            "path": "/explore/3"
+          }
+        ]
+      },
+      {
+        "title": "Weather",
+        "children": [
+          {
+            "title": "Seattle",
+            "path": "/explore/4"
+          }
+        ]
+      }
+    ]
   }
 ]
