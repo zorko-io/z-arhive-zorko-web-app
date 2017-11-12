@@ -12,15 +12,15 @@
     "path": "/explore",
     "children": [
       {
-        "title": "Cats",
+        "title": "Cars",
         "children": [
           {
             "title": "Horsepower",
-            "path": "/explore/1"
+            "path": "/explore/uuid-explore-1"
           },
           {
             "title": "The Min/Max Whiskers",
-            "path": "/explore/2"
+            "path": "/explore/uuid-explore-2"
           }
         ]
       },
@@ -29,7 +29,7 @@
         "children": [
           {
             "title": "Gender",
-            "path": "/explore/3"
+            "path": "/explore/uuid-explore-3"
           }
         ]
       },
@@ -38,7 +38,7 @@
         "children": [
           {
             "title": "Seattle",
-            "path": "/explore/4"
+            "path": "/explore/uuid-explore-4"
           }
         ]
       }

@@ -107,75 +107,45 @@
           "children": [
             {
               "id": "uuid-explore-3",
-              "title": "Gender",
-              "dimentions": [
-                {
-                  "title": "Name"
-                },
-                {
-                  "title": "Origin"
-                },
-                {
-                  "title": "Year"
-                }
-              ],
-              "mesures": [
-                {
-                  "title": "Miles per Gallon"
-                },
-                {
-                  "title": "Cylinders"
-                },
-                {
-                  "title": "Displacement"
-                },
-                {
-                  "title": "Horsepower"
-                },
-                {
-                  "title": "Weight in lbs"
-                },
-                {
-                  "title": "Acceleration"
-                }
-              ]
-            },
-            {
-              "id": "uuid-explore-group-3",
-              "title": "Weather",
-              "type": "group",
-              "children": [
-                {
-                  "id": "uuid-explore-4",
-                  "title": "Seattle"
-                }
-              ]
+              "title": "Gender"
             }
-          ],
-          "looks": [
+          ]
+        },
+        {
+          "id": "uuid-explore-group-3",
+          "type": "group",
+          "title": "Weather",
+          "children": [
             {
-              "name": "age-per-gender-for-2000",
-              "title": "Age per Gender for 2000",
-              "model": {
-                "name": "population"
-              },
-              "explore": {
-                "id": "uuid-explore-3"
-              }
-            },
-            {
-              "name": "year-weather-in-seattle",
-              "title": "Year Weather in Seattle",
-              "model": {
-                "name": "weather"
-              },
-              "explore": {
-                "id": "uuid-explore-4"
-              }
+              "id": "uuid-explore-4",
+              "title": "Seattle"
             }
           ]
         }
+      ],
+      "looks": [
+        {
+          "name": "age-per-gender-for-2000",
+          "title": "Age per Gender for 2000",
+          "model": {
+            "name": "population"
+          },
+          "explore": {
+            "id": "uuid-explore-3"
+          }
+        },
+        {
+          "name": "year-weather-in-seattle",
+          "title": "Year Weather in Seattle",
+          "model": {
+            "name": "weather"
+          },
+          "explore": {
+            "id": "uuid-explore-4"
+          }
+        }
       ]
+
     },
     {
       "id": "uuid-scope-2",
