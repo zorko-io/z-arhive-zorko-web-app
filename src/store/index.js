@@ -1,5 +1,6 @@
 import { isEmpty } from 'lodash'
 import zorkoApi from '@/api/zorkoApi'
+import AppNavigation from '@/store/navigation/AppNavigation'
 
 export default {
   strict: true,
@@ -149,51 +150,24 @@ export default {
           icon: 'list',
           component: 'item',
           title: 'Library',
+          name: 'library',
           path: '/library'
         },
         {
           icon: 'highlight',
           title: 'Explore',
           component: 'explore',
+          name: 'explore',
           path: '/explore',
-          children: [{
-            title: 'Cats',
-            children: [{
-              title: 'Horsepower',
-              path: '/explore/1'
-            }, {
-              title: 'The Min/Max Whiskers',
-              path: '/explore/2'
-            }]
-          }, {
-            title: 'Population',
-            children: [{
-              title: 'Gender',
-              path: '/explore/3'
-            }]
-          }, {
-            title: 'Weather',
-            children: [{
-              title: 'Seattle',
-              path: '/explore/4'
-            }]
-          }]
+          children: []
         },
         {
           icon: 'bubble_chart',
           title: 'Model',
           path: '/model',
+          name: 'model',
           component: 'model',
-          children: [{
-            title: 'Cars',
-            path: '/model/1'
-          }, {
-            title: 'Population',
-            path: '/model/2'
-          }, {
-            title: 'Weather',
-            path: '/model/3'
-          }]
+          children: []
         },
         {
           icon: 'build',
@@ -239,6 +213,12 @@ export default {
     },
     setAccount (state, account) {
       state.account = account
+    },
+
+    initializeNavigation ({ workspace, workspaceNavigation }) {
+      const topItems = workspaceNavigation.items
+
+      workspaceNavigation.items = AppNavigation.assembleNavigationItems(topItems, workspace)
     }
   },
   actions: {
@@ -251,6 +231,7 @@ export default {
           .then((account) => {
             console.log('Account', account)
             commit('setAccount', account)
+            commit('initializeNavigation')
             commit('stopLoading')
           })
           .catch((error) => {
