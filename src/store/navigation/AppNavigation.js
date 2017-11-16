@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import Workspace from './Workspace'
+import Workspace from '../Workspace'
 import exploreToNavigationItem from './exploreToNavigationItem'
 import modelToNavigationItem from './modelToNavigationItem'
 
@@ -7,6 +7,8 @@ export default {
 
   assembleNavigationItems (topNavigationItems, workspace) {
     const currentScope = Workspace.getCurrentScope(workspace)
+
+    console.log()
 
     const getExploreNavigation = R.pipe(
       R.prop('explores'),
