@@ -1,4 +1,4 @@
-import Workspace from '@/store/Workspace'
+import Workspace from '@/store/navigation/Workspace'
 
 describe('Workspace', () => {
   it('getCurrentScope', () => {

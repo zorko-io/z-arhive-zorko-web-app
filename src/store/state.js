@@ -1,10 +1,5 @@
-import { isEmpty } from 'lodash'
-import zorkoApi from '@/api/zorkoApi'
-import AppNavigation from '@/store/navigation/AppNavigation'
-
-export default {
-  strict: true,
-  state: {
+export default function () {
+  return {
     isLoading: true,
     account: null,
     workspace: {
@@ -193,55 +188,6 @@ export default {
           }]
         }
       ]
-    }
-  },
-  getters: {
-    doesAnyAccountInfoAvailable (state) {
-      return !isEmpty(state.account)
-    },
-    isAnonymAccount (state) {
-      return state.account.name === '' && state.account.login === ''
-    },
-
-    isAuthenticated (state) {
-      return state.account && state.account.name && state.account.login
-    }
-  },
-  mutations: {
-    stopLoading (state) {
-      state.isLoading = false
-    },
-    setAccount (state, account) {
-      state.account = account
-    },
-
-    initializeNavigation ({ workspace, workspaceNavigation }) {
-      const topItems = workspaceNavigation.items
-
-      workspaceNavigation.items = AppNavigation.assembleNavigationItems(topItems, workspace)
-    }
-  },
-  actions: {
-    gatherAccountInfo ({commit, state, getters}) {
-      const ANONYM_ACCOUNT = {name: '', login: ''}
-
-      if (!getters.doesAnyAccountInfoAvailable) {
-        zorkoApi
-          .fetchAccountInfo()
-          .then((account) => {
-            console.log('Account', account)
-            commit('setAccount', account)
-            commit('initializeNavigation')
-            commit('stopLoading')
-          })
-          .catch((error) => {
-            console.error(error)
-            commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
-            commit('stopLoading')
-          })
-      } else {
-        commit('stopLoading')
-      }
     }
   }
 }

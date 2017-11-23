@@ -10,6 +10,8 @@ import AccountProfile from '@/components/AccountProfile'
 import AccountRepositories from '@/components/AccountRepositories'
 import Look from '@/components/Look'
 
+console.log('uuuu')
+
 export default {
   routes: [
     {

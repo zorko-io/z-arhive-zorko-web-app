@@ -10,7 +10,7 @@ import './stylus/main.styl'
 
 import App from '@/components/App'
 import routes from './router'
-import store from './store'
+import store from './store/store'
 
 Vue.config.productionTip = false
 
