@@ -1,15 +1,15 @@
 <template>
   <v-content fluid grid-list-xl>
     <v-layout row justify-center>
-      <v-flex xs4 text-xs-center class="u-move-down-200px">
+      <v-dialog v-model="dialog" persistent max-width="500">
         <v-toolbar flat dense class="blue" dark height="">
           <v-toolbar-title>{{title}}</v-toolbar-title>
         </v-toolbar>
         <v-card>
-          <v-card-title>
+          <v-card-title  style="display: block">
             <div class="headline grey--text text-sm-center">{{subtitle}}</div>
           </v-card-title>
-          <v-card-actions>
+          <v-card-actions style="display: block; text-align:center">
             <v-btn
               dark
               class="green"
@@ -18,7 +18,7 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-flex>
+      </v-dialog>
     </v-layout>
   </v-content>
 </template>
@@ -30,11 +30,13 @@
     name: 'AppLogin',
     methods: {
       navigateToAuth () {
+        alert(apiBaseUri)
         location.href = apiBaseUri + '/auth/github'
       }
     },
     data () {
       return {
+        dialog: true,
         title: 'Log In',
         subtitle: 'Log in to Zorko via Github',
         callToActionText: 'Public Repos Only'

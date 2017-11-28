@@ -1,5 +1,5 @@
 <template>
-  <app-sub-layout :title="title">
+  <AppSubLayout :title="title">
 
       <v-layout wrap>
         <v-flex xs3>
@@ -54,7 +54,7 @@
           </v-card>
         </v-flex>
       </v-layout>
-  </app-sub-layout>
+  </AppSubLayout>
 </template>
 
 <script>
