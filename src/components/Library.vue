@@ -2,26 +2,7 @@
   <app-sub-layout :title="title">
 
       <v-layout wrap>
-        <v-flex xs3>
-          <v-card>
-            <v-toolbar>
-              <v-toolbar-title>Joe User</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-card-text>
-              <v-subheader>Your Scopes</v-subheader>
-              <v-radio-group v-model="selectedRepo" column>
-                <v-radio label="Vega Datasets" value="zorko-sandbox" disabled></v-radio>
-                <v-radio label="Our World in Data" value="world-in-data" disabled></v-radio>
-                <v-radio label="Gapminder" value="Gapminder" disabled></v-radio>
-              </v-radio-group>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-        <v-flex xs9>
+        <v-flex>
           <v-card>
             <v-toolbar color="light-blue" dark>
               <v-toolbar-title>Looks</v-toolbar-title>

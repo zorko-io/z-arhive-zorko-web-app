@@ -5,7 +5,7 @@ import ModelDocumentation from '@/components/ModelDocumentation'
 import ModelDefinition from '@/components/ModelDefinition'
 import ModelView from '@/components/ModelView'
 import Admin from '@/components/Admin'
-import Connection from '@/components/Connection'
+import Datums from '@/components/Datums'
 import AccountProfile from '@/components/AccountProfile'
 import AccountRepositories from '@/components/AccountRepositories'
 import Look from '@/components/Look'
@@ -51,8 +51,8 @@ export default {
       component: Admin
     },
     {
-      path: '/admin/connections',
-      component: Connection
+      path: '/datums',
+      component: Datums
     },
     {
       path: '/account/profile',

@@ -3,7 +3,7 @@
     <v-layout wrap>
       <v-flex xs12>
           <v-list two-line subheader>
-            <v-list-tile avatar v-for="item in connections" v-bind:key="item.title" @click="">
+            <v-list-tile avatar v-for="item in datums" v-bind:key="item.title" @click="">
               <v-list-tile-avatar>
                 <v-icon v-bind:class="[item.iconClass]">{{ item.icon }}</v-icon>
               </v-list-tile-avatar>
@@ -27,14 +27,14 @@
   import AppSubLayout from '@/components/AppSubLayout'
 
   export default {
-    name: 'Connection',
+    name: 'Datums',
     components: {
       AppSubLayout
     },
     data () {
       return {
-        title: 'Connection',
-        connections: [{
+        title: 'Datums',
+        datums: [{
           title: 'Cars',
           icon: 'call_merge',
           iconClass: 'green white--text',
