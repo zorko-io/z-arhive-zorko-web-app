@@ -33,22 +33,29 @@
           </v-card-text>
         </v-card>
       </v-flex>
-      <v-flex xs7 offset-md2 center class="u-move-top-200">
-        <v-card>
-          <v-card-title>
-            <v-data-table
-              v-bind:headers="selectedFilters"
-              :items="getInitialData"
-              class="elevation-1"
-            >
-              <template slot="items" slot-scope="props">
-                <td class="text-xs-right" v-for="filter in selectedFilters" :key="filter.index">{{ props.item[filter.text] }}</td>
-              </template>
-            </v-data-table>
-
-
-          </v-card-title>
-        </v-card>
+      <v-flex xs8 >
+        <v-expansion-panel expand class="u-move-top-left">
+          <v-expansion-panel-content>
+            <template slot="header">
+              <div>Data table</div>
+            </template>
+            <v-card>
+              <v-card-title>
+                <v-data-table
+                  v-bind:headers="selectedFilters"
+                  :items="getInitialData"
+                  class="elevation-1"
+                >
+                  <template slot="items" slot-scope="props">
+                    <td class="text-xs-right" v-for="filter in selectedFilters" :key="filter.index">
+                      {{ props.item[filter.text] }}
+                    </td>
+                  </template>
+                </v-data-table>
+              </v-card-title>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
       </v-flex>
     </v-layout>
   </app-sub-layout>
@@ -76,7 +83,7 @@
         const mesures = []
         Object.keys(this.getInitialData[0]).forEach(key => {
           if (typeof this.getInitialData[0][key] === 'number') {
-            mesures.push({text: key, sortable: false})
+            mesures.push({text: key})
           } else {
             dimentions.push({text: key})
           }
@@ -135,8 +142,9 @@
 </script>
 
 <style scoped>
-  .u-move-top-200 {
-    margin-top: 200px;
+  .u-move-top-left {
+    margin-top: 50px;
+    margin-left: 50px;
   }
 </style>
 
