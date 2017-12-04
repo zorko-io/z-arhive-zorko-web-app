@@ -1,5 +1,5 @@
 <template>
-  <app-sub-layout :title="title">
+  <AppSubLayout :title="title">
     <v-layout wrap>
       <v-flex xs12>
           <v-list two-line subheader>
@@ -22,7 +22,7 @@
           </v-list>
       </v-flex>
     </v-layout>
-  </app-sub-layout>
+  </AppSubLayout>
 </template>
 
 <script>

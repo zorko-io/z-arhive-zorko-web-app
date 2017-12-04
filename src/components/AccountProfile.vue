@@ -1,5 +1,5 @@
 <template>
-  <app-sub-layout :title="title">
+  <AppSubLayout :title="title">
     <v-container fluid>
       <v-layout align-center justify-center>
         <v-card color="grey lighten-4" flat>
@@ -42,7 +42,7 @@
         </v-card>
       </v-layout>
     </v-container>
-  </app-sub-layout>
+  </AppSubLayout>
 </template>
 
 <script>
