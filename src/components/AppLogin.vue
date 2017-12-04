@@ -1,7 +1,7 @@
 <template>
   <v-content fluid grid-list-xl>
     <v-layout row justify-center>
-      <v-dialog v-model="dialog" persistent max-width="500">
+      <div v-model="dialog" class="login">
         <v-toolbar flat dense class="blue" dark height="">
           <v-toolbar-title>{{title}}</v-toolbar-title>
         </v-toolbar>
@@ -18,7 +18,7 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-dialog>
+      </div>
     </v-layout>
   </v-content>
 </template>
@@ -46,8 +46,14 @@
 </script>
 
 <style scoped>
-  .u-move-down-200px {
-    padding-top: 100px;
+  .login {
+    width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -250px;
   }
 </style>
 

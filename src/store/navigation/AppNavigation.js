@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import Workspace from '../Workspace'
+import Workspace from './Workspace'
 import exploreToNavigationItem from './exploreToNavigationItem'
 import modelToNavigationItem from './modelToNavigationItem'
 
