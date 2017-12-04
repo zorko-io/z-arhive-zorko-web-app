@@ -1,40 +1,45 @@
 <template>
   <app-sub-layout :title="title">
-
-      <v-layout wrap>
-        <v-flex>
-          <v-card>
-            <v-toolbar color="light-blue" dark>
-              <v-toolbar-title>Looks</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-list two-line subheader>
-              <v-list-tile
-                avatar
-                v-for="item in looks"
-                :key="item.title"
-                @click=""
-                :to="item.path">
-                <v-list-tile-avatar>
-                  <v-icon :class="[item.iconClass]">{{ item.icon }}</v-icon>
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                  <v-list-tile-sub-title>{{ item.subtitle }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action>
-                  <v-btn icon ripple>
-                    <v-icon color="grey lighten-1">info</v-icon>
-                  </v-btn>
-                </v-list-tile-action>
-              </v-list-tile>
-            </v-list>
-          </v-card>
-        </v-flex>
-      </v-layout>
+    <v-layout>
+      <v-flex xs12>
+        <v-card>
+          <v-toolbar color="light-blue" dark>
+            <v-toolbar-title>Looks</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon>
+              <v-icon>more_vert</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <v-card-actions>
+            <v-select label="Size" :items="items" v-model="size"></v-select>
+            <v-spacer></v-spacer>
+          </v-card-actions>
+        </v-card>
+          <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
+            <v-layout row wrap>
+              <v-flex
+                xs4
+                v-for="card in cards"
+                :key="card.title"
+              >
+                <v-card tile>
+                  <v-card-media
+                    :src="card.src"
+                    height="270px"
+                    width="361px"
+                  >
+                  </v-card-media>
+                  <v-card-title primary-title>
+                    <div>
+                      <h6 class="grey--text">{{ card.title }}</h6>
+                    </div>
+                  </v-card-title>
+                </v-card>
+              </v-flex>
+            </v-layout>
+          </v-container>
+      </v-flex>
+    </v-layout>
   </app-sub-layout>
 </template>
 
@@ -50,7 +55,7 @@ export default {
     return {
       msg: 'I`m a library',
       title: 'Library',
-      items: [
+      itemz: [
         { title: 'Zorko Sandbox' },
         { title: 'Our World in Data' }
       ],
@@ -68,7 +73,21 @@ export default {
         path: '/looks/year-weather-in-seattle'
       }],
       selection: true,
-      selectedRepo: 'zorko-sandbox'
+      selectedRepo: 'zorko-sandbox',
+      cards: [
+        { title: 'Unemployment by Industries ', src: 'static/bar_layered_transparent.svg', flex: 6 },
+        { title: 'Unemployment Count', src: 'static/area.svg', flex: 6 },
+        { title: 'Population by gender', src: 'static/stacked_area_stream.svg', flex: 6 },
+        { title: 'Seattle Weather', src: 'static/stacked_bar_weather.svg', flex: 6 }
+      ],
+      size: 'lg',
+      items: [
+        { text: 'Extra small (1px)', value: 'xs' },
+        { text: 'Small (4px)', value: 'sm' },
+        { text: 'Medium (8px)', value: 'md' },
+        { text: 'Large (16px)', value: 'lg' },
+        { text: 'Extra large (24px)', value: 'xl' }
+      ]
     }
   }
 }
