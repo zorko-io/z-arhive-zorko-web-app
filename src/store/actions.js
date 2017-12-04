@@ -9,7 +9,6 @@ export const gatherAccountInfo = ({commit, state, getters}) => {
       .then((account) => {
         console.log('Account', account)
         commit('setAccount', account)
-        commit('initializeNavigation')
         commit('stopLoading')
       })
       .catch((error) => {

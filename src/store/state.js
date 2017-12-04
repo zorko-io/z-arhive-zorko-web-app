@@ -149,43 +149,16 @@ export default function () {
           path: '/library'
         },
         {
-          icon: 'highlight',
-          title: 'Explore',
-          component: 'explore',
-          name: 'explore',
-          path: '/explore',
-          children: []
-        },
-        {
           icon: 'bubble_chart',
-          title: 'Model',
-          path: '/model',
-          name: 'model',
-          component: 'model',
-          children: []
-        },
-        {
-          icon: 'build',
-          title: 'Admin',
-          path: '/admin',
-          component: 'group-item',
-          children: [{
-            title: 'Connections',
-            path: '/admin/connections/'
-          }]
+          title: 'Datums',
+          path: '/datums',
+          component: 'item'
         },
         {
           icon: 'perm_identity',
           title: 'Account',
-          path: '/account',
-          component: 'group-item',
-          children: [{
-            title: 'Profile',
-            path: '/account/profile'
-          }, {
-            title: 'Repositories',
-            path: '/account/repositories'
-          }]
+          path: '/account/profile',
+          component: 'item'
         }
       ]
     }
