@@ -7,14 +7,14 @@
             <v-subheader>Dimentions</v-subheader>
             <v-list>
               <v-list-tile avatar v-for="item in dimentions" v-bind:key="item.title" @click="">
-              <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </v-list-tile-content>
-              <v-list-tile-action>
-                <div>
-                  <v-btn small color="primary" dark>+ Filter</v-btn>
-                </div>
-              </v-list-tile-action>
+                <v-list-tile-content>
+                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                </v-list-tile-content>
+                <v-list-tile-action>
+                  <div>
+                    <v-btn small color="primary" dark>+ Filter</v-btn>
+                  </div>
+                </v-list-tile-action>
               </v-list-tile>
             </v-list>
             <v-subheader>Mesures</v-subheader>
@@ -37,6 +37,7 @@
         <v-card>
           <v-card-title>
             <h6 class="grey--text text--darken-1">Select any dimension, measure to start exploration</h6>
+
           </v-card-title>
         </v-card>
       </v-flex>
@@ -45,40 +46,75 @@
 </template>
 
 <script>
-import AppSubLayout from '@/components/AppSubLayout'
+  import AppSubLayout from '@/components/AppSubLayout'
+  import {mapGetters, mapActions} from 'vuex'
 
-export default {
-  name: 'Explore',
-  components: {
-    AppSubLayout
-  },
-  data () {
-    return {
-      msg: 'I`m a explore',
-      title: 'Explore',
-      dimentions: [{
-        title: 'Name'
-      }, {
-        title: 'Origin'
-      }, {
-        title: 'Year'
-      }],
-      mesures: [{
-        title: 'Miles per Gallon'
-      }, {
-        title: 'Cylinders'
-      }, {
-        title: 'Displacement'
-      }, {
-        title: 'Horsepower'
-      }, {
-        title: 'Weight in lbs'
-      }, {
-        title: 'Acceleration'
-      }]
+  export default {
+    name: 'Explore',
+    components: {
+      AppSubLayout
+    },
+    computed: {
+      ...mapGetters([
+        'isAuthenticated'
+      ]),
+
+      getInitialData () {
+        return this.$store.state.data
+      },
+      filters () {
+        const dimentions = []
+        const mesures = []
+        Object.keys(this.getInitialData[0]).forEach(key => {
+          if (typeof this.getInitialData[0][key] === 'number') {
+            mesures.push(key)
+          } else {
+            dimentions.push(key)
+          }
+        })
+        return {
+          dimentions: dimentions,
+          mesures: mesures
+        }
+      }
+    },
+    methods: {
+      ...mapActions([
+        'setInitialData'
+      ])
+    },
+
+    created () {
+      this.setInitialData()
+      console.log('Filetrs', this.filters)
+    },
+    data () {
+      return {
+        msg: 'I`m a explore',
+        title: 'Explore',
+        dimentions: [{
+          title: 'Name'
+        }, {
+          title: 'Origin'
+        }, {
+          title: 'Year'
+        }],
+        mesures: [{
+          title: 'Miles per Gallon'
+        }, {
+          title: 'Cylinders'
+        }, {
+          title: 'Displacement'
+        }, {
+          title: 'Horsepower'
+        }, {
+          title: 'Weight in lbs'
+        }, {
+          title: 'Acceleration'
+        }]
+      }
     }
   }
-}
 </script>
 
 <style scoped>

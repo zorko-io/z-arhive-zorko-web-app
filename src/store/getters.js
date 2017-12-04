@@ -19,3 +19,7 @@ export const currentScope = R.pipe(
   R.prop('workspace'),
   workspace.getCurrentScope,
 )
+
+export const getInitialDta = (state) => {
+  return state.data
+}

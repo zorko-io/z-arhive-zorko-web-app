@@ -2,6 +2,7 @@ export default function () {
   return {
     isLoading: true,
     account: null,
+    data: [],
     workspace: {
       scopeId: 'uuid-scope-1',
       repositories: [

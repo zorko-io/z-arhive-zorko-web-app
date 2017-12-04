@@ -20,3 +20,7 @@ export const gatherAccountInfo = ({commit, state, getters}) => {
     commit('stopLoading')
   }
 }
+
+export const setInitialData = ({commit, state, getters}) => {
+  commit('initializeData')
+}
