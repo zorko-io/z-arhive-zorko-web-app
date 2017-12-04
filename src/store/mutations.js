@@ -25,3 +25,7 @@ export const initializeData = (state) => {
   }
   xobj.send(null)
 }
+
+export const addFilter = (state, filter) => {
+  state.filters.push(filter)
+}

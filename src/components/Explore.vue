@@ -6,9 +6,9 @@
           <v-card-text>
             <v-subheader>Dimentions</v-subheader>
             <v-list>
-              <v-list-tile avatar v-for="item in dimentions" v-bind:key="item.title" @click="">
+              <v-list-tile avatar v-for="item in filters.dimentions" v-bind:key="item.text" @click="addFilter(item)">
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                  <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
@@ -19,9 +19,9 @@
             </v-list>
             <v-subheader>Mesures</v-subheader>
             <v-list>
-              <v-list-tile avatar v-for="item in mesures" v-bind:key="item.title" @click="">
+              <v-list-tile avatar v-for="item in filters.mesures" v-bind:key="item.text" @click="addFilter(item)">
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                  <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
@@ -33,10 +33,19 @@
           </v-card-text>
         </v-card>
       </v-flex>
-      <v-flex xs6 offset-md2 center class="u-move-top-200">
+      <v-flex xs7 offset-md2 center class="u-move-top-200">
         <v-card>
           <v-card-title>
-            <h6 class="grey--text text--darken-1">Select any dimension, measure to start exploration</h6>
+            <v-data-table
+              v-bind:headers="selectedFilters"
+              :items="getInitialData"
+              class="elevation-1"
+            >
+              <template slot="items" slot-scope="props">
+                <td class="text-xs-right" v-for="filter in selectedFilters" :key="filter.index">{{ props.item[filter.text] }}</td>
+              </template>
+            </v-data-table>
+
 
           </v-card-title>
         </v-card>
@@ -67,21 +76,29 @@
         const mesures = []
         Object.keys(this.getInitialData[0]).forEach(key => {
           if (typeof this.getInitialData[0][key] === 'number') {
-            mesures.push(key)
+            mesures.push({text: key, sortable: false})
           } else {
-            dimentions.push(key)
+            dimentions.push({text: key})
           }
         })
         return {
           dimentions: dimentions,
           mesures: mesures
         }
+      },
+      selectedFilters () {
+        return this.$store.state.filters
       }
     },
     methods: {
       ...mapActions([
-        'setInitialData'
-      ])
+        'setInitialData',
+        'addFilterToStore'
+      ]),
+      addFilter (filter) {
+        this.addFilterToStore(filter)
+        console.log('STORE', this.$store.state.filters)
+      }
     },
 
     created () {

@@ -24,3 +24,7 @@ export const gatherAccountInfo = ({commit, state, getters}) => {
 export const setInitialData = ({commit, state, getters}) => {
   commit('initializeData')
 }
+
+export const addFilterToStore = ({commit, state, getters}, filter) => {
+  commit('addFilter', filter)
+}
