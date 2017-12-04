@@ -1,94 +1,146 @@
 <template>
-  <AppSubLayout :title="title">
-
-      <v-layout wrap>
-        <v-flex xs3>
-          <v-card>
-            <v-toolbar>
-              <v-toolbar-title>Joe User</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-card-text>
-              <v-subheader>Your Scopes</v-subheader>
-              <v-radio-group v-model="selectedRepo" column>
-                <v-radio label="Vega Datasets" value="zorko-sandbox" disabled></v-radio>
-                <v-radio label="Our World in Data" value="world-in-data" disabled></v-radio>
-                <v-radio label="Gapminder" value="Gapminder" disabled></v-radio>
-              </v-radio-group>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-        <v-flex xs9>
-          <v-card>
-            <v-toolbar color="light-blue" dark>
-              <v-toolbar-title>Looks</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-btn icon>
-                <v-icon>more_vert</v-icon>
-              </v-btn>
-            </v-toolbar>
-            <v-list two-line subheader>
-              <v-list-tile
-                avatar
-                v-for="item in looks"
-                :key="item.title"
-                @click=""
-                :to="item.path">
-                <v-list-tile-avatar>
-                  <v-icon :class="[item.iconClass]">{{ item.icon }}</v-icon>
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                  <v-list-tile-sub-title>{{ item.subtitle }}</v-list-tile-sub-title>
-                </v-list-tile-content>
-                <v-list-tile-action>
-                  <v-btn icon ripple>
-                    <v-icon color="grey lighten-1">info</v-icon>
+  <app-sub-layout :title="title">
+    <v-layout>
+      <v-flex xs12>
+        <v-toolbar flat>
+          <v-toolbar-title>Popular Looks</v-toolbar-title>
+        </v-toolbar>
+        <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
+          <v-layout row wrap>
+            <v-flex
+              xs4
+              v-for="card in cards"
+              :key="card.title"
+            >
+              <v-card tile>
+                <v-card-media
+                  class="util-pointer"
+                  :src="card.src"
+                  height="270px"
+                  width="361px"
+                  @click="openLook(card)"
+                >
+                </v-card-media>
+                <v-card-title
+                  @click="openLook(card)"
+                  class="util-pointer"
+                >
+                  <div>
+                    <h7 class="grey--text util-bold">{{ card.title }}</h7>
+                  </div>
+                </v-card-title>
+                <v-card-actions class="white">
+                  <v-chip class="util-pointer">
+                    <v-avatar>
+                      <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="trevor">
+                    </v-avatar>
+                    Trevor Hansen
+                  </v-chip>
+                  <v-spacer></v-spacer>
+                  <v-btn icon>
+                    <v-icon>favorite</v-icon>
                   </v-btn>
-                </v-list-tile-action>
-              </v-list-tile>
-            </v-list>
-          </v-card>
+                </v-card-actions>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+        <v-flex class="text-xs-center">
+          <v-btn>Next ></v-btn>
         </v-flex>
-      </v-layout>
-  </AppSubLayout>
+      </v-flex>
+    </v-layout>
+  </app-sub-layout>
 </template>
 
 <script>
-import AppSubLayout from '@/components/AppSubLayout'
+  import AppSubLayout from '@/components/AppSubLayout'
 
-export default {
-  name: 'Library',
-  components: {
-    AppSubLayout
-  },
-  data () {
-    return {
-      msg: 'I`m a library',
-      title: 'Library',
-      items: [
-        { title: 'Zorko Sandbox' },
-        { title: 'Our World in Data' }
-      ],
-      looks: [{
-        icon: 'assignment',
-        iconClass: 'amber white--text',
-        title: 'Age per Gender for 2000',
-        subtitle: 'Model: `Population`',
-        path: '/looks/age-per-gender-for-2000'
-      }, {
-        icon: 'assignment',
-        iconClass: 'amber white--text',
-        title: 'Year Weather in Seattle',
-        subtitle: 'Model: `Weather`',
-        path: '/looks/year-weather-in-seattle'
-      }],
-      selection: true,
-      selectedRepo: 'zorko-sandbox'
+  export default {
+    name: 'Library',
+    components: {
+      AppSubLayout
+    },
+    data () {
+      return {
+        msg: 'I`m a library',
+        title: 'Library',
+        itemz: [
+          {title: 'Zorko Sandbox'},
+          {title: 'Our World in Data'}
+        ],
+        looks: [{
+          icon: 'assignment',
+          iconClass: 'amber white--text',
+          title: 'Age per Gender for 2000',
+          subtitle: 'Model: `Population`',
+          path: '/looks/age-per-gender-for-2000'
+        }, {
+          icon: 'assignment',
+          iconClass: 'amber white--text',
+          title: 'Year Weather in Seattle',
+          subtitle: 'Model: `Weather`',
+          path: '/looks/year-weather-in-seattle'
+        }],
+        selection: true,
+        selectedRepo: 'zorko-sandbox',
+        cards: [
+          {
+            title: 'Unemployment by Industries ',
+            src: 'static/bar_layered_transparent.svg',
+            path: '/looks/age-per-gender-for-2000'
+          },
+          {
+            title: 'Unemployment Count',
+            src: 'static/area.svg',
+            path: '/looks/age-per-gender-for-2000'
+          },
+          {
+            title: 'Population by gender',
+            src: 'static/stacked_area_stream.svg',
+            path: '/looks/age-per-gender-for-2000'
+          },
+          {
+            title: 'Seattle Weather',
+            src: 'static/stacked_bar_weather.svg',
+            path: '/looks/year-weather-in-seattle'
+          },
+          {
+            title: 'Stocks',
+            src: 'static/layer_line_color_rule.svg',
+            path: '/looks/year-weather-in-seattle'
+          },
+          {
+            title: 'Github Punchcard',
+            src: 'static/circle_github_punchcard.svg',
+            path: '/looks/year-weather-in-seattle'
+          }
+        ],
+        size: 'lg',
+        items: [
+          {text: 'Extra small (1px)', value: 'xs'},
+          {text: 'Small (4px)', value: 'sm'},
+          {text: 'Medium (8px)', value: 'md'},
+          {text: 'Large (16px)', value: 'lg'},
+          {text: 'Extra large (24px)', value: 'xl'}
+        ]
+      }
+    },
+    methods: {
+      openLook (item) {
+        this.$router.push(item.path)
+      }
     }
   }
-}
 </script>
+
+<style scoped>
+
+  .util-pointer {
+    cursor: pointer;
+  }
+
+  .util-bold {
+    font-weight: bold;
+  }
+</style>
