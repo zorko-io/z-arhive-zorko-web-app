@@ -24,20 +24,36 @@
               >
                 <v-card tile>
                   <v-card-media
+                    class="util-pointer"
                     :src="card.src"
                     height="270px"
                     width="361px"
                   >
                   </v-card-media>
-                  <v-card-title primary-title>
+                  <v-card-title class="util-pointer">
                     <div>
-                      <h6 class="grey--text">{{ card.title }}</h6>
+                      <h7 class="grey--text util-bold">{{ card.title }}</h7>
                     </div>
                   </v-card-title>
+                  <v-card-actions class="white">
+                    <v-chip class="util-pointer">
+                      <v-avatar>
+                        <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="trevor">
+                      </v-avatar>
+                      Trevor Hansen
+                    </v-chip>
+                    <v-spacer></v-spacer>
+                    <v-btn icon>
+                      <v-icon>favorite</v-icon>
+                    </v-btn>
+                  </v-card-actions>
                 </v-card>
               </v-flex>
             </v-layout>
           </v-container>
+        <v-flex class="text-xs-center">
+          <v-btn>Next ></v-btn>
+        </v-flex>
       </v-flex>
     </v-layout>
   </app-sub-layout>
@@ -78,7 +94,9 @@ export default {
         { title: 'Unemployment by Industries ', src: 'static/bar_layered_transparent.svg', flex: 6 },
         { title: 'Unemployment Count', src: 'static/area.svg', flex: 6 },
         { title: 'Population by gender', src: 'static/stacked_area_stream.svg', flex: 6 },
-        { title: 'Seattle Weather', src: 'static/stacked_bar_weather.svg', flex: 6 }
+        { title: 'Seattle Weather', src: 'static/stacked_bar_weather.svg', flex: 6 },
+        { title: 'Stocks', src: 'static/layer_line_color_rule.svg', flex: 6 },
+        { title: 'Github Punchcard', src: 'static/circle_github_punchcard.svg', flex: 6 }
       ],
       size: 'lg',
       items: [
@@ -92,3 +110,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  .util-pointer{
+    cursor: pointer;
+  }
+
+  .util-bold {
+    font-weight: bold;
+  }
+</style>
