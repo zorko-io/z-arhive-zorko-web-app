@@ -12,7 +12,8 @@
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
-                    <v-btn small color="primary" dark>+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if="!filterIsSelected(item)">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if="filterIsSelected(item)">- Filter</v-btn>
                   </div>
                 </v-list-tile-action>
               </v-list-tile>
@@ -25,7 +26,8 @@
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
-                    <v-btn small color="primary" dark>+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if="!filterIsSelected(item)">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if="filterIsSelected(item)">- Filter</v-btn>
                   </div>
                 </v-list-tile-action>
               </v-list-tile>
@@ -92,6 +94,15 @@
       ]),
       addFilter (filter) {
         this.addRemoveFilterToStore(filter)
+      },
+      filterIsSelected (filter) {
+        let isSelected = false
+        this.selectedFilters.forEach(selectedFilter => {
+          if (selectedFilter.text === filter.text) {
+            isSelected = true
+          }
+        })
+        return isSelected
       }
     },
 
