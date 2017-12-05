@@ -3,6 +3,7 @@ export default function () {
     isLoading: true,
     account: null,
     data: [],
+    selectedFilters: [],
     filters: [],
     workspace: {
       scopeId: 'uuid-scope-1',

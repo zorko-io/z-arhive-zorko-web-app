@@ -14,18 +14,38 @@ export const initializeNavigation = ({ workspace, workspaceNavigation }) => {
   workspaceNavigation.items = AppNavigation.assembleNavigationItems(topItems, workspace)
 }
 
-export const initializeData = (state) => {
-  const xobj = new XMLHttpRequest()
-  xobj.overrideMimeType('application/json')
-  xobj.open('GET', './../../static/cars.json', false)
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState === 4 && xobj.status === 200) {
-      state.data = JSON.parse(xobj.responseText)
-    }
-  }
-  xobj.send(null)
+export const setInitialData = (state, data) => {
+  state.data = data
 }
 
-export const addFilter = (state, filter) => {
-  state.filters.push(filter)
+export const addRemoveFilter = (state, filter) => {
+  let filters = []
+  let stateHasFilter = false
+  state.selectedFilters.forEach(selectedFilter => {
+    if (selectedFilter.text !== filter.text) {
+      filters.push(selectedFilter)
+    } else {
+      stateHasFilter = true
+    }
+  })
+  if (!stateHasFilter) {
+    filters.push(filter)
+  }
+  state.selectedFilters = filters
+}
+
+export const setFilters = (state) => {
+  const dimentions = []
+  const mesures = []
+  Object.keys(state.data[0]).forEach(key => {
+    if (typeof state.data[0][key] === 'number') {
+      mesures.push({text: key})
+    } else {
+      dimentions.push({text: key})
+    }
+  })
+  state.filters = {
+    dimentions: dimentions,
+    mesures: mesures
+  }
 }

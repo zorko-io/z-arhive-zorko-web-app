@@ -43,7 +43,7 @@
               <v-card-title>
                 <v-data-table
                   v-bind:headers="selectedFilters"
-                  :items="getInitialData"
+                  :items="exploreData"
                   class="elevation-1"
                 >
                   <template slot="items" slot-scope="props">
@@ -74,68 +74,35 @@
       ...mapGetters([
         'isAuthenticated'
       ]),
-
-      getInitialData () {
+      filters () {
+        return this.$store.state.filters
+      },
+      exploreData () {
         return this.$store.state.data
       },
-      filters () {
-        const dimentions = []
-        const mesures = []
-        Object.keys(this.getInitialData[0]).forEach(key => {
-          if (typeof this.getInitialData[0][key] === 'number') {
-            mesures.push({text: key})
-          } else {
-            dimentions.push({text: key})
-          }
-        })
-        return {
-          dimentions: dimentions,
-          mesures: mesures
-        }
-      },
       selectedFilters () {
-        return this.$store.state.filters
+        return this.$store.state.selectedFilters
       }
     },
     methods: {
       ...mapActions([
         'setInitialData',
-        'addFilterToStore'
+        'addRemoveFilterToStore',
+        'setAllFilters'
       ]),
       addFilter (filter) {
-        this.addFilterToStore(filter)
-        console.log('STORE', this.$store.state.filters)
+        this.addRemoveFilterToStore(filter)
       }
     },
 
     created () {
       this.setInitialData()
-      console.log('Filetrs', this.filters)
+      this.setAllFilters()
     },
     data () {
       return {
         msg: 'I`m a explore',
-        title: 'Explore',
-        dimentions: [{
-          title: 'Name'
-        }, {
-          title: 'Origin'
-        }, {
-          title: 'Year'
-        }],
-        mesures: [{
-          title: 'Miles per Gallon'
-        }, {
-          title: 'Cylinders'
-        }, {
-          title: 'Displacement'
-        }, {
-          title: 'Horsepower'
-        }, {
-          title: 'Weight in lbs'
-        }, {
-          title: 'Acceleration'
-        }]
+        title: 'Explore'
       }
     }
   }
