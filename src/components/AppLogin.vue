@@ -30,7 +30,6 @@
     name: 'AppLogin',
     methods: {
       navigateToAuth () {
-        alert(apiBaseUri)
         location.href = apiBaseUri + '/auth/github'
       }
     },
