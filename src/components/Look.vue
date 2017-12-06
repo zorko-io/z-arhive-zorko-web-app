@@ -1,74 +1,82 @@
 <template>
-  <AppSubLayout :title="title">
-    <v-layout wrap>
-      <v-flex xs12>
-        <v-expansion-panel expand>
-          <v-expansion-panel-content>
-            <template slot="header">
-              <div>Filters</div>
-            </template>
 
-            <v-card color="grey lighten-4" flat>
-              <v-card-text>
-                <v-container fluid>
-                  <v-layout row wrap>
-                    <v-flex xs4>
-                      <v-subheader>{{ filter.label }}</v-subheader>
-                    </v-flex>
-                    <v-flex xs4>
-                      <v-select
-                        :items="filter.operators"
-                        v-model="filter.modelOperation"
-                        label="Choose operation"
-                        single-line
-                        bottom
-                      ></v-select>
-                    </v-flex>
-                    <v-flex xs4>
-                      <v-text-field
-                        name="input-1-3"
-                        label="Put number of year"
-                        single-line
-                        :value="filter.value"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-                </v-container>
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content :value="true">
-            <div slot="header">Visualization</div>
-            <v-card>
-              <v-card-text class="grey lighten-3">
-                <visualization></visualization>
-              </v-card-text>
-            </v-card>
-          </v-expansion-panel-content>
-          <v-expansion-panel-content>
-            <div slot="header">Data</div>
-            <v-data-table
-              v-bind:headers="table.headers"
-              :items="table.items"
-              hide-actions
-              class="elevation-1"
-            >
-              <template slot="items" scope="props">
-                <td>{{ props.item.name }}</td>
-                <td class="text-xs-right">{{ props.item.calories }}</td>
-                <td class="text-xs-right">{{ props.item.fat }}</td>
-                <td class="text-xs-right">{{ props.item.carbs }}</td>
-                <td class="text-xs-right">{{ props.item.protein }}</td>
-                <td class="text-xs-right">{{ props.item.sodium }}</td>
-                <td class="text-xs-right">{{ props.item.calcium }}</td>
-                <td class="text-xs-right">{{ props.item.iron }}</td>
+  <v-container>
+    <v-toolbar fixed app>
+      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn small color="primary" :to="pathToExplore">Explore</v-btn>
+    </v-toolbar>
+    <v-slide-y-transition mode="out-in">
+      <v-layout wrap>
+        <v-flex xs12>
+          <v-expansion-panel expand>
+            <v-expansion-panel-content>
+              <template slot="header">
+                <div>Filters</div>
               </template>
-            </v-data-table>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-      </v-flex>
-    </v-layout>
-  </AppSubLayout>
+
+              <v-card color="grey lighten-4" flat>
+                <v-card-text>
+                  <v-container fluid>
+                    <v-layout row wrap>
+                      <v-flex xs4>
+                        <v-subheader>{{ filter.label }}</v-subheader>
+                      </v-flex>
+                      <v-flex xs4>
+                        <v-select
+                          :items="filter.operators"
+                          v-model="filter.modelOperation"
+                          label="Choose operation"
+                          single-line
+                          bottom
+                        ></v-select>
+                      </v-flex>
+                      <v-flex xs4>
+                        <v-text-field
+                          name="input-1-3"
+                          label="Put number of year"
+                          single-line
+                          :value="filter.value"
+                        ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+            <v-expansion-panel-content :value="true">
+              <div slot="header">Visualization</div>
+              <v-card>
+                <v-card-text class="grey lighten-3">
+                  <visualization></visualization>
+                </v-card-text>
+              </v-card>
+            </v-expansion-panel-content>
+            <v-expansion-panel-content>
+              <div slot="header">Data</div>
+              <v-data-table
+                v-bind:headers="table.headers"
+                :items="table.items"
+                hide-actions
+                class="elevation-1"
+              >
+                <template slot="items" scope="props">
+                  <td>{{ props.item.name }}</td>
+                  <td class="text-xs-right">{{ props.item.calories }}</td>
+                  <td class="text-xs-right">{{ props.item.fat }}</td>
+                  <td class="text-xs-right">{{ props.item.carbs }}</td>
+                  <td class="text-xs-right">{{ props.item.protein }}</td>
+                  <td class="text-xs-right">{{ props.item.sodium }}</td>
+                  <td class="text-xs-right">{{ props.item.calcium }}</td>
+                  <td class="text-xs-right">{{ props.item.iron }}</td>
+                </template>
+              </v-data-table>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-flex>
+      </v-layout>
+    </v-slide-y-transition>
+  </v-container>
 </template>
 
 <script>
@@ -102,6 +110,7 @@
       return {
         msg: 'I`m a look',
         title: 'Look',
+        pathToExplore: '/explore/uuid-explore-1',
         table: {
           headers: [
             {

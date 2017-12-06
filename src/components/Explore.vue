@@ -6,7 +6,7 @@
           <v-card-text>
             <v-subheader>Dimentions</v-subheader>
             <v-list>
-              <v-list-tile avatar v-for="item in filters.dimentions" v-bind:key="item.text" @click="addFilter(item)">
+              <v-list-tile avatar v-for="item in filters.dimentions" :key="item.text" @click="addFilter(item)">
                 <v-list-tile-content>
                   <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                 </v-list-tile-content>
