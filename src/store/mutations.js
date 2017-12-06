@@ -49,3 +49,11 @@ export const setFilters = (state) => {
     mesures: mesures
   }
 }
+
+export const loginRequiredByActon = (state, actionName) => {
+  state.loginRequiredBy = actionName
+}
+
+export const rejectLogin = (state) => {
+  state.loginRequiredBy = null
+}

@@ -1,4 +1,5 @@
 import zorkoApi from '@/api/zorkoApi'
+import authNavigator from '@/api/authNavigator'
 
 export const gatherAccountInfo = ({commit, state, getters}) => {
   const ANONYM_ACCOUNT = {name: '', login: ''}
@@ -52,4 +53,17 @@ export const initializeData = (state) => {
     }
   }
   xobj.send(null)
+}
+
+export const login = (commit, {provider}) => {
+  authNavigator.login(provider)
+}
+
+export const saveExploreAsLook = ({dispatch, commit, getters}, look) => {
+  const {isAuthenticated} = getters
+  if (!isAuthenticated) {
+    commit('loginRequiredByActon', 'saveExploreAsLook')
+  } else {
+    // do save
+  }
 }
