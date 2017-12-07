@@ -1,8 +1,8 @@
-import cars from '@/data/cars.json'
+import axios from 'axios'
 
 export default {
-
   async getData () {
-    return cars
+    let response = await axios.get('/static/cars.json')
+    return response.data
   }
 }

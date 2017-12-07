@@ -27,7 +27,7 @@
   import AppLoading from '@/components/AppLoading'
   import AppNavigation from '@/components/AppNavigation'
   import LoginDialog from '@/components/LoginDialog'
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
@@ -54,14 +54,11 @@
         return !this.isLoading
       }
     },
-    methods: {
-      ...mapActions([
-        'gatherAccountInfo'
-      ])
-    },
 
     created () {
-      this.gatherAccountInfo()
+      this.$store.dispatch({
+        type: 'gatherAccountInfo'
+      })
     },
 
     data () {

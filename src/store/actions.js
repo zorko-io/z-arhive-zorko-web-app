@@ -2,25 +2,18 @@ import zorkoApi from '@/api/zorkoApi'
 import authNavigator from '@/api/authNavigator'
 import datumService from '@/api/datumService'
 
-export const gatherAccountInfo = ({commit, state, getters}) => {
+export const gatherAccountInfo = async ({commit, state, getters}) => {
   const ANONYM_ACCOUNT = {name: '', login: ''}
 
   if (!getters.doesAnyAccountInfoAvailable) {
-    zorkoApi
-      .fetchAccountInfo()
-      .then((account) => {
-        console.log('Account', account)
-        commit('setAccount', account)
-        commit('stopLoading')
-      })
-      .catch((error) => {
-        console.error(error)
-        commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
-        commit('stopLoading')
-      })
-  } else {
-    commit('stopLoading')
+    try {
+      const account = await zorkoApi.fetchAccountInfo()
+      commit('setAccount', account)
+    } catch (err) {
+      commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
+    }
   }
+  commit('stopLoading')
 }
 
 export const setInitialData = async ({commit, state, getters}) => {

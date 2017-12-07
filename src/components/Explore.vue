@@ -72,7 +72,7 @@
 
 <script>
   import AppSubLayout from '@/components/AppSubLayout'
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'Explore',
@@ -94,11 +94,6 @@
       }
     },
     methods: {
-      ...mapActions([
-        'setInitialData',
-        'addRemoveFilterToStore',
-        'saveExploreAsLook'
-      ]),
       addFilter (filter) {
         this.$store.commit('addRemoveFilter', filter)
       },
@@ -112,17 +107,20 @@
         return isSelected
       },
       saveExplore () {
-        const lookState = {}
-        this.saveExploreAsLook(lookState)
+        this.$store.dispatch({
+          type: 'saveExploreAsLook',
+          look: {}
+        })
       }
     },
-
     created () {
-      this.setInitialData()
+      this.$store.dispatch({
+        type: 'setInitialData'
+      })
     },
     data () {
       return {
-        msg: 'I`m a explore',
+        msg: 'I`m an explore',
         title: 'Explore'
       }
     }
