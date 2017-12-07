@@ -4,8 +4,8 @@ export default function () {
     account: null,
     loginRequiredBy: null,
     data: [],
-    selectedFilters: [],
-    filters: [],
+    selectedAggregators: [],
+    aggregators: [],
     workspace: {
       scopeId: 'uuid-scope-1',
       repositories: [
