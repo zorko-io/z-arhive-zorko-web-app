@@ -8,7 +8,7 @@ export const setAccount = (state, account) => {
   state.account = account
 }
 
-export const initializeNavigation = ({ workspace, workspaceNavigation }) => {
+export const initializeNavigation = ({workspace, workspaceNavigation}) => {
   const topItems = workspaceNavigation.items
 
   workspaceNavigation.items = AppNavigation.assembleNavigationItems(topItems, workspace)
@@ -37,16 +37,20 @@ export const addRemoveFilter = (state, filter) => {
 export const setFilters = (state) => {
   const dimentions = []
   const mesures = []
-  Object.keys(state.data[0]).forEach(key => {
-    if (typeof state.data[0][key] === 'number') {
-      mesures.push({text: key})
-    } else {
-      dimentions.push({text: key})
+  const data = state.data
+
+  if (data.length > 0) {
+    Object.keys(state.data[0]).forEach(key => {
+      if (typeof state.data[0][key] === 'number') {
+        mesures.push({text: key})
+      } else {
+        dimentions.push({text: key})
+      }
+    })
+    state.filters = {
+      dimentions: dimentions,
+      mesures: mesures
     }
-  })
-  state.filters = {
-    dimentions: dimentions,
-    mesures: mesures
   }
 }
 

@@ -97,11 +97,10 @@
       ...mapActions([
         'setInitialData',
         'addRemoveFilterToStore',
-        'setAllFilters',
         'saveExploreAsLook'
       ]),
       addFilter (filter) {
-        this.addRemoveFilterToStore(filter)
+        this.$store.commit('addRemoveFilter', filter)
       },
       filterIsSelected (filter) {
         let isSelected = false
@@ -120,7 +119,6 @@
 
     created () {
       this.setInitialData()
-      this.setAllFilters()
     },
     data () {
       return {
