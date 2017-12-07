@@ -34,6 +34,22 @@ export const addRemoveAggregator = (state, aggregator) => {
   state.selectedAggregators = aggregators
 }
 
+export const addRemoveFilter = (state, filter) => {
+  let filters = []
+  let stateHasFilter = false
+  state.selectedFilters.forEach(selectedFilter => {
+    if (selectedFilter !== filter) {
+      filters.push(selectedFilter)
+    } else {
+      stateHasFilter = true
+    }
+  })
+  if (!stateHasFilter) {
+    filters.push(filter)
+  }
+  state.selectedFilters = filters
+}
+
 export const setAggregators = (state) => {
   const dimentions = []
   const mesures = []

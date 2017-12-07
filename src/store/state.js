@@ -5,6 +5,7 @@ export default function () {
     loginRequiredBy: null,
     data: [],
     selectedAggregators: [],
+    selectedFilters: [],
     aggregators: [],
     workspace: {
       scopeId: 'uuid-scope-1',

@@ -26,6 +26,10 @@ export const addRemoveAggregatorToStore = ({commit, state, getters}, aggregator)
   commit('addRemoveAggregator', aggregator)
 }
 
+export const addRemoveFilterToStore = ({commit, state, getters}, filter) => {
+  commit('addRemoveFilter', filter)
+}
+
 export const setAllAggregators = ({commit}) => {
   commit('setAggregators')
 }

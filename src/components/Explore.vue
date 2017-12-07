@@ -19,7 +19,8 @@
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
-                    <v-btn small color="primary" dark v-on:click.stop="clickFilter">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if='!filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if='filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">- Filter</v-btn>
                   </div>
                 </v-list-tile-action>
               </v-list-tile>
@@ -33,7 +34,8 @@
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <div>
-                    <v-btn small color="primary" dark @click="clickFilter">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if='!filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">+ Filter</v-btn>
+                    <v-btn small color="primary" dark v-if='filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">- Filter</v-btn>
                   </div>
                 </v-list-tile-action>
               </v-list-tile>
@@ -43,6 +45,32 @@
       </v-flex>
       <v-flex xs8 >
         <v-expansion-panel expand class="u-move-top-left">
+          <v-expansion-panel-content>
+            <template slot="header">
+              <div>Filter</div>
+            </template>
+            <v-card v-for="filter in selectedFilters">
+              <v-card color="grey lighten-4" flat>
+                  <v-card-text>
+                    <v-container fluid>
+                      <v-layout row wrap>
+                        <v-flex xs4>
+                          <v-subheader>{{ filter }}</v-subheader>
+                        </v-flex>
+                        <v-flex xs4>
+
+                        </v-flex>
+                        <v-flex xs4>
+
+                        </v-flex>
+                      </v-layout>
+                    </v-container>
+                  </v-card-text>
+                </v-card>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-expansion-panel expand class="u-move-left">
           <v-expansion-panel-content>
             <template slot="header">
               <div>Data table</div>
@@ -91,12 +119,16 @@
       },
       selectedAggregators () {
         return this.$store.state.selectedAggregators
+      },
+      selectedFilters () {
+        return this.$store.state.selectedFilters
       }
     },
     methods: {
       ...mapActions([
         'setInitialData',
         'addRemoveAggregatorToStore',
+        'addRemoveFilterToStore',
         'setAllAggregators'
       ]),
       addAggregator (aggregator) {
@@ -111,11 +143,17 @@
         })
         return isSelected
       },
-      clickAggregator (event) {
-        alert(1)
-        console.log('EVENT', event)
-        event.preventDefault()
-        return false
+      addFilter (filter) {
+        this.addRemoveFilterToStore(filter)
+      },
+      filterIsSelected (filter) {
+        let isSelected = false
+        this.selectedFilters.forEach(selectedFilter => {
+          if (selectedFilter === filter) {
+            isSelected = true
+          }
+        })
+        return isSelected
       },
       saveExplore () {
         this.$store.dispatch({
@@ -142,6 +180,10 @@
 <style scoped>
   .u-move-top-left {
     margin-top: 50px;
+    margin-left: 50px;
+  }
+  .u-move-left {
+    margin-top: 1px;
     margin-left: 50px;
   }
   .selected {
