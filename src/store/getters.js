@@ -15,7 +15,15 @@ export const isAuthenticated = (state) => {
   return state.account && state.account.name && state.account.login
 }
 
+export const shouldShowLoginDialog = (state) => {
+  return Boolean(state.loginRequiredBy)
+}
+
 export const currentScope = R.pipe(
   R.prop('workspace'),
   workspace.getCurrentScope,
 )
+
+export const getInitialDta = (state) => {
+  return state.data
+}

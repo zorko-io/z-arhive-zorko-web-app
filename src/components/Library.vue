@@ -26,7 +26,7 @@
                   class="util-pointer"
                 >
                   <div>
-                    <h7 class="grey--text util-bold">{{ card.title }}</h7>
+                    <h6 class="grey--text util-bold">{{ card.title }}</h6>
                   </div>
                 </v-card-title>
                 <v-card-actions class="white">

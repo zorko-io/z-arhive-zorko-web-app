@@ -2,6 +2,10 @@ export default function () {
   return {
     isLoading: true,
     account: null,
+    loginRequiredBy: null,
+    data: [],
+    selectedFilters: [],
+    filters: [],
     workspace: {
       scopeId: 'uuid-scope-1',
       repositories: [

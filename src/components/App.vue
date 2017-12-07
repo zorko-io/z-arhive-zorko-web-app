@@ -1,20 +1,15 @@
 <template>
   <v-app>
+    <LoginDialog/>
 
     <template v-if="isLoading">
       <main>
-        <app-loading></app-loading>
-      </main>
-    </template>
-
-    <template v-if="!isAuthenticated">
-      <main>
-        <app-login></app-login>
+        <AppLoading/>
       </main>
     </template>
 
     <template v-if="isAppReady">
-      <app-navigation v-if="isNavigationVisible"></app-navigation>
+      <AppNavigation v-if="isNavigationVisible"></AppNavigation>
       <main>
         <v-content>
           <router-view></router-view>
@@ -31,13 +26,15 @@
   import AppLogin from '@/components/AppLogin'
   import AppLoading from '@/components/AppLoading'
   import AppNavigation from '@/components/AppNavigation'
-  import { mapGetters, mapActions } from 'vuex'
+  import LoginDialog from '@/components/LoginDialog'
+  import { mapGetters } from 'vuex'
 
   export default {
     components: {
       AppLogin,
       AppLoading,
-      AppNavigation
+      AppNavigation,
+      LoginDialog
     },
 
     computed: {
@@ -54,17 +51,14 @@
       },
 
       isAppReady () {
-        return !this.isLoading && this.isAuthenticated
+        return !this.isLoading
       }
-    },
-    methods: {
-      ...mapActions([
-        'gatherAccountInfo'
-      ])
     },
 
     created () {
-      this.gatherAccountInfo()
+      this.$store.dispatch({
+        type: 'gatherAccountInfo'
+      })
     },
 
     data () {
