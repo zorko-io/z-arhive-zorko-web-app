@@ -19,7 +19,31 @@ export const gatherAccountInfo = async ({commit, state, getters}) => {
 export const setInitialData = async ({commit, state, getters}) => {
   const data = await datumService.getData()
   commit('setInitialData', data)
-  commit('setFilters')
+  commit('setAggregators')
+}
+
+export const addRemoveAggregatorToStore = ({commit, state, getters}, aggregator) => {
+  commit('addRemoveAggregator', aggregator)
+}
+
+export const addRemoveFilterToStore = ({commit, state, getters}, filter) => {
+  commit('addRemoveFilter', filter)
+}
+
+export const setAllAggregators = ({commit}) => {
+  commit('setAggregators')
+}
+
+export const initializeData = (state) => {
+  const xobj = new XMLHttpRequest()
+  xobj.overrideMimeType('application/json')
+  xobj.open('GET', './../../static/cars.json', false)
+  xobj.onreadystatechange = function () {
+    if (xobj.readyState === 4 && xobj.status === 200) {
+      state.data = JSON.parse(xobj.responseText)
+    }
+  }
+  xobj.send(null)
 }
 
 export const login = (commit, {provider}) => {

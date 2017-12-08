@@ -18,11 +18,27 @@ export const setInitialData = (state, data) => {
   state.data = data
 }
 
+export const addRemoveAggregator = (state, aggregator) => {
+  let aggregators = []
+  let stateHasAggregator = false
+  state.selectedAggregators.forEach(selectedAggregator => {
+    if (selectedAggregator.text !== aggregator.text) {
+      aggregators.push(selectedAggregator)
+    } else {
+      stateHasAggregator = true
+    }
+  })
+  if (!stateHasAggregator) {
+    aggregators.push(aggregator)
+  }
+  state.selectedAggregators = aggregators
+}
+
 export const addRemoveFilter = (state, filter) => {
   let filters = []
   let stateHasFilter = false
   state.selectedFilters.forEach(selectedFilter => {
-    if (selectedFilter.text !== filter.text) {
+    if (selectedFilter !== filter) {
       filters.push(selectedFilter)
     } else {
       stateHasFilter = true
@@ -34,7 +50,7 @@ export const addRemoveFilter = (state, filter) => {
   state.selectedFilters = filters
 }
 
-export const setFilters = (state) => {
+export const setAggregators = (state) => {
   const dimentions = []
   const mesures = []
   const data = state.data
@@ -47,7 +63,7 @@ export const setFilters = (state) => {
         dimentions.push({text: key})
       }
     })
-    state.filters = {
+    state.aggregators = {
       dimentions: dimentions,
       mesures: mesures
     }
