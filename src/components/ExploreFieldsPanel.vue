@@ -8,6 +8,7 @@
           :field="dimention"
           :key="dimention.text"
           @toggleSelection="onSelectionChange"
+          @toggleFilter="onFilterChange"
         />
       </v-list>
       <v-subheader>Mesures</v-subheader>
@@ -17,6 +18,7 @@
           :field="measure"
           :key="measure.text"
           @toggleSelection="onSelectionChange"
+          @toggleFilter="onFilterChange"
         />
       </v-list>
     </v-card-text>
@@ -43,8 +45,10 @@
     },
     methods: {
       onSelectionChange (field) {
-        debugger
         this.$emit('changeFieldSelection', field)
+      },
+      onFilterChange (field) {
+        this.$emit('changeFilter', field)
       }
     }
   }

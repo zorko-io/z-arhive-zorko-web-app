@@ -12,36 +12,13 @@
             :dimentions="exploreDimentions"
             :measures="exploreMeasures"
             @changeFieldSelection="onFieldSelectionChange"
+            @changeFilter="onFilterChange"
           />
         </v-flex>
         <v-flex xs8 >
-          <!--TODO: move to filters component-->
-          <!--<v-expansion-panel expand>-->
-            <!--<v-expansion-panel-content>-->
-              <!--<template slot="header">-->
-                <!--<div>Filter</div>-->
-              <!--</template>-->
-              <!--<v-card v-for="filter in selectedFilters">-->
-                <!--<v-card color="grey lighten-4" flat>-->
-                  <!--<v-card-text>-->
-                    <!--<v-container fluid>-->
-                      <!--<v-layout row wrap>-->
-                        <!--<v-flex xs4>-->
-                          <!--<v-subheader>{{ filter }}</v-subheader>-->
-                        <!--</v-flex>-->
-                        <!--<v-flex xs4>-->
-
-                        <!--</v-flex>-->
-                        <!--<v-flex xs4>-->
-
-                        <!--</v-flex>-->
-                      <!--</v-layout>-->
-                    <!--</v-container>-->
-                  <!--</v-card-text>-->
-                <!--</v-card>-->
-              <!--</v-card>-->
-            <!--</v-expansion-panel-content>-->
-          <!--</v-expansion-panel>-->
+          <ExploreFiltersPanel
+            :filters="exploreFilters"
+          />
           <v-expansion-panel expand >
             <v-expansion-panel-content>
               <template slot="header">
@@ -69,6 +46,7 @@
   import AppSubLayout from '@/components/AppSubLayout'
   import ExploreFieldsPanel from '@/components/ExploreFieldsPanel'
   import ExploreDataTable from '@/components/ExploreDataTable'
+  import ExploreFiltersPanel from '@/components/ExploreFiltersPanel'
   import VueVega from 'vue-vega'
   const {VegaLiteComponent} = VueVega
 
@@ -79,12 +57,12 @@
     components: {
       AppSubLayout,
       ExploreFieldsPanel,
+      ExploreFiltersPanel,
       ExploreDataTable,
       Visualization: VegaLiteComponent
     },
     computed: {
       ...mapGetters([
-        'isAuthenticated',
         'exploreDimentions',
         'exploreMeasures',
         'exploreSelectedFields'
@@ -95,8 +73,8 @@
       exploreData () {
         return this.$store.state.data
       },
-      selectedFilters () {
-        return this.$store.state.selectedFilters
+      exploreFilters () {
+        return this.$store.state.exploreFilters
       }
     },
     methods: {
@@ -107,20 +85,11 @@
           field
         })
       },
-      addFilter (filter) {
+      onFilterChange (field) {
         this.$store.commit({
-          type: 'addRemoveFilter',
-          filter
+          type: 'toggleFilter',
+          field
         })
-      },
-      filterIsSelected (filter) {
-        let isSelected = false
-        this.selectedFilters.forEach(selectedFilter => {
-          if (selectedFilter === filter) {
-            isSelected = true
-          }
-        })
-        return isSelected
       },
       saveExplore () {
         this.$store.dispatch({

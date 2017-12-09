@@ -5,6 +5,7 @@ export default function () {
     loginRequiredBy: null,
     data: [],
     exploreFields: [],
+    exploreFilters: [],
     selectedAggregators: [],
     selectedFilters: [],
     aggregators: [],

@@ -7,17 +7,11 @@
           </v-list-tile-content>
           <v-list-tile-action>
             <div>
-              <!--TODO: uncomment when filters fixed-->
-              <!--<v-btn small-->
-                     <!--color="primary"-->
-                     <!--dark-->
-                     <!--v-if='!filterIsSelected(item.text)'-->
-                     <!--@click.stop="addFilter(item.text)">+ Filter-->
-              <!--</v-btn>-->
               <v-btn small
                      color="primary"
-                     dark>
-                Filter
+                     dark
+                     @click.stop="toggleFilter">
+                {{ label }}
               </v-btn>
             </div>
           </v-list-tile-action>
@@ -34,14 +28,25 @@
     },
     computed: {
       selectionClass () {
-        debugger
         return this.field.selected ? 'selected' : 'unselected'
+      },
+      label () {
+        debugger
+        return this.field.filtered ? '- Filter' : '+ Filter'
       }
     },
     methods: {
       toggleSelection () {
-        debugger
         this.$emit('toggleSelection', this.field)
+      },
+      toggleFilter () {
+        debugger
+        this.$emit('toggleFilter', this.field)
+      }
+    },
+    data () {
+      return {
+        icon: 'justify'
       }
     }
   }
