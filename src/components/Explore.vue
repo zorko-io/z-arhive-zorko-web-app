@@ -12,30 +12,52 @@
             <v-card-text>
               <v-subheader>Dimentions</v-subheader>
               <v-list>
-                <v-list-tile avatar v-for="item in aggregators.dimentions" v-bind:key="item.text" @click="addAggregator(item)"
-                           v-bind:class="{'selected': aggregatorIsSelected(item),  'unselected': !aggregatorIsSelected(item)}">
+                <v-list-tile avatar
+                             :class="{'selected': aggregatorIsSelected(item),  'unselected': !aggregatorIsSelected(item)}"
+                             v-for="item in aggregators.dimentions"
+                             :key="item.text"
+                             @click="addAggregator(item)">
                   <v-list-tile-content>
                     <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                   </v-list-tile-content>
                   <v-list-tile-action>
                     <div>
-                      <v-btn small color="primary" dark v-if='!filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">+ Filter</v-btn>
-                      <v-btn small color="primary" dark v-if='filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">- Filter</v-btn>
+                      <v-btn small
+                             color="primary"
+                             dark
+                             v-if='!filterIsSelected(item.text)'
+                             @click.stop="addFilter(item.text)">+ Filter</v-btn>
+                      <v-btn small
+                             color="primary"
+                             dark
+                             v-if='filterIsSelected(item.text)'
+                             @click.stop="addFilter(item.text)">- Filter</v-btn>
                     </div>
                   </v-list-tile-action>
                 </v-list-tile>
               </v-list>
               <v-subheader>Mesures</v-subheader>
               <v-list>
-                <v-list-tile avatar v-for="item in aggregators.mesures" :key="item.text" @click="addAggregator(item)"
-                           v-bind:class="{'selected': aggregatorIsSelected(item),  'unselected': !aggregatorIsSelected(item)}">
+                <v-list-tile avatar
+                             :class="{'selected': aggregatorIsSelected(item),  'unselected': !aggregatorIsSelected(item)}"
+                             v-for="item in aggregators.mesures"
+                             :key="item.text"
+                             @click="addAggregator(item)">
                   <v-list-tile-content>
                     <v-list-tile-title>{{ item.text }}</v-list-tile-title>
                   </v-list-tile-content>
                   <v-list-tile-action>
                     <div>
-                      <v-btn small color="primary" dark v-if='!filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">+ Filter</v-btn>
-                      <v-btn small color="primary" dark v-if='filterIsSelected(item.text)' v-on:click.stop="addFilter(item.text)">- Filter</v-btn>
+                      <v-btn small
+                             color="primary"
+                             dark
+                             v-if='!filterIsSelected(item.text)'
+                             @click.stop="addFilter(item.text)">+ Filter</v-btn>
+                      <v-btn small
+                             color="primary"
+                             dark
+                             v-if='filterIsSelected(item.text)'
+                             @click.stop="addFilter(item.text)">- Filter</v-btn>
                     </div>
                   </v-list-tile-action>
                 </v-list-tile>
@@ -44,25 +66,13 @@
           </v-card>
         </v-flex>
         <v-flex xs8 >
-          <v-expansion-panel expand >
-            <v-expansion-panel-content>
-              <template slot="header">
-                <div>Visualization</div>
-              </template>
-              <v-card>
-                <v-card-title>
-                  <Visualization :spec="exploreSpec"/>
-                </v-card-title>
-              </v-card>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
           <v-expansion-panel expand>
             <v-expansion-panel-content>
               <template slot="header">
                 <div>Filter</div>
-            </template>
-            <v-card v-for="filter in selectedFilters">
-              <v-card color="grey lighten-4" flat>
+              </template>
+              <v-card v-for="filter in selectedFilters">
+                <v-card color="grey lighten-4" flat>
                   <v-card-text>
                     <v-container fluid>
                       <v-layout row wrap>
@@ -79,10 +89,22 @@
                     </v-container>
                   </v-card-text>
                 </v-card>
-            </v-card>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
-        <v-expansion-panel expand class="u-move-left">
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel expand >
+            <v-expansion-panel-content>
+              <template slot="header">
+                <div>Visualization</div>
+              </template>
+              <v-card>
+                <v-card-title>
+                  <Visualization :spec="exploreSpec"/>
+                </v-card-title>
+              </v-card>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel expand>
           <v-expansion-panel-content>
             <template slot="header">
               <div>Data table</div>
@@ -95,7 +117,9 @@
                     class="elevation-1"
                   >
                     <template slot="items" slot-scope="props">
-                      <td class="text-xs-right" v-for="aggregator in selectedAggregators" :key="aggregator.index">
+                      <td class="text-xs-right"
+                          v-for="aggregator in selectedAggregators"
+                          :key="aggregator.index">
                         {{ props.item[aggregator.text] }}
                       </td>
                     </template>
@@ -115,7 +139,7 @@
   import VueVega from 'vue-vega'
   const {VegaLiteComponent} = VueVega
 
-  import {mapGetters, mapActions} from 'vuex'
+  import {mapGetters} from 'vuex'
 
   export default {
     name: 'Explore',
@@ -144,14 +168,11 @@
       }
     },
     methods: {
-      ...mapActions([
-        'setInitialData',
-        'addRemoveAggregatorToStore',
-        'addRemoveFilterToStore',
-        'setAllAggregators'
-      ]),
       addAggregator (aggregator) {
-        this.addRemoveAggregatorToStore(aggregator)
+        this.$store.commit({
+          type: 'addRemoveAggregator',
+          aggregator
+        })
       },
       aggregatorIsSelected (aggregator) {
         let isSelected = false
@@ -163,7 +184,10 @@
         return isSelected
       },
       addFilter (filter) {
-        this.addRemoveFilterToStore(filter)
+        this.$store.commit({
+          type: 'addRemoveFilter',
+          filter
+        })
       },
       filterIsSelected (filter) {
         let isSelected = false
@@ -185,7 +209,6 @@
       this.$store.dispatch({
         type: 'setInitialData'
       })
-      this.setAllAggregators()
     },
     data () {
       return {

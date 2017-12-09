@@ -18,7 +18,7 @@ export const setInitialData = (state, data) => {
   state.data = data
 }
 
-export const addRemoveAggregator = (state, aggregator) => {
+export const addRemoveAggregator = (state, {aggregator}) => {
   let aggregators = []
   let stateHasAggregator = false
   state.selectedAggregators.forEach(selectedAggregator => {
@@ -34,7 +34,7 @@ export const addRemoveAggregator = (state, aggregator) => {
   state.selectedAggregators = aggregators
 }
 
-export const addRemoveFilter = (state, filter) => {
+export const addRemoveFilter = (state, {filter}) => {
   let filters = []
   let stateHasFilter = false
   state.selectedFilters.forEach(selectedFilter => {
