@@ -27,3 +27,16 @@ export const currentScope = R.pipe(
 export const getInitialDta = (state) => {
   return state.data
 }
+
+export const exploreDimentions = (state) => {
+  return state.exploreFields.filter((field) => (field.type === 'dimention'))
+}
+
+export const exploreMeasures = (state) => {
+  return state.exploreFields.filter((field) => (field.type === 'measure'))
+}
+
+export const exploreSelectedFields = (state) => {
+  return state.exploreFields.filter((field) => (field.selected))
+}
+

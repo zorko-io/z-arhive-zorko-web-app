@@ -1,4 +1,7 @@
+import * as R from 'ramda'
 import AppNavigation from '@/store/navigation/AppNavigation'
+
+const equalByText = (text) => R.compose(R.equals(text), R.prop('text'))
 
 export const stopLoading = (state) => {
   state.isLoading = false
@@ -18,40 +21,43 @@ export const setInitialData = (state, data) => {
   state.data = data
 }
 
-export const addRemoveFilter = (state, filter) => {
-  let filters = []
-  let stateHasFilter = false
-  state.selectedFilters.forEach(selectedFilter => {
-    if (selectedFilter.text !== filter.text) {
-      filters.push(selectedFilter)
-    } else {
-      stateHasFilter = true
-    }
-  })
-  if (!stateHasFilter) {
-    filters.push(filter)
-  }
-  state.selectedFilters = filters
+export const toggleFieldSelection = (state, {field}) => {
+  const stateField = state.exploreFields.find(equalByText(field.text))
+  stateField.selected = !field.selected
 }
 
-export const setFilters = (state) => {
-  const dimentions = []
-  const mesures = []
-  const data = state.data
+export const toggleFilter = (state, {field}) => {
+  const shouldRemoveFilter = field.filtered
+  const stateField = state.exploreFields.find(equalByText(field.text))
 
-  if (data.length > 0) {
-    Object.keys(state.data[0]).forEach(key => {
-      if (typeof state.data[0][key] === 'number') {
-        mesures.push({text: key})
-      } else {
-        dimentions.push({text: key})
-      }
+  if (shouldRemoveFilter) {
+    const filterIndex = state.exploreFilters.findIndex(equalByText(field.text))
+    state.exploreFilters.splice(filterIndex, 1)
+    stateField.filtered = false
+  } else {
+    state.exploreFilters.push({
+      text: field.text
     })
-    state.filters = {
-      dimentions: dimentions,
-      mesures: mesures
-    }
+    stateField.filtered = true
   }
+}
+
+export const setExploreFields = (state) => {
+  let firstDataItem = state.data[0]
+  let fields = []
+  if (firstDataItem) {
+    const firstDataItemKeys = Object.keys(firstDataItem)
+    const isNumber = (key) => (typeof firstDataItem[key] === 'number')
+
+    fields = firstDataItemKeys.map((key) => ({
+      text: key,
+      type: isNumber(key) ? 'measure' : 'dimention',
+      selected: false,
+      filtered: false
+    }))
+  }
+
+  state.exploreFields = fields
 }
 
 export const loginRequiredByActon = (state, actionName) => {
