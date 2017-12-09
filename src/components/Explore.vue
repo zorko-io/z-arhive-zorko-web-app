@@ -16,22 +16,8 @@
           />
         </v-flex>
         <v-flex xs8 >
-          <ExploreFiltersPanel
-            :filters="exploreFilters"
-          />
-          <v-expansion-panel expand >
-            <v-expansion-panel-content>
-              <template slot="header">
-                <div>Visualization</div>
-              </template>
-              <v-card>
-                <v-card-title>
-                  <Visualization :spec="exploreSpec"/>
-                </v-card-title>
-              </v-card>
-            </v-expansion-panel-content>
-          </v-expansion-panel>
-          <!--TODO: decouple data table from expand panel-->
+          <ExploreFiltersPanel :filters="exploreFilters"/>
+          <ExploreVisualization :spec="exploreSpec" />
           <ExploreDataTable
             :fields="exploreSelectedFields"
             :data="exploreData"
@@ -46,9 +32,8 @@
   import AppSubLayout from '@/components/AppSubLayout'
   import ExploreFieldsPanel from '@/components/ExploreFieldsPanel'
   import ExploreDataTable from '@/components/ExploreDataTable'
+  import ExploreVisualization from '@/components/ExploreVisualization'
   import ExploreFiltersPanel from '@/components/ExploreFiltersPanel'
-  import VueVega from 'vue-vega'
-  const {VegaLiteComponent} = VueVega
 
   import {mapGetters} from 'vuex'
 
@@ -58,8 +43,8 @@
       AppSubLayout,
       ExploreFieldsPanel,
       ExploreFiltersPanel,
-      ExploreDataTable,
-      Visualization: VegaLiteComponent
+      ExploreVisualization,
+      ExploreDataTable
     },
     computed: {
       ...mapGetters([
