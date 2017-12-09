@@ -31,7 +31,6 @@
         return this.field.selected ? 'selected' : 'unselected'
       },
       label () {
-        debugger
         return this.field.filtered ? '- Filter' : '+ Filter'
       }
     },
@@ -40,7 +39,6 @@
         this.$emit('toggleSelection', this.field)
       },
       toggleFilter () {
-        debugger
         this.$emit('toggleFilter', this.field)
       }
     },

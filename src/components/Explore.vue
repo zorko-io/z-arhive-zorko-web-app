@@ -64,7 +64,6 @@
     },
     methods: {
       onFieldSelectionChange (field) {
-        debugger
         this.$store.commit({
           type: 'toggleFieldSelection',
           field
