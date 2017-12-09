@@ -19,7 +19,7 @@ export const gatherAccountInfo = async ({commit, state, getters}) => {
 export const setInitialData = async ({commit, state, getters}) => {
   const data = await datumService.getData()
   commit('setInitialData', data)
-  commit('setAggregators')
+  commit('setExploreFields')
 }
 
 export const login = (commit, {provider}) => {

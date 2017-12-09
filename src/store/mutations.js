@@ -18,20 +18,11 @@ export const setInitialData = (state, data) => {
   state.data = data
 }
 
-export const addRemoveAggregator = (state, {aggregator}) => {
-  let aggregators = []
-  let stateHasAggregator = false
-  state.selectedAggregators.forEach(selectedAggregator => {
-    if (selectedAggregator.text !== aggregator.text) {
-      aggregators.push(selectedAggregator)
-    } else {
-      stateHasAggregator = true
-    }
-  })
-  if (!stateHasAggregator) {
-    aggregators.push(aggregator)
-  }
-  state.selectedAggregators = aggregators
+export const toggleFieldSelection = (state, {field}) => {
+  const stateField = state.exploreFields.find(
+    (stateField) => (stateField.text === field.text)
+  )
+  stateField.selected = !field.selected
 }
 
 export const addRemoveFilter = (state, {filter}) => {
@@ -50,24 +41,21 @@ export const addRemoveFilter = (state, {filter}) => {
   state.selectedFilters = filters
 }
 
-export const setAggregators = (state) => {
-  const dimentions = []
-  const mesures = []
-  const data = state.data
+export const setExploreFields = (state) => {
+  let firstDataItem = state.data[0]
+  let fields = []
+  if (firstDataItem) {
+    const firstDataItemKeys = Object.keys(firstDataItem)
+    const isNumber = (key) => (typeof firstDataItem[key] === 'number')
 
-  if (data.length > 0) {
-    Object.keys(state.data[0]).forEach(key => {
-      if (typeof state.data[0][key] === 'number') {
-        mesures.push({text: key})
-      } else {
-        dimentions.push({text: key})
-      }
-    })
-    state.aggregators = {
-      dimentions: dimentions,
-      mesures: mesures
-    }
+    fields = firstDataItemKeys.map((key) => ({
+      text: key,
+      type: isNumber(key) ? 'measure' : 'dimention',
+      selected: false
+    }))
   }
+
+  state.exploreFields = fields
 }
 
 export const loginRequiredByActon = (state, actionName) => {

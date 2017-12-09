@@ -4,6 +4,7 @@ export default function () {
     account: null,
     loginRequiredBy: null,
     data: [],
+    exploreFields: [],
     selectedAggregators: [],
     selectedFilters: [],
     aggregators: [],
