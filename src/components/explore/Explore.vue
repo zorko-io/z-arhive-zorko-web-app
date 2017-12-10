@@ -15,7 +15,7 @@
             @changeFilter="onFilterChange"
           />
         </v-flex>
-        <v-flex xs8 >
+        <v-flex xs8 style="margin-left: 10px">
           <ExploreFiltersPanel :filters="exploreFilters"/>
           <ExploreVisualization :spec="exploreSpec" />
           <ExploreDataTable
@@ -30,10 +30,10 @@
 
 <script>
   import AppSubLayout from '@/components/AppSubLayout'
-  import ExploreFieldsPanel from '@/components/ExploreFieldsPanel'
-  import ExploreDataTable from '@/components/ExploreDataTable'
-  import ExploreVisualization from '@/components/ExploreVisualization'
-  import ExploreFiltersPanel from '@/components/ExploreFiltersPanel'
+  import ExploreFieldsPanel from '@/components/explore/ExploreFieldsPanel'
+  import ExploreDataTable from '@/components/explore/ExploreDataTable'
+  import ExploreVisualization from '@/components/explore/ExploreVisualization'
+  import ExploreFiltersPanel from '@/components/explore/ExploreFiltersPanel'
 
   import {mapGetters} from 'vuex'
 
