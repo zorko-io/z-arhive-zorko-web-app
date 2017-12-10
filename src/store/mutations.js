@@ -35,8 +35,12 @@ export const toggleFilter = (state, {field}) => {
     state.exploreFilters.splice(filterIndex, 1)
     stateField.filtered = false
   } else {
+    console.log('FIELD', field)
     state.exploreFilters.push({
-      text: field.text
+      text: field.text,
+      type: field.type,
+      filtered: field.filtered,
+      selected: field.selected
     })
     stateField.filtered = true
   }
