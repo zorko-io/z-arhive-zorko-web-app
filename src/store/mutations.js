@@ -18,12 +18,23 @@ export const initializeNavigation = ({workspace, workspaceNavigation}) => {
 }
 
 export const setInitialData = (state, data) => {
-  state.data = data
+  state.initialData = data
+  state.data = data.map((item) => { return {} })
 }
 
 export const toggleFieldSelection = (state, {field}) => {
   const stateField = state.exploreFields.find(equalByText(field.text))
   stateField.selected = !field.selected
+  const key = field.text
+  if (field.selected) {
+    state.initialData.forEach((record, index) => {
+      state.data[index][key] = record[key]
+    })
+  } else {
+    state.initialData.forEach((record, index) => {
+      delete state.data[index][key]
+    })
+  }
 }
 
 export const toggleFilter = (state, {field}) => {
@@ -35,7 +46,6 @@ export const toggleFilter = (state, {field}) => {
     state.exploreFilters.splice(filterIndex, 1)
     stateField.filtered = false
   } else {
-    console.log('FIELD', field)
     state.exploreFilters.push({
       text: field.text,
       type: field.type,
@@ -47,7 +57,7 @@ export const toggleFilter = (state, {field}) => {
 }
 
 export const setExploreFields = (state) => {
-  let firstDataItem = state.data[0]
+  let firstDataItem = state.initialData[0]
   let fields = []
   if (firstDataItem) {
     const firstDataItemKeys = Object.keys(firstDataItem)
