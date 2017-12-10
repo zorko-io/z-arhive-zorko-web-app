@@ -1,5 +1,5 @@
 import Library from '@/components/Library'
-import Explore from '@/components/Explore'
+import Explore from '@/components/explore/Explore'
 import Model from '@/components/Model'
 import ModelDocumentation from '@/components/ModelDocumentation'
 import ModelDefinition from '@/components/ModelDefinition'
