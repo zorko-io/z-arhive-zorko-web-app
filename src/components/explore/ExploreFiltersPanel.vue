@@ -14,19 +14,18 @@
                 </v-flex>
                 <v-flex xs4>
                   <v-select
-                    v-bind:items="isMEasureFilter(filter) ? measureOptions : dimentionOptions"
-                    v-model="select.state"
+                    v-bind:items="isMeasureFilter(filter) ? measureOptions : dimentionOptions"
                     label="Select"
                     single-line
                     bottom
-                    v-on:change="selectCondition"
+                    v-on:change="setFilterCondition(filter, $event)"
                   ></v-select>
                 </v-flex>
                 <v-flex xs4>
                   <v-text-field
-                    v-on:change="filterValue"
+                    v-on:change="setFilterValue(filter, $event)"
                     name='filter.text'
-                    v-bind:label="isMEasureFilter(filter) ? ('Put number of the' + filter.text) : ('Put value of ' + filter.text)"
+                    v-bind:label="isMeasureFilter(filter) ? ('Put number of the' + filter.text) : ('Put value of ' + filter.text)"
                     single-line
                     :value="filter.value"
                   ></v-text-field>
@@ -51,14 +50,14 @@
       }
     },
     methods: {
-      selectCondition (event) {
-        console.log(event)
-      },
-      filterValue (event) {
-        console.log(event)
-      },
-      isMEasureFilter (filter) {
+      isMeasureFilter (filter) {
         return filter.type === FILTER_VALUES.MEASURE
+      },
+      setFilterCondition (field, event) {
+        this.$emit('setFilterCondition', field, event.text)
+      },
+      setFilterValue (field, event) {
+        this.$emit('setFilterValue', field, event)
       }
     },
     data () {

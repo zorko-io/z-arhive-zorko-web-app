@@ -56,6 +56,24 @@ export const toggleFilter = (state, {field}) => {
   }
 }
 
+export const setFilterCondition = (state, {filter, condition}) => {
+  state.exploreFilters = state.exploreFilters.map(exploreFilter => {
+    if (exploreFilter.text === filter.text) {
+      exploreFilter.condition = condition
+    }
+    return exploreFilter
+  })
+}
+
+export const setFilterValue = (state, {filter, value}) => {
+  state.exploreFilters = state.exploreFilters.map(exploreFilter => {
+    if (exploreFilter.text === filter.text) {
+      exploreFilter.value = value
+    }
+    return exploreFilter
+  })
+}
+
 export const setExploreFields = (state) => {
   let firstDataItem = state.initialData[0]
   let fields = []
