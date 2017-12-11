@@ -22,6 +22,10 @@ export const setInitialData = (state, data) => {
   state.data = data.map((item) => { return {} })
 }
 
+export const setFilteredData = (state, data) => {
+  state.data = data
+}
+
 export const toggleFieldSelection = (state, {field}) => {
   const stateField = state.exploreFields.find(equalByText(field.text))
   stateField.selected = !field.selected
@@ -54,6 +58,24 @@ export const toggleFilter = (state, {field}) => {
     })
     stateField.filtered = true
   }
+}
+
+export const setFilterCondition = (state, {filter, condition}) => {
+  state.exploreFilters = state.exploreFilters.map(exploreFilter => {
+    if (exploreFilter.text === filter.text) {
+      exploreFilter.condition = condition
+    }
+    return exploreFilter
+  })
+}
+
+export const setFilterValue = (state, {filter, value}) => {
+  state.exploreFilters = state.exploreFilters.map(exploreFilter => {
+    if (exploreFilter.text === filter.text) {
+      exploreFilter.value = value
+    }
+    return exploreFilter
+  })
 }
 
 export const setExploreFields = (state) => {
