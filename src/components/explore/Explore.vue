@@ -99,6 +99,11 @@
           type: 'saveExploreAsLook',
           look: {}
         })
+      },
+      applyExploreFilters () {
+        this.$store.dispatch({
+          type: 'applyExploreFilters'
+        })
       }
     },
     created () {

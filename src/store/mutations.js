@@ -22,6 +22,10 @@ export const setInitialData = (state, data) => {
   state.data = data.map((item) => { return {} })
 }
 
+export const setFilteredData = (state, data) => {
+  state.data = data
+}
+
 export const toggleFieldSelection = (state, {field}) => {
   const stateField = state.exploreFields.find(equalByText(field.text))
   stateField.selected = !field.selected
