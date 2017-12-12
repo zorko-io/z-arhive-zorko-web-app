@@ -3,6 +3,7 @@
     <v-toolbar fixed app>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-btn small color="primary" @click="applyExploreFilters">Apply filters</v-btn>
       <v-btn small color="primary" @click="saveExplore">Save</v-btn>
     </v-toolbar>
     <v-slide-y-transition mode="out-in">
@@ -16,7 +17,11 @@
           />
         </v-flex>
         <v-flex xs8 style="margin-left: 10px">
-          <ExploreFiltersPanel :filters="exploreFilters"/>
+          <ExploreFiltersPanel
+            :filters="exploreFilters"
+            @setFilterCondition="setFilterCondition"
+            @setFilterValue="setFilterValue"
+          />
           <ExploreVisualization :spec="exploreSpec" />
           <ExploreDataTable
             :fields="exploreSelectedFields"
@@ -75,10 +80,29 @@
           field
         })
       },
+      setFilterCondition (filter, condition) {
+        this.$store.commit({
+          type: 'setFilterCondition',
+          filter,
+          condition
+        })
+      },
+      setFilterValue (filter, value) {
+        this.$store.commit({
+          type: 'setFilterValue',
+          filter,
+          value
+        })
+      },
       saveExplore () {
         this.$store.dispatch({
           type: 'saveExploreAsLook',
           look: {}
+        })
+      },
+      applyExploreFilters () {
+        this.$store.dispatch({
+          type: 'applyExploreFilters'
         })
       }
     },
