@@ -1,7 +1,7 @@
 import zorkoApi from '@/api/zorkoApi'
 import authNavigator from '@/api/authNavigator'
 import datumService from '@/api/datumService'
-import { FILTER_VALUES } from './../constants'
+import {FILTER_VALUES} from './../constants'
 
 export const gatherAccountInfo = async ({commit, state, getters}) => {
   const ANONYM_ACCOUNT = {name: '', login: ''}
@@ -37,9 +37,11 @@ export const saveExploreAsLook = ({dispatch, commit, getters}, look) => {
 }
 
 export const applyExploreFilters = ({state, commit, getters}) => {
-  let data = state.data
-
+  let data = setDataBySelectedFields(state)
   state.exploreFilters.forEach(filter => {
+    if (filter.type === 'measure') {
+      filter.value = Number(filter.value)
+    }
     data = data.filter(item => {
       switch (filter.condition) {
         case FILTER_VALUES.EQUAL_TO:
@@ -56,4 +58,16 @@ export const applyExploreFilters = ({state, commit, getters}) => {
     })
   })
   commit('setFilteredData', data)
+}
+
+const setDataBySelectedFields = (state) => {
+  let data = state.initialData.map((item) => { return {} })
+  state.exploreFields.forEach(field => {
+    if (field.selected) {
+      state.initialData.forEach((item, index) => {
+        data[index][field.text] = item[field.text]
+      })
+    }
+  })
+  return data
 }
