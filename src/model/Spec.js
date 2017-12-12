@@ -9,8 +9,11 @@ const DEFAULT_SPEC = {
   data: {values: []},
   mark: 'tick'
 }
+const merge = R.merge
+const clone = R.clone
+
 const getDefaultSpec = (spec = DEFAULT_SPEC) => {
-  return R.merge(DEFAULT_SPEC, spec)
+  return merge(DEFAULT_SPEC, spec)
 }
 const fieldTypeToSpecType = (type) => {
   if (type === 'measure') {
@@ -20,51 +23,82 @@ const fieldTypeToSpecType = (type) => {
   }
 }
 const getEncoding = R.prop('encoding')
-const xChannelField = R.path(['encoding', 'x', 'field'])
 
-const encodeField = (spec = DEFAULT_SPEC, field) => {
-  spec = getDefaultSpec(spec)
-  const encodedField = xChannelField(spec)
+const encodeField = (spec, field) => {
   let encoding = getEncoding(spec)
 
   if (!encoding) {
     encoding = {}
   }
 
-  if (!encodedField && field) {
-    encoding = R.merge(encoding, {
-      x: {
-        field: field.text,
-        type: fieldTypeToSpecType(field.type)
-      }
-    })
+  const channelNames = Object.keys(encoding)
+  const channels = channelNames.map((name) => {
+    const channel = encoding[name]
+    return {
+      name: name,
+      field: channel ? channel.field : null
+    }
+  })
+
+  const isChannelInUse = (channelName) => (
+    channels.find((channel) => (channel.name === channelName && channel.field))
+  )
+
+  if (field) {
+    if (!isChannelInUse('x')) {
+      encoding = merge(encoding, {
+        x: {
+          field: field.text,
+          type: fieldTypeToSpecType(field.type)
+        }
+      })
+    } else if (!isChannelInUse('y')) {
+      encoding = merge(encoding, {
+        y: {
+          field: field.text,
+          type: fieldTypeToSpecType(field.type)
+        }
+      })
+    }
   }
 
-  return R.merge(spec, {
-    encoding
-  })
+  return merge(spec, {encoding})
 }
 
-const decodeField = (spec, field) => {}
+const decodeField = (spec, field) => {
+  let encoding = getEncoding(spec)
+
+  if (encoding.x.field === field.text) {
+    delete encoding.x
+  } else if (encoding.y.field === field.text) {
+    delete encoding.y
+  }
+
+  return merge(spec, {encoding})
+}
 
 class Spec {
   static of = (value) => new Spec(value)
 
   constructor (specValue) {
-    let value = R.clone(specValue)
+    let value = clone(specValue)
     this._value = getDefaultSpec(value)
   }
 
   encodeField (field) {
-    return new Spec(encodeField(this._value, field))
+    return new Spec(
+      encodeField(this._value, field)
+    )
   }
 
   decodeField (field) {
-    return new Spec(decodeField(this._value, field))
+    return new Spec(
+      decodeField(this._value, field)
+    )
   }
 
   value () {
-    return R.clone(this._value)
+    return clone(this._value)
   }
 }
 

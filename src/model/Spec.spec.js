@@ -55,7 +55,7 @@ describe('Spec Model', () => {
     expect(spec.value()).not.toBe(initialSpec)
   })
 
-  describe('Encoding and Decoding Fields', () => {
+  describe('Encoding Fields', () => {
     it('should encode first dimention field', () => {
       const field = {text: 'test', type: 'dimention'}
       let spec = Spec.of({
@@ -98,6 +98,37 @@ describe('Spec Model', () => {
       })
     })
 
+    it('should encode second dimention field', () => {
+      const field = {text: 'bar', type: 'dimention'}
+      const spec = Spec.of({
+        data: {values: []},
+        mark: 'point',
+        encoding: {
+          x: {
+            field: 'test',
+            type: 'quantitative'
+          }
+        }
+      })
+
+      const result = spec.encodeField(field)
+
+      expect(result.value()).toEqual({
+        data: {values: []},
+        mark: 'point',
+        encoding: {
+          x: {
+            field: 'test',
+            type: 'quantitative'
+          },
+          y: {
+            field: 'bar',
+            type: 'ordinal'
+          }
+        }
+      })
+    })
+
     it('should return copy of initial spec if field wasn`t not provided', () => {
       const spec = Spec.of({
         data: {values: []},
@@ -111,6 +142,70 @@ describe('Spec Model', () => {
         data: {values: []},
         mark: 'point',
         encoding: {}
+      })
+    })
+  })
+
+  describe('Decoding Fields', () => {
+    it('remove field from x channel', () => {
+      const field = {text: 'foo', type: 'dimention'}
+      let spec = Spec.of({
+        data: {values: []},
+        mark: 'bar',
+        encoding: {
+          x: {
+            field: 'foo',
+            type: 'ordinal'
+          },
+          y: {
+            field: 'bar',
+            type: 'ordinal'
+          }
+        }
+      })
+
+      const result = spec.decodeField(field)
+
+      expect(result.value()).toEqual({
+        data: {values: []},
+        mark: 'bar',
+        encoding: {
+          y: {
+            field: 'bar',
+            type: 'ordinal'
+          }
+        }
+      })
+    })
+
+    it('remove field from y channel', () => {
+      const field = {text: 'foo', type: 'dimention'}
+      let spec = Spec.of({
+        data: {values: []},
+        mark: 'bar',
+        encoding: {
+          x: {
+            field: 'bar',
+            type: 'ordinal'
+          },
+          y: {
+            field: 'foo',
+            type: 'ordinal'
+          }
+        }
+      })
+
+      const result = spec.decodeField(field)
+
+      expect(result.value()).toEqual({
+        data: {values: []},
+        mark: 'bar',
+        encoding: {
+          x: {
+            field: 'bar',
+            type: 'ordinal'
+          }
+        }
       })
     })
   })
