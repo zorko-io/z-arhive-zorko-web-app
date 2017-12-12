@@ -43,13 +43,15 @@ export const applyExploreFilters = ({state, commit, getters}) => {
     data = data.filter(item => {
       switch (filter.condition) {
         case FILTER_VALUES.EQUAL_TO:
-          return item[filter.text] === filter.value
+          return filter.value ? item[filter.text] === filter.value : true
         case FILTER_VALUES.NOT_EQUAL_TO:
-          return item[filter.text] !== filter.value
+          return filter.value ? item[filter.text] !== filter.value : true
         case FILTER_VALUES.MORE_THAN:
-          return item[filter.text] > filter.value
+          return filter.value ? item[filter.text] > filter.value : true
         case FILTER_VALUES.LESS_THAN:
-          return item[filter.text] < filter.value
+          return filter.value ? item[filter.text] < filter.value : true
+        default:
+          return true
       }
     })
   })
