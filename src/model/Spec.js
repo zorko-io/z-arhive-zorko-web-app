@@ -47,7 +47,25 @@ const encodeField = (spec = DEFAULT_SPEC, field) => {
 
 const decodeField = (spec, field) => {}
 
-export default {
-  encodeField,
-  decodeField
+class Spec {
+  static of = (value) => new Spec(value)
+
+  constructor (specValue) {
+    let value = R.clone(specValue)
+    this._value = getDefaultSpec(value)
+  }
+
+  encodeField (field) {
+    return new Spec(encodeField(this._value, field))
+  }
+
+  decodeField (field) {
+    return new Spec(decodeField(this._value, field))
+  }
+
+  value () {
+    return R.clone(this._value)
+  }
 }
+
+export default Spec
