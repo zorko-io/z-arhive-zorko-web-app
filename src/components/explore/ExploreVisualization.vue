@@ -6,7 +6,8 @@
       </template>
       <v-card>
         <v-card-title>
-          <Visualization :spec="spec"/>
+          <Visualization v-if="isSpecAvailable" :spec="spec"/>
+          <div v-else>Select any filed to display visualization</div>
         </v-card-title>
       </v-card>
     </v-expansion-panel-content>
@@ -25,6 +26,11 @@
     props: {
       spec: {
         type: Object
+      }
+    },
+    computed: {
+      isSpecAvailable () {
+        return Boolean(this.spec)
       }
     }
   }

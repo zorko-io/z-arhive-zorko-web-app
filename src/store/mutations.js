@@ -1,5 +1,6 @@
 import * as R from 'ramda'
 import AppNavigation from '@/store/navigation/AppNavigation'
+import Spec from '@/store/util/Spec'
 
 const equalByText = (text) => R.compose(R.equals(text), R.prop('text'))
 
@@ -27,18 +28,32 @@ export const setFilteredData = (state, data) => {
 }
 
 export const toggleFieldSelection = (state, {field}) => {
-  const stateField = state.exploreFields.find(equalByText(field.text))
-  stateField.selected = !field.selected
+  let fields = state.exploreFields
+  const stateField = fields.find(equalByText(field.text))
   const key = field.text
+  const spec = state.exploreSpec || {}
+
+  stateField.selected = !field.selected
+
   if (field.selected) {
     state.initialData.forEach((record, index) => {
       state.data[index][key] = record[key]
     })
+
+    Object.assign(spec, Spec.encodeField(spec, field))
   } else {
     state.initialData.forEach((record, index) => {
       delete state.data[index][key]
     })
+
+    Object.assign(spec, Spec.decodeField(spec, field))
   }
+
+  spec.data.values = JSON.parse(
+    JSON.stringify(state.data)
+  )
+
+  state.exploreSpec = spec
 }
 
 export const toggleFilter = (state, {field}) => {
