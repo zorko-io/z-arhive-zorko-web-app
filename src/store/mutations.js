@@ -18,6 +18,10 @@ export const setInitialData = (state, data) => {
 
 export const setFilteredData = (state, data) => {
   state.data = data
+
+  state.exploreSpec.data.values = JSON.parse(
+    JSON.stringify(state.data)
+  )
 }
 
 export const toggleFieldSelection = (state, {field}) => {
