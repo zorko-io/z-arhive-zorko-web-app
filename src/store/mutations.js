@@ -1,5 +1,4 @@
 import * as R from 'ramda'
-import AppNavigation from '@/store/navigation/AppNavigation'
 import Spec from '@/model/Spec'
 
 const equalByText = (text) => R.compose(R.equals(text), R.prop('text'))
@@ -10,12 +9,6 @@ export const stopLoading = (state) => {
 
 export const setAccount = (state, account) => {
   state.account = account
-}
-
-export const initializeNavigation = ({workspace, workspaceNavigation}) => {
-  const topItems = workspaceNavigation.items
-
-  workspaceNavigation.items = AppNavigation.assembleNavigationItems(topItems, workspace)
 }
 
 export const setInitialData = (state, data) => {
