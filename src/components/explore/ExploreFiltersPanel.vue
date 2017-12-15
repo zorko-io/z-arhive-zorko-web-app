@@ -54,10 +54,10 @@
         return filter.type === FILTER_VALUES.MEASURE
       },
       setFilterCondition (field, event) {
-        this.$emit('setFilterCondition', field, event.text)
+        this.$emit('changeFilterCondition', field, event.text)
       },
       setFilterValue (field, event) {
-        this.$emit('setFilterValue', field, event)
+        this.$emit('changeFilterValue', field, event)
       }
     },
     data () {

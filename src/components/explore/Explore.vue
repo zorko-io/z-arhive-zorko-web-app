@@ -19,8 +19,8 @@
         <v-flex xs8 style="margin-left: 10px">
           <ExploreFiltersPanel
             :filters="filters"
-            @setFilterCondition="setFilterCondition"
-            @setFilterValue="setFilterValue"
+            @changeFilterCondition="onChangeFilterCondition"
+            @changeFilterValue="onChangeFilterValue"
           />
           <ExploreVisualization :spec="spec" />
           <ExploreDataTable
@@ -81,14 +81,14 @@
           field
         })
       },
-      setFilterCondition (filter, condition) {
+      onChangeFilterCondition (filter, condition) {
         this.$store.commit({
           type: 'explore/setFilterCondition',
           filter,
           condition
         })
       },
-      setFilterValue (filter, value) {
+      onChangeFilterValue (filter, value) {
         this.$store.commit({
           type: 'explore/setFilterValue',
           filter,
