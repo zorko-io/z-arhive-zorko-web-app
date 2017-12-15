@@ -17,16 +17,3 @@ export const isAuthenticated = (state) => {
 export const shouldShowLoginDialog = (state) => {
   return Boolean(state.loginRequiredBy)
 }
-
-export const exploreDimentions = (state) => {
-  return state.exploreFields.filter((field) => (field.type === 'dimention'))
-}
-
-export const exploreMeasures = (state) => {
-  return state.exploreFields.filter((field) => (field.type === 'measure'))
-}
-
-export const exploreSelectedFields = (state) => {
-  return state.exploreFields.filter((field) => (field.selected))
-}
-

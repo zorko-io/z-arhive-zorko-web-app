@@ -3,11 +3,6 @@ export default function () {
     isLoading: true,
     account: null,
     loginRequiredBy: null,
-    data: [],
-    initialData: [],
-    exploreFields: [],
-    exploreFilters: [],
-    exploreSpec: null,
     workspaceNavigation: {
       visible: true,
       items: [
