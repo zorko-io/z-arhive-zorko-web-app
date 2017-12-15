@@ -12,6 +12,6 @@ export const save = ({commit, getters}) => {
   if (!isAuthenticated) {
     commit('loginRequiredByActon', 'save')
   } else {
-    // do save
+    // do async save
   }
 }
