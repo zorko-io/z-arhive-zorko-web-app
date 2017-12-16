@@ -66,8 +66,8 @@
       onConditionChange (event) {
         this.$emit('changeCondition', this.filter, event.text)
       },
-      onValueChange (event) {
-        this.$emit('changeValue', this.filter, event)
+      onValueChange (value) {
+        this.$emit('changeValue', this.filter, value)
       }
     }
   }

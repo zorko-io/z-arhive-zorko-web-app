@@ -36,7 +36,7 @@
         this.$emit('changeFilterCondition', filter, condition)
       },
       onChangeFilterValue (filter, value) {
-        this.$emit('changeFilterCondition', filter, value)
+        this.$emit('changeFilterValue', filter, value)
       }
     }
   }

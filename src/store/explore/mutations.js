@@ -3,6 +3,7 @@ import Spec from '@/model/Spec'
 import {FILTER_VALUES} from '@/constants'
 
 const equalByText = (text) => R.compose(R.equals(text), R.prop('text'))
+const findFilterByText = (byText, filters) => filters.find(({text}) => (byText === text))
 
 export const setInitialData = (state, data) => {
   state.initialData = data
@@ -57,22 +58,14 @@ export const toggleFilter = (state, {field}) => {
   }
 }
 
-export const setFilterCondition = (state, {filter, condition}) => {
-  state.filters = state.filters.map(exploreFilter => {
-    if (exploreFilter.text === filter.text) {
-      exploreFilter.condition = condition
-    }
-    return exploreFilter
-  })
+export const setFilterCondition = ({filters}, {filter, condition}) => {
+  const targetFilter = findFilterByText(filter.text, filters)
+  targetFilter.condition = condition
 }
 
-export const setFilterValue = (state, {filter, value}) => {
-  state.filters = state.filters.map(exploreFilter => {
-    if (exploreFilter.text === filter.text) {
-      exploreFilter.value = value
-    }
-    return exploreFilter
-  })
+export const setFilterValue = ({filters}, {filter, value}) => {
+  const targetFilter = findFilterByText(filter.text, filters)
+  targetFilter.value = value
 }
 
 export const setFields = (state) => {
@@ -93,17 +86,16 @@ export const setFields = (state) => {
   state.fields = fields
 }
 
-export const applyFilters = (state) => {
+export const applyFilters = (state, payload) => {
+  const selectedFields = state.fields.filter((field) => (field.selected))
   const setDataBySelectedFields = (state) => {
-    let data = state.initialData.map((item) => { return {} })
-    state.fields.forEach(field => {
-      if (field.selected) {
-        state.initialData.forEach((item, index) => {
-          data[index][field.text] = item[field.text]
-        })
-      }
+    return state.initialData.map((item) => {
+      const selectedKeys = selectedFields.map((field) => (field.text))
+      return selectedKeys.reduce((memo, key) => {
+        memo[key] = item[key]
+        return memo
+      }, {})
     })
-    return data
   }
 
   let data = setDataBySelectedFields(state)
