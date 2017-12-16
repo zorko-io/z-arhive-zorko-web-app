@@ -17,15 +17,10 @@
           />
         </v-flex>
         <v-flex xs8 style="margin-left: 10px">
-          <ExploreFiltersPanel
-            :filters="filters"
+          <Analysis
+            :look="look"
             @changeFilterCondition="onChangeFilterCondition"
             @changeFilterValue="onChangeFilterValue"
-          />
-          <ExploreVisualization :spec="spec" />
-          <ExploreDataTable
-            :fields="selectedFields"
-            :data="data"
           />
         </v-flex>
       </v-layout>
@@ -35,10 +30,8 @@
 
 <script>
   import AppSubLayout from '@/components/AppSubLayout'
+  import Analysis from '@/components/analysis/Analysis'
   import ExploreFieldsPanel from '@/components/explore/ExploreFieldsPanel'
-  import ExploreDataTable from '@/components/explore/ExploreDataTable'
-  import ExploreVisualization from '@/components/explore/ExploreVisualization'
-  import ExploreFiltersPanel from '@/components/explore/ExploreFiltersPanel'
 
   import { createNamespacedHelpers } from 'vuex'
   const { mapGetters } = createNamespacedHelpers('explore/')
@@ -48,9 +41,7 @@
     components: {
       AppSubLayout,
       ExploreFieldsPanel,
-      ExploreFiltersPanel,
-      ExploreVisualization,
-      ExploreDataTable
+      Analysis
     },
     computed: {
       ...mapGetters([
@@ -66,6 +57,14 @@
       },
       filters () {
         return this.$store.state.explore.filters
+      },
+      look () {
+        return {
+          spec: this.spec,
+          data: this.data,
+          filters: this.filters,
+          fields: this.selectedFields
+        }
       }
     },
     methods: {

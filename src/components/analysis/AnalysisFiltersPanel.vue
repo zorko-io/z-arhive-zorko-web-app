@@ -8,7 +8,7 @@
         <v-card color="grey lighten-4" flat>
           <v-card-text>
             <v-container fluid>
-              <ExploreFiltersPanelItem
+              <AnalysisFiltersPanelItem
                 :filter="filter"
                 @changeCondition="onConditionChange"
                 @changeValue="onValueChange"
@@ -22,12 +22,12 @@
 </template>
 
 <script>
-  import ExploreFiltersPanelItem from './ExploreFiltersPanelItem'
+  import AnalysisFiltersPanelItem from './AnalysisFiltersPanelItem'
 
   export default {
-    name: 'ExploreFiltersPanel',
+    name: 'AnalysisFiltersPanel',
     components: {
-      ExploreFiltersPanelItem
+      AnalysisFiltersPanelItem
     },
     props: {
       filters: {

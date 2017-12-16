@@ -3,7 +3,7 @@ import Explore from '@/components/explore/Explore'
 import Admin from '@/components/Admin'
 import Datums from '@/components/Datums'
 import AccountProfile from '@/components/AccountProfile'
-import Look from '@/components/Look'
+import Look from '@/components/look/Look'
 
 export default {
   routes: [

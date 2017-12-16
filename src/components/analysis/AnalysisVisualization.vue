@@ -19,7 +19,7 @@
   const {VegaLiteComponent} = VueVega
 
   export default {
-    name: 'ExploreVisualization',
+    name: 'AnalysisVisualization',
     components: {
       Visualization: VegaLiteComponent
     },

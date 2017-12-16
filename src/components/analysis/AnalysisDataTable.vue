@@ -27,7 +27,7 @@
 
 <script>
   export default {
-    name: 'ExploreDataTable',
+    name: 'AnalysisDataTable',
     props: {
       fields: {
         type: Array

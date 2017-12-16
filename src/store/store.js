@@ -4,6 +4,7 @@ import * as mutations from './mutations'
 import * as getters from './getters'
 
 import exploreModule from './explore/module'
+import lookModule from './look/module'
 
 export default {
   strict: true,
@@ -13,6 +14,9 @@ export default {
   getters,
   modules: {
     explore: exploreModule({
+      namespaced: true
+    }),
+    look: lookModule({
       namespaced: true
     })
   }

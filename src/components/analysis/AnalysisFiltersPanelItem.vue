@@ -28,7 +28,7 @@
   import {FILTER_VALUES} from '@/constants'
 
   export default {
-    name: 'ExploreFiltersPanelMeasure',
+    name: 'AnalysisFiltersPanelItem',
     props: {
       filter: {
         type: Object
