@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "deepcopy": "^0.6.3",
     "ramda": "^0.25.0",
     "vue": "^2.5.9",
     "vue-router": "^2.7.0",

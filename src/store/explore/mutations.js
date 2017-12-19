@@ -7,7 +7,7 @@ const findFilterByText = (byText, filters) => filters.find(({text}) => (byText =
 
 export const setInitialData = (state, data) => {
   state.initialData = data
-  state.data = data.map((item) => { return {} })
+  // state.data = data.map((item) => { return {} })
 }
 
 export const toggleFieldSelection = (state, {field}) => {
@@ -17,7 +17,8 @@ export const toggleFieldSelection = (state, {field}) => {
   let spec = Spec.of(state.spec)
 
   stateField.selected = !field.selected
-
+  console.log(state.initialData)
+  console.log(state.data)
   if (field.selected) {
     state.initialData.forEach((record, index) => {
       state.data[index][key] = record[key]
