@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import ExploreFieldsPanelItem from '@/components/explore/ExploreFieldsPanelItem'
+  import ExploreFieldsPanelItem from './ExploreFieldsPanelItem'
 
   export default {
     name: 'ExploreFieldsPanel',
