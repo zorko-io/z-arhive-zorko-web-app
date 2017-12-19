@@ -23,11 +23,11 @@
 </template>
 
 <script>
-  import AppLogin from '@/components/AppLogin'
-  import AppLoading from '@/components/AppLoading'
-  import AppNavigation from '@/components/AppNavigation'
-  import LoginDialog from '@/components/LoginDialog'
-  import { mapGetters } from 'vuex'
+  import AppLogin from './AppLogin.vue'
+  import AppLoading from './AppLoading.vue'
+  import AppNavigation from './AppNavigation.vue'
+  import LoginDialog from './LoginDialog.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {

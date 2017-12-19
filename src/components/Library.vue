@@ -1,5 +1,5 @@
 <template>
-  <app-sub-layout :title="title">
+  <AppSubLayout :title="title">
     <v-layout>
       <v-flex xs12>
         <v-toolbar flat>
@@ -50,11 +50,11 @@
         </v-flex>
       </v-flex>
     </v-layout>
-  </app-sub-layout>
+  </AppSubLayout>
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
+  import AppSubLayout from './AppSubLayout.vue'
 
   export default {
     name: 'Library',

@@ -18,8 +18,8 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
-  import Analysis from '@/components/analysis/Analysis'
+  import AppSubLayout from '../AppSubLayout.vue'
+  import Analysis from '../analysis/Analysis'
 
   import {createNamespacedHelpers} from 'vuex'
   const {mapState} = createNamespacedHelpers('look/')

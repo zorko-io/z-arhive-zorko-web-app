@@ -1,5 +1,5 @@
-import { mount } from 'vue-test-utils'
-import Admin from '@/components/Admin'
+import {mount} from 'vue-test-utils'
+import Admin from './Admin.vue'
 
 describe('Admin.vue', () => {
   it('displays default message', () => {

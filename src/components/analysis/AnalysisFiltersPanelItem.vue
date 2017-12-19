@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import {FILTER_VALUES} from '@/constants'
+  import {FILTER_VALUES} from '../../constants'
 
   export default {
     name: 'AnalysisFiltersPanelItem',

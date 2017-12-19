@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
+  import AppSubLayout from './AppSubLayout.vue'
 
   export default {
     name: 'Datums',

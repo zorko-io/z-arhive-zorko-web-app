@@ -29,9 +29,9 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
-  import Analysis from '@/components/analysis/Analysis'
-  import ExploreFieldsPanel from '@/components/explore/ExploreFieldsPanel'
+  import AppSubLayout from '../AppSubLayout'
+  import Analysis from '../analysis/Analysis'
+  import ExploreFieldsPanel from './ExploreFieldsPanel'
 
   import { createNamespacedHelpers } from 'vuex'
   const { mapGetters } = createNamespacedHelpers('explore/')

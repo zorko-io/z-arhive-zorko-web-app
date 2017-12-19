@@ -1,9 +1,9 @@
-import Library from '@/components/Library'
-import Explore from '@/components/explore/Explore'
-import Admin from '@/components/Admin'
-import Datums from '@/components/Datums'
-import AccountProfile from '@/components/AccountProfile'
-import Look from '@/components/look/Look'
+import Library from '../components/Library.vue'
+import Explore from '../components/explore/Explore.vue'
+import Admin from '../components/Admin.vue'
+import Datums from '../components/Datums.vue'
+import AccountProfile from '../components/AccountProfile.vue'
+import Look from '../components/look/Look.vue'
 
 export default {
   routes: [
