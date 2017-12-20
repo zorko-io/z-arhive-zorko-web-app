@@ -3,6 +3,9 @@ export default function () {
     isLoading: true,
     account: null,
     loginRequiredBy: null,
+    library: {
+      looks: []
+    },
     workspaceNavigation: {
       visible: true,
       items: [

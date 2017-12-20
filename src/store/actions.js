@@ -1,7 +1,16 @@
 import zorkoApi from '@/api/zorkoApi'
 import authNavigator from '@/api/authNavigator'
 
-export const gatherAccountInfo = async ({commit, state, getters}) => {
+export const bootstrapAppInitialState = async (context) => {
+  const {commit, dispatch} = context
+
+  await dispatch('loadAccountInfo')
+  await dispatch('library/loadLooks')
+
+  commit('stopLoading')
+}
+
+export const loadAccountInfo = async ({commit, getters}) => {
   const ANONYM_ACCOUNT = {name: '', login: ''}
 
   if (!getters.doesAnyAccountInfoAvailable) {
@@ -12,9 +21,9 @@ export const gatherAccountInfo = async ({commit, state, getters}) => {
       commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
     }
   }
-  commit('stopLoading')
 }
 
 export const login = (commit, {provider}) => {
   authNavigator.login(provider)
 }
+

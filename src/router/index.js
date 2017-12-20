@@ -1,4 +1,4 @@
-import Library from '../components/Library.vue'
+import Library from '../components/library/Library.vue'
 import Explore from '../components/explore/Explore.vue'
 import Admin from '../components/Admin.vue'
 import Datums from '../components/Datums.vue'

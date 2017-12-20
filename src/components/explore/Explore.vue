@@ -113,7 +113,6 @@
     },
     data () {
       return {
-        msg: 'I`m an explore',
         title: 'Explore'
       }
     }

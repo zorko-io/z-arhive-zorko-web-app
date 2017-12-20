@@ -57,7 +57,7 @@
 
     created () {
       this.$store.dispatch({
-        type: 'gatherAccountInfo'
+        type: 'bootstrapAppInitialState'
       })
     },
 

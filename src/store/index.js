@@ -5,6 +5,7 @@ import * as getters from './getters'
 
 import exploreModule from './explore/module'
 import lookModule from './look/module'
+import libraryModule from './library/module'
 
 export default {
   strict: true,
@@ -17,6 +18,9 @@ export default {
       namespaced: true
     }),
     look: lookModule({
+      namespaced: true
+    }),
+    library: libraryModule({
       namespaced: true
     })
   }

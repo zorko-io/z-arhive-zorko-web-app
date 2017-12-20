@@ -10,8 +10,8 @@ export const save = ({commit, getters}) => {
   // it would be async action to save exploration as look
   const {isAuthenticated} = getters
   if (!isAuthenticated) {
-    commit('loginRequiredByActon', 'save')
+    commit('loginRequiredByActon', 'save', {root: true})
   } else {
-    // do async save  here
+    // do async save here
   }
 }
