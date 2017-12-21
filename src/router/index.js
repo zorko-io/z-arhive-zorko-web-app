@@ -1,7 +1,7 @@
 import Library from '../components/library/Library.vue'
 import Explore from '../components/explore/Explore.vue'
 import Admin from '../components/Admin.vue'
-import Datums from '../components/Datums.vue'
+import Datums from '../components/datums/Datums.vue'
 import AccountProfile from '../components/AccountProfile.vue'
 import Look from '../components/look/Look.vue'
 

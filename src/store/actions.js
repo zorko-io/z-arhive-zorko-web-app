@@ -4,8 +4,12 @@ import authNavigator from '@/api/authNavigator'
 export const bootstrapAppInitialState = async (context) => {
   const {commit, dispatch} = context
 
-  await dispatch('loadAccountInfo')
-  await dispatch('library/loadLooks')
+  await Promise.all([
+    dispatch('loadAccountInfo'),
+
+    dispatch('library/loadLooks'),
+    dispatch('library/loadDatums')
+  ])
 
   commit('stopLoading')
 }
