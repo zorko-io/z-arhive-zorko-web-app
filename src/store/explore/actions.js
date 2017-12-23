@@ -1,9 +1,16 @@
 import datumService from '@/api/datumService'
+import lookService from '@/api/lookService'
 
-export const loadData = async ({commit}) => {
-  const data = await datumService.getData()
-  commit('setInitialData', data)
-  commit('setFields')
+export const loadData = async ({commit}, {lookName}) => {
+  const look = await lookService.getLookByName(lookName)
+
+  if (look) {
+    commit('initExploreByLook', look)
+  } else {
+    const data = await datumService.getData()
+    commit('setInitialData', data)
+    commit('setFields')
+  }
 }
 
 export const save = ({commit, getters}) => {

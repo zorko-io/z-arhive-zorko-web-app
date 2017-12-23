@@ -6,10 +6,10 @@
     <v-flex xs4>
       <v-select
         :items="conditions"
+        v-model="selectedCondition"
         label="Select"
         single-line
         bottom
-        @change="onConditionChange"
       ></v-select>
     </v-flex>
     <v-flex xs4>
@@ -49,16 +49,24 @@
         // TODO: make conditions part of filter itself
         if (this.isMeasure) {
           return [
-            {text: FILTER_VALUES.EQUAL_TO},
-            {text: FILTER_VALUES.NOT_EQUAL_TO},
-            {text: FILTER_VALUES.MORE_THAN},
-            {text: FILTER_VALUES.LESS_THAN}
+            FILTER_VALUES.EQUAL_TO,
+            FILTER_VALUES.NOT_EQUAL_TO,
+            FILTER_VALUES.MORE_THAN,
+            FILTER_VALUES.LESS_THAN
           ]
         } else {
           return [
-            {text: FILTER_VALUES.EQUAL_TO},
-            {text: FILTER_VALUES.NOT_EQUAL_TO}
+            FILTER_VALUES.EQUAL_TO,
+            FILTER_VALUES.NOT_EQUAL_TO
           ]
+        }
+      },
+      selectedCondition: {
+        get () {
+          return this.filter.condition
+        },
+        set (value) {
+          this.$emit('changeCondition', this.filter, value)
         }
       }
     },

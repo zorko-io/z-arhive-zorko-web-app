@@ -8,7 +8,7 @@
     "subtitle": "https://example1.com/data/cats.json",
     "type": "http",
     "properties": {
-      "url": "/static/__mock__/car.json"
+      "url": "/static/__mocks__/car.json"
     }
   },
   {
@@ -20,7 +20,7 @@
     "subtitle": "https://example2.com/data/population.json",
     "type": "http",
     "properties": {
-      "url": "/static/__mock__/population.json"
+      "url": "/static/__mocks__/population.json"
     }
   },
   {
@@ -32,7 +32,7 @@
     "subtitle": "https://example3.com/data/weather.csv",
     "type": "http",
     "properties": {
-      "url": "/static/__mock__/weather.json"
+      "url": "/static/__mocks__/weather.json"
     }
   }
 ]

@@ -1,17 +1,13 @@
 <template>
-  <v-expansion-panel expand >
-    <v-expansion-panel-content>
-      <template slot="header">
-        <div>Visualization</div>
-      </template>
-      <v-card>
-        <v-card-title>
-          <Visualization v-if="isSpecAvailable" :spec="spec"/>
-          <div v-else>Select any filed to display visualization</div>
-        </v-card-title>
-      </v-card>
-    </v-expansion-panel-content>
-  </v-expansion-panel>
+  <v-card color="grey lighten-4">
+    <v-card-title>
+      <Visualization
+        v-if="isSpecAvailable"
+        :spec="spec"
+      />
+      <div v-else>Select any filed to display visualization</div>
+    </v-card-title>
+  </v-card>
 </template>
 
 <script>

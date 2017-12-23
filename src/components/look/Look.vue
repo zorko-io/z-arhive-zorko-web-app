@@ -30,7 +30,11 @@
       AppSubLayout,
       Analysis
     },
-
+    props: {
+      name: {
+        type: String
+      }
+    },
     computed: {
       ...mapState([
         'spec',
@@ -45,13 +49,21 @@
           filters: this.filters,
           fields: this.fields
         }
+      },
+      pathToExplore () {
+        return '/explore/' + this.name
       }
     },
-
+    created () {
+      const name = this.name
+      this.$store.dispatch({
+        type: 'look/loadLook',
+        name
+      })
+    },
     data () {
       return {
-        title: 'Look',
-        pathToExplore: '/explore/uuid-explore-1'
+        title: 'Look'
       }
     }
   }

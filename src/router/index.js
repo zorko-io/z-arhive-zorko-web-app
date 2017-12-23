@@ -12,12 +12,14 @@ export default {
       component: Library
     },
     {
-      path: '/looks/:id',
-      component: Look
+      path: '/looks/:name',
+      component: Look,
+      props: true
     },
     {
-      path: '/explore/:id',
-      component: Explore
+      path: '/explore/:lookName',
+      component: Explore,
+      props: true
     },
     {
       path: '/admin',

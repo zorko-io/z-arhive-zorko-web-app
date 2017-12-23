@@ -1,6 +1,5 @@
 <template>
   <v-list-tile avatar @click="">
-
     <v-list-tile-avatar>
       <v-icon :class="[iconClass]">{{ icon }}</v-icon>
     </v-list-tile-avatar>
