@@ -1,7 +1,6 @@
-import Home from '../components/library/Home.vue'
+import Home from '../components/home/Home.vue'
 import Explore from '../components/explore/Explore.vue'
-import Admin from '../components/Admin.vue'
-import AccountProfile from '../components/AccountProfile.vue'
+import Account from '../components/account/Account.vue'
 import Look from '../components/look/Look.vue'
 
 export default {
@@ -33,12 +32,8 @@ export default {
       props: true
     },
     {
-      path: '/admin',
-      component: Admin
-    },
-    {
-      path: '/account/profile',
-      component: AccountProfile
+      path: '/account',
+      component: Account
     },
     {
       path: '/',

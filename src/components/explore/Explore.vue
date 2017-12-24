@@ -29,7 +29,6 @@
 </template>
 
 <script>
-  import AppSubLayout from '../AppSubLayout'
   import Analysis from '../analysis/Analysis'
   import ExploreFieldsPanel from './ExploreFieldsPanel'
 
@@ -39,7 +38,6 @@
   export default {
     name: 'Explore',
     components: {
-      AppSubLayout,
       ExploreFieldsPanel,
       Analysis
     },

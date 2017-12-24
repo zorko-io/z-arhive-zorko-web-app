@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import AppSubLayout from '../AppSubLayout.vue'
   import Analysis from '../analysis/Analysis'
 
   import {createNamespacedHelpers} from 'vuex'
@@ -27,7 +26,6 @@
   export default {
     name: 'Look',
     components: {
-      AppSubLayout,
       Analysis
     },
     props: {

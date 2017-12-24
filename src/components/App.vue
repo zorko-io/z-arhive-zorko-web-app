@@ -9,7 +9,7 @@
     </template>
 
     <template v-if="isAppReady">
-      <AppNavigation v-if="isNavigationVisible"></AppNavigation>
+      <Navigation v-if="isNavigationVisible"></Navigation>
       <main>
         <v-content>
           <router-view></router-view>
@@ -23,17 +23,15 @@
 </template>
 
 <script>
-  import AppLogin from './AppLogin.vue'
   import AppLoading from './AppLoading.vue'
-  import AppNavigation from './AppNavigation.vue'
-  import LoginDialog from './LoginDialog.vue'
+  import Navigation from './navigation/Navigation.vue'
+  import LoginDialog from './login/LoginDialog.vue'
   import {mapGetters} from 'vuex'
 
   export default {
     components: {
-      AppLogin,
       AppLoading,
-      AppNavigation,
+      Navigation,
       LoginDialog
     },
 
