@@ -1,7 +1,7 @@
 <template>
   <v-card tile>
     <v-card-media
-      class="util-pointer js-LibraryLook-image"
+      class="util-pointer js-HomeLooksPreview-image"
       :src="src"
       height="270px"
       width="361px"
@@ -10,7 +10,7 @@
     </v-card-media>
     <v-card-title
       @click="onClick"
-      class="util-pointer js-LibraryLook-title-parent"
+      class="util-pointer js-HomeLooksPreview-title-parent"
     >
       <div>
         <h6 class="grey--text util-bold">{{ title }}</h6>
@@ -33,7 +33,7 @@
 
 <script>
   export default {
-    name: 'LibraryLook',
+    name: 'HomeLooksPreview',
     props: {
       src: {
         type: String

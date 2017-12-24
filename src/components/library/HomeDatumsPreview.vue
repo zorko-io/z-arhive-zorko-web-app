@@ -17,7 +17,7 @@
 
 <script>
   export default {
-    name: 'DatumsItem',
+    name: 'HomeDatumsPreview',
     props: {
       title: {
         type: String

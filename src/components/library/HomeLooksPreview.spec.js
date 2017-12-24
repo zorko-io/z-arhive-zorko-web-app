@@ -1,7 +1,7 @@
 import {mount} from 'vue-test-utils'
-import LibraryLook from './LibraryLook.vue'
+import HomeLooksPreview from './HomeLooksPreview.vue'
 
-describe('LibraryLook.vue', () => {
+describe('HomeLooksPreview.vue', () => {
   let defaultProps
 
   beforeEach(() => {
@@ -13,17 +13,17 @@ describe('LibraryLook.vue', () => {
   })
 
   it('can initialize', () => {
-    const wrapper = mount(LibraryLook)
+    const wrapper = mount(HomeLooksPreview)
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('should emmit `openLook` when click on title', () => {
-    const wrapper = mount(LibraryLook, {
+    const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-LibraryLook-title-parent').trigger('click')
+    wrapper.find('.js-HomeLooksPreview-title-parent').trigger('click')
 
     expect(wrapper.emitted('openLook')[0][0]).toEqual({
       title: defaultProps.title,
@@ -32,11 +32,11 @@ describe('LibraryLook.vue', () => {
   })
 
   it('should emmit `openLook` when click on image', () => {
-    const wrapper = mount(LibraryLook, {
+    const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-LibraryLook-image').trigger('click')
+    wrapper.find('.js-HomeLooksPreview-image').trigger('click')
 
     expect(wrapper.emitted('openLook')[0][0]).toEqual({
       title: defaultProps.title,

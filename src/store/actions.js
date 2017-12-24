@@ -7,8 +7,8 @@ export const bootstrapAppInitialState = async (context) => {
   await Promise.all([
     dispatch('loadAccountInfo'),
 
-    dispatch('library/loadLooks'),
-    dispatch('library/loadDatums')
+    dispatch('home/loadLooks'),
+    dispatch('home/loadDatums')
   ])
 
   commit('stopLoading')

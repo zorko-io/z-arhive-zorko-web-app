@@ -5,7 +5,7 @@ import * as getters from './getters'
 
 import exploreModule from './explore/module'
 import lookModule from './look/module'
-import libraryModule from './library/module'
+import homeModule from './home/module'
 
 export default {
   strict: true,
@@ -20,7 +20,7 @@ export default {
     look: lookModule({
       namespaced: true
     }),
-    library: libraryModule({
+    home: homeModule({
       namespaced: true
     })
   }

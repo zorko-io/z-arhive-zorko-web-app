@@ -1,40 +1,32 @@
 import {createLocalVue, mount, shallow} from 'vue-test-utils'
 import Vuex from 'vuex'
-import Library from './Library.vue'
-import module from '../../store/library/module'
+import Home from './Home.vue'
+import module from '../../store/home/module'
 
 const localVue = createLocalVue()
-const libraryModule = module({namespaced: true})
+const homeModule = module({namespaced: true})
 
 localVue.use(Vuex)
 
-describe('Library.vue', () => {
+describe('Home.vue', () => {
   let store
 
   beforeEach(() => {
     store = new Vuex.Store({
       state: {},
       modules: {
-        library: {
-          getters: libraryModule.getters,
-          state: libraryModule.state
+        home: {
+          getters: homeModule.getters,
+          state: homeModule.state
         }
       }
     })
   })
 
   it('initialize', () => {
-    const wrapper = mount(Library, {store, localVue})
+    const wrapper = mount(Home, {store, localVue})
 
     expect(wrapper.vm).toBeTruthy()
-  })
-
-  it('displays looks category', () => {
-    const wrapper = mount(Library, {store, localVue})
-
-    const title = wrapper.find('.js-Library-looks-category')
-
-    expect(title.text()).toEqual('Popular Looks')
   })
 
   it('changes route on open', () => {
@@ -42,7 +34,7 @@ describe('Library.vue', () => {
     const $router = {
       push: jest.fn()
     }
-    const wrapper = shallow(Library, {
+    const wrapper = shallow(Home, {
       store,
       localVue,
       mocks: {

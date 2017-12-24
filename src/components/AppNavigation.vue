@@ -146,7 +146,7 @@
     name: 'AppNavigation',
 
     computed: mapState({
-      items: state => state.workspaceNavigation.items
+      items: state => state.navigation.items
     }),
 
     data () {

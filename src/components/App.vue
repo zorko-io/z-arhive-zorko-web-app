@@ -43,7 +43,7 @@
       ]),
 
       isNavigationVisible () {
-        return this.$store.state.workspaceNavigation.visible
+        return this.$store.state.navigation.visible
       },
 
       isLoading () {

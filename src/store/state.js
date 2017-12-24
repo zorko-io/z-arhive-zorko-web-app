@@ -6,15 +6,15 @@ export default function () {
     library: {
       looks: []
     },
-    workspaceNavigation: {
+    navigation: {
       visible: true,
       items: [
         {
           icon: 'list',
           component: 'item',
-          title: 'Library',
-          name: 'library',
-          path: '/library'
+          title: 'Looks',
+          name: 'looks',
+          path: '/looks'
         },
         {
           icon: 'bubble_chart',
