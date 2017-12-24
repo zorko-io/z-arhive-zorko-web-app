@@ -21,6 +21,7 @@ export const loadAccountInfo = async ({commit, getters}) => {
     try {
       const account = await zorkoApi.fetchAccountInfo()
       commit('setAccount', account)
+      commit('navigation/addAccount')
     } catch (err) {
       commit('setAccount', Object.assign({}, ANONYM_ACCOUNT))
     }

@@ -6,6 +6,7 @@ import * as getters from './getters'
 import exploreModule from './explore/module'
 import lookModule from './look/module'
 import homeModule from './home/module'
+import navigationModule from './navigation/module'
 
 export default {
   strict: true,
@@ -21,6 +22,9 @@ export default {
       namespaced: true
     }),
     home: homeModule({
+      namespaced: true
+    }),
+    navigation: navigationModule({
       namespaced: true
     })
   }
