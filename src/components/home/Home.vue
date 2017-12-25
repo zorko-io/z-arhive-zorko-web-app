@@ -1,5 +1,4 @@
 <template>
-  <AppSubLayout :title="title">
     <v-layout>
       <v-flex xs12>
         <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
@@ -33,11 +32,9 @@
         </v-container>
       </v-flex>
     </v-layout>
-  </AppSubLayout>
 </template>
 
 <script>
-  import AppSubLayout from '../AppSubLayout.vue'
   import HomeLooksPreview from './HomeLooksPreview.vue'
   import HomeDatumsPreview from './HomeDatumsPreview.vue'
 
@@ -47,7 +44,6 @@
   export default {
     name: 'Home',
     components: {
-      AppSubLayout,
       HomeLooksPreview,
       HomeDatumsPreview
     },

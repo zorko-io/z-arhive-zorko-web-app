@@ -1,6 +1,7 @@
 export default () => {
   return {
-    visible: true,
+    drawer: true,
+    clipped: false,
     items: [
       {
         icon: 'list',
@@ -13,6 +14,7 @@ export default () => {
         icon: 'bubble_chart',
         title: 'Datums',
         path: '/datums',
+        name: 'datums',
         component: 'item'
       }
     ]

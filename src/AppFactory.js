@@ -1,6 +1,7 @@
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import Vuex from 'vuex'
+import {sync} from 'vuex-router-sync'
 
 import App from './components/App.vue'
 import routes from './router'
@@ -15,6 +16,8 @@ export default () => ({Vue, el}) => {
 
   const router = new Router(routes)
   const globalStore = new Vuex.Store(store)
+
+  sync(globalStore, router)
 
   const globalVueOptions = {
     store: globalStore,
