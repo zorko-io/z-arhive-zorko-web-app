@@ -1,16 +1,33 @@
 <template>
   <v-flex xs12>
-    <AnalysisFiltersPanel
-      :filters="look.filters"
-      @changeFilterCondition="onChangeFilterCondition"
-      @changeFilterValue="onChangeFilterValue"
-    />
-    <AnalysisVisualization
-      :spec="look.spec"/>
-    <AnalysisDataTable
-      :fields="look.fields"
-      :data="look.data"
-    />
+    <v-expansion-panel expand>
+      <v-expansion-panel-content>
+        <template slot="header">
+          <div>Filters</div>
+        </template>
+        <AnalysisFiltersPanel
+          :filters="look.filters"
+          @changeFilterCondition="onChangeFilterCondition"
+          @changeFilterValue="onChangeFilterValue"
+        />
+      </v-expansion-panel-content>
+      <v-expansion-panel-content>
+        <template slot="header">
+          <div>Visualization</div>
+        </template>
+        <AnalysisVisualization
+          :spec="look.spec"/>
+      </v-expansion-panel-content>
+      <v-expansion-panel-content>
+        <template slot="header">
+          <div>Data table</div>
+        </template>
+        <AnalysisDataTable
+          :fields="look.fields"
+          :data="look.data"
+        />
+      </v-expansion-panel-content>
+    </v-expansion-panel>
   </v-flex>
 </template>
 

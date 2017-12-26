@@ -10,6 +10,24 @@ export const setInitialData = (state, data) => {
   // state.data = data.map((item) => { return {} })
 }
 
+export const initExploreByLook = (state, look) => {
+  state.initialData = look.initialData
+  state.data = look.data
+  state.filters = look.filters
+  state.spec = look.spec
+
+  setFields(state)
+
+  state.fields.forEach((field) => {
+    const anyFieldUsedInLook = look.fields.some(
+      (lookField) => (lookField.text === field.text)
+    )
+    if (anyFieldUsedInLook) {
+      field.selected = true
+    }
+  })
+}
+
 export const toggleFieldSelection = (state, {field}) => {
   let fields = state.fields
   const stateField = fields.find(equalByText(field.text))
