@@ -1,43 +1,43 @@
-import Library from '@/components/Library'
-import Explore from '@/components/explore/Explore'
-import Admin from '@/components/Admin'
-import Datums from '@/components/Datums'
-import AccountProfile from '@/components/AccountProfile'
-import Look from '@/components/look/Look'
+import Home from '../components/home/Home.vue'
+import Explore from '../components/explore/Explore.vue'
+import Account from '../components/account/Account.vue'
+import Look from '../components/look/Look.vue'
 
 export default {
   routes: [
     {
-      path: '/library',
-      component: Library
-    },
-    {
-      path: '/looks/:id',
-      component: Look
-    },
-    {
-      path: '/explore/:id',
-      component: Explore
-    },
-    {
-      path: '/admin',
-      component: Admin
+      path: '/looks',
+      component: Home,
+      props: {
+        default: true,
+        looksPreview: true
+      }
     },
     {
       path: '/datums',
-      component: Datums
+      component: Home,
+      props: {
+        default: true,
+        datumsPreview: true
+      }
     },
     {
-      path: '/account/profile',
-      component: AccountProfile
+      path: '/looks/:name',
+      component: Look,
+      props: true
     },
     {
-      path: '/library',
-      component: Library
+      path: '/explore/:lookName',
+      component: Explore,
+      props: true
+    },
+    {
+      path: '/account',
+      component: Account
     },
     {
       path: '/',
-      redirect: '/library'
+      redirect: '/looks'
     }
   ]
 }

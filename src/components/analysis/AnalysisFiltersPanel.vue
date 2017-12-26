@@ -1,24 +1,17 @@
 <template>
-  <v-expansion-panel expand>
-    <v-expansion-panel-content>
-      <template slot="header">
-        <div>Filters</div>
-      </template>
-      <v-card v-for="filter in filters" :key="filter.text">
-        <v-card color="grey lighten-4" flat>
-          <v-card-text>
-            <v-container fluid>
-              <AnalysisFiltersPanelItem
-                :filter="filter"
-                @changeCondition="onConditionChange"
-                @changeValue="onValueChange"
-              />
-            </v-container>
-          </v-card-text>
-        </v-card>
-      </v-card>
-    </v-expansion-panel-content>
-  </v-expansion-panel>
+  <v-card color="grey lighten-4" flat>
+    <v-card-text>
+      <v-container fluid>
+        <AnalysisFiltersPanelItem
+          v-for="filter in filters"
+          :key="filter.text"
+          :filter="filter"
+          @changeCondition="onConditionChange"
+          @changeValue="onValueChange"
+        />
+      </v-container>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

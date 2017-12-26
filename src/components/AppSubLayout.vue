@@ -1,7 +1,9 @@
 <template>
   <v-container>
     <v-toolbar fixed app>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-title
+        class="js-AppSubLayout-title"
+        v-text="title"></v-toolbar-title>
     </v-toolbar>
     <v-slide-y-transition mode="out-in">
      <slot></slot>

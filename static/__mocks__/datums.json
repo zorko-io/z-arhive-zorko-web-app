@@ -1,0 +1,38 @@
+[
+  {
+    "name": "car.connection",
+    "path": "connections/car.connection.json",
+    "title": "Cars",
+    "icon": "call_merge",
+    "iconClass": "green white--text",
+    "subtitle": "https://example1.com/data/cats.json",
+    "type": "http",
+    "properties": {
+      "url": "/static/__mocks__/car.json"
+    }
+  },
+  {
+    "name": "population.connection",
+    "path": "connections/population.connection.json",
+    "title": "Population",
+    "icon": "call_merge",
+    "iconClass": "green white--text",
+    "subtitle": "https://example2.com/data/population.json",
+    "type": "http",
+    "properties": {
+      "url": "/static/__mocks__/population.json"
+    }
+  },
+  {
+    "name": "weather.connection",
+    "path": "connections/weather.connection.json",
+    "title": "Weather",
+    "icon": "call_merge",
+    "iconClass": "green white--text",
+    "subtitle": "https://example3.com/data/weather.csv",
+    "type": "http",
+    "properties": {
+      "url": "/static/__mocks__/weather.json"
+    }
+  }
+]

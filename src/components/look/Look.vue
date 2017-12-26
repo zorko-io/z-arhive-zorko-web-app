@@ -18,8 +18,7 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
-  import Analysis from '@/components/analysis/Analysis'
+  import Analysis from '../analysis/Analysis'
 
   import {createNamespacedHelpers} from 'vuex'
   const {mapState} = createNamespacedHelpers('look/')
@@ -27,10 +26,13 @@
   export default {
     name: 'Look',
     components: {
-      AppSubLayout,
       Analysis
     },
-
+    props: {
+      name: {
+        type: String
+      }
+    },
     computed: {
       ...mapState([
         'spec',
@@ -45,13 +47,21 @@
           filters: this.filters,
           fields: this.fields
         }
+      },
+      pathToExplore () {
+        return '/explore/' + this.name
       }
     },
-
+    created () {
+      const name = this.name
+      this.$store.dispatch({
+        type: 'look/loadLook',
+        name
+      })
+    },
     data () {
       return {
-        title: 'Look',
-        pathToExplore: '/explore/uuid-explore-1'
+        title: 'Look'
       }
     }
   }

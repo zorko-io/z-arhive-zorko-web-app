@@ -9,7 +9,7 @@
     </template>
 
     <template v-if="isAppReady">
-      <AppNavigation v-if="isNavigationVisible"></AppNavigation>
+      <Navigation v-if="isNavigationVisible"></Navigation>
       <main>
         <v-content>
           <router-view></router-view>
@@ -23,17 +23,15 @@
 </template>
 
 <script>
-  import AppLogin from '@/components/AppLogin'
-  import AppLoading from '@/components/AppLoading'
-  import AppNavigation from '@/components/AppNavigation'
-  import LoginDialog from '@/components/LoginDialog'
-  import { mapGetters } from 'vuex'
+  import AppLoading from './AppLoading.vue'
+  import Navigation from './navigation/Navigation.vue'
+  import LoginDialog from './login/LoginDialog.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {
-      AppLogin,
       AppLoading,
-      AppNavigation,
+      Navigation,
       LoginDialog
     },
 
@@ -43,7 +41,7 @@
       ]),
 
       isNavigationVisible () {
-        return this.$store.state.workspaceNavigation.visible
+        return this.$store.state.navigation.visible
       },
 
       isLoading () {
@@ -57,7 +55,7 @@
 
     created () {
       this.$store.dispatch({
-        type: 'gatherAccountInfo'
+        type: 'bootstrapAppInitialState'
       })
     },
 

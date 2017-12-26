@@ -29,19 +29,22 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
-  import Analysis from '@/components/analysis/Analysis'
-  import ExploreFieldsPanel from '@/components/explore/ExploreFieldsPanel'
+  import Analysis from '../analysis/Analysis'
+  import ExploreFieldsPanel from './ExploreFieldsPanel'
 
-  import { createNamespacedHelpers } from 'vuex'
-  const { mapGetters } = createNamespacedHelpers('explore/')
+  import {createNamespacedHelpers} from 'vuex'
+  const {mapGetters} = createNamespacedHelpers('explore/')
 
   export default {
     name: 'Explore',
     components: {
-      AppSubLayout,
       ExploreFieldsPanel,
       Analysis
+    },
+    props: {
+      lookName: {
+        type: String
+      }
     },
     computed: {
       ...mapGetters([
@@ -107,13 +110,14 @@
       }
     },
     created () {
+      const lookName = this.lookName
       this.$store.dispatch({
-        type: 'explore/loadData'
+        type: 'explore/loadData',
+        lookName
       })
     },
     data () {
       return {
-        msg: 'I`m an explore',
         title: 'Explore'
       }
     }

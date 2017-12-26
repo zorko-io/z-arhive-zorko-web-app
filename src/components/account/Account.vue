@@ -46,12 +46,12 @@
 </template>
 
 <script>
-  import AppSubLayout from '@/components/AppSubLayout'
+  import AppSubLayout from '../AppSubLayout.vue'
 
   const apiBaseUri = process.env.ZORKO_API_BASE_URI
 
   export default {
-    name: 'AccountProfile',
+    name: 'Account',
     components: {
       AppSubLayout
     },
