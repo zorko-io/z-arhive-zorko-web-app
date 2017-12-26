@@ -9,6 +9,7 @@ describe('Explore tests', () => {
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
 
     prevState.initialData = data
+    prevState.data = [{}, {}]
     setInitialData(state, data)
 
     expect(state).toEqual(prevState)
