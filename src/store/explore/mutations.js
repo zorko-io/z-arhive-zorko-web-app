@@ -7,7 +7,7 @@ const findFilterByText = (byText, filters) => filters.find(({text}) => (byText =
 
 export const setInitialData = (state, data) => {
   state.initialData = data
-  // state.data = data.map((item) => { return {} })
+  state.data = data.map((item) => { return {} })
 }
 
 export const initExploreByLook = (state, look) => {

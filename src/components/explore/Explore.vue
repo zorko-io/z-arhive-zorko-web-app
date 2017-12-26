@@ -3,7 +3,6 @@
     <v-toolbar fixed app>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn small color="primary" @click="applyFilters">Apply filters</v-btn>
       <v-btn small color="primary" @click="save">Save</v-btn>
     </v-toolbar>
     <v-slide-y-transition mode="out-in">
@@ -101,11 +100,6 @@
         this.$store.dispatch({
           type: 'explore/save',
           look: {}
-        })
-      },
-      applyFilters () {
-        this.$store.commit({
-          type: 'explore/applyFilters'
         })
       }
     },

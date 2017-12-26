@@ -10,6 +10,7 @@
           @changeValue="onValueChange"
         />
       </v-container>
+      <v-btn small color="primary" @click="applyFilters">Apply filters</v-btn>
     </v-card-text>
   </v-card>
 </template>
@@ -33,6 +34,11 @@
       },
       onValueChange (field, value) {
         this.$emit('changeFilterValue', field, value)
+      },
+      applyFilters () {
+        this.$store.commit({
+          type: 'explore/applyFilters'
+        })
       }
     }
   }
