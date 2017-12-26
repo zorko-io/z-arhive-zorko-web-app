@@ -17,8 +17,6 @@ export const toggleFieldSelection = (state, {field}) => {
   let spec = Spec.of(state.spec)
 
   stateField.selected = !field.selected
-  console.log(state.initialData)
-  console.log(state.data)
   if (field.selected) {
     state.initialData.forEach((record, index) => {
       state.data[index][key] = record[key]
