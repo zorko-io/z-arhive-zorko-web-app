@@ -6,6 +6,7 @@ export const bootstrapAppInitialState = async (context) => {
 
   await Promise.all([
     dispatch('loadAccountInfo'),
+    dispatch('explore/loadData', {}),
 
     dispatch('home/loadLooks'),
     dispatch('home/loadDatums')
