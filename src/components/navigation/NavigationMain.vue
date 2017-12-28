@@ -1,13 +1,15 @@
 <template>
    <div>
       <NavigationMainDrawer
-        :hidden="drawer"
+        :visibility="drawerVisibility"
+        :fullscreen="fullscreen"
         :items="items"
         :title="drawerTitle"
+        @changeDrawerVisibility="onChangeDrawerVisibility"
       />
       <NavigationMainToolbar
         :title="toolbarTitle"
-        @toggleDrawer="onDrawerToggle"
+        @toggleDrawerVisibility="onChangeDrawerVisibility"
       >
         <slot></slot>
       </NavigationMainToolbar>
@@ -29,16 +31,20 @@
     computed: {
       ...mapState({
         items: state => state.navigation.items,
-        drawer: state => state.navigation.drawer
+        drawerVisibility: state => state.navigation.drawerVisibility
       }),
       toolbarTitle () {
         return this.$store.state.route.meta.title
+      },
+      fullscreen () {
+        return this.$store.state.navigation.fullscreen
       }
     },
     methods: {
-      onDrawerToggle () {
+      onChangeDrawerVisibility (value) {
         this.$store.dispatch({
-          type: 'navigation/toggleDrawer'
+          type: 'navigation/changeDrawerVisibility',
+          visibility: value
         })
       }
     },

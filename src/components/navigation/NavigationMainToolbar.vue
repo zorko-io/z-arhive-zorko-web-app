@@ -23,7 +23,7 @@
     },
     methods: {
       onSideIconClick () {
-        this.$emit('toggleDrawer')
+        this.$emit('toggleDrawerVisibility')
       }
     }
   }

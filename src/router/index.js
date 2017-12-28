@@ -36,7 +36,10 @@ export default {
         default: true,
         controls: true
       },
-      meta: {title: 'Look'}
+      meta: {
+        title: 'Look',
+        fullscreen: true
+      }
     },
     {
       path: '/explore/:lookName',
@@ -48,7 +51,10 @@ export default {
         default: true,
         controls: true
       },
-      meta: {title: 'Explore'}
+      meta: {
+        title: 'Explore',
+        fullscreen: true
+      }
     },
     {
       path: '/account',

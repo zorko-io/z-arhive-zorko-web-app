@@ -1,7 +1,6 @@
 export default () => {
   return {
-    drawer: true,
-    clipped: false,
+    drawerVisibility: true,
     items: [
       {
         icon: 'list',

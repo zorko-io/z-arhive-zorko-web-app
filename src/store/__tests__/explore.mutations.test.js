@@ -1,6 +1,14 @@
-import { setInitialData, toggleFieldSelection, toggleFilter, setFilterCondition, setFilterValue, setFields, applyFilters } from './../explore/mutations'
+import {
+  applyFilters,
+  setFields,
+  setFilterCondition,
+  setFilterValue,
+  setInitialData,
+  toggleFieldSelection,
+  toggleFilter
+} from './../explore/mutations'
 import setInitialState from './../explore/state'
-import { makeCopy } from './../../utils'
+import {makeCopy} from './../../utils'
 
 describe('Explore tests', () => {
   it('It should set initial data to store', async () => {
@@ -300,5 +308,4 @@ describe('Explore tests', () => {
     applyFilters(state)
     expect(state.data).toEqual([{field_1: 10, field_2: 100}])
   })
-
 })

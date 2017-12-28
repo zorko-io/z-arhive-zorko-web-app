@@ -7,6 +7,15 @@ export const addAccount = ({items}) => {
   })
 }
 
-export const toggleDrawer = (state) => {
-  state.drawer = !state.drawer
+export const toggleDrawerVisibility = (state) => {
+  state.drawerVisibility = !state.drawerVisibility
 }
+
+export const setDrawerVisibility = (state, value) => {
+  state.drawerVisibility = value
+}
+
+export const setFullscreen = (state, value) => {
+  state.fullscreen = value
+}
+
