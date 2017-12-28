@@ -1,9 +1,9 @@
-import { initLook } from './../look/mutations'
-import setInitialState from './../explore/state'
+import {initLook} from './mutations'
+import createState from '../explore/state'
 
-describe('Explore tests', () => {
-  it('It should set look data to store', async () => {
-    const state = setInitialState()
+describe('Look Mutations', () => {
+  it('initialize look', async () => {
+    const state = createState()
     const look = {
       name: 'New look',
       fields: [{
@@ -43,7 +43,9 @@ describe('Explore tests', () => {
       spec: look.spec,
       initialData: look.initialData
     }
+
     initLook(state, look)
+
     expect(state).toEqual(newState)
   })
 })

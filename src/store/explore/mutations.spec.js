@@ -6,25 +6,26 @@ import {
   setInitialData,
   toggleFieldSelection,
   toggleFilter
-} from './../explore/mutations'
-import setInitialState from './../explore/state'
-import {makeCopy} from './../../utils'
+} from './mutations'
+import createState from './state'
+import {makeCopy} from '../../utils/index'
 
-describe('Explore tests', () => {
-  it('It should set initial data to store', async () => {
-    const state = setInitialState()
+describe('Explore Mutations', () => {
+  it('set initial data', async () => {
+    const state = createState()
     const prevState = makeCopy(state)
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
 
     prevState.initialData = data
     prevState.data = [{}, {}]
+
     setInitialData(state, data)
 
     expect(state).toEqual(prevState)
   })
 
-  it('It should toggle field selection in store', async () => {
-    const state = setInitialState()
+  it('toggle field selection', async () => {
+    const state = createState()
     const prevState = makeCopy(state)
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
 
@@ -58,12 +59,14 @@ describe('Explore tests', () => {
       data: {values: [{field_1: 'value_1_1'}, {field_1: 'value_1_2'}]},
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
+
     toggleFieldSelection(state, {field})
+
     expect(state).toEqual(prevState)
   })
 
-  it('It should toggle filter in store', async () => {
-    const state = setInitialState()
+  it('toggle filter', async () => {
+    const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
     setInitialData(state, data)
 
@@ -95,12 +98,14 @@ describe('Explore tests', () => {
       text: 'field_1',
       type: 'dimention'
     }]
+
     toggleFilter(state, {field})
+
     expect(state).toEqual(prevState)
   })
 
-  it('It should set filter condition in store', async () => {
-    const state = setInitialState()
+  it('set filter condition', async () => {
+    const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
     setInitialData(state, data)
     state.filters = [{
@@ -118,12 +123,14 @@ describe('Explore tests', () => {
     const prevState = makeCopy(state)
     prevState.filters[0].condition = 'more than'
     const condition = 'more than'
+
     setFilterCondition(state, {filter, condition})
+
     expect(state).toEqual(prevState)
   })
 
-  it('It should set filter value in store', async () => {
-    const state = setInitialState()
+  it('set filter value', async () => {
+    const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
     setInitialData(state, data)
     state.filters = [{
@@ -142,12 +149,14 @@ describe('Explore tests', () => {
     const prevState = makeCopy(state)
     prevState.filters[0].value = 100
     const value = 100
+
     setFilterValue(state, {filter, value})
+
     expect(state).toEqual(prevState)
   })
 
-  it('it should set fields to store', async () => {
-    const state = setInitialState()
+  it('set fields', async () => {
+    const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 100}, {field_1: 'value_1_2', field_2: 200}]
     setInitialData(state, data)
     const prevState = makeCopy(state)
@@ -160,13 +169,14 @@ describe('Explore tests', () => {
       type: 'measure',
       selected: false,
       filtered: false}]
+
     setFields(state)
 
     expect(state).toEqual(prevState)
   })
 
-  it('it should apply "equal to" filter and transform data in store', async () => {
-    const state = setInitialState()
+  it('applies "equal to" filter and transforms data', async () => {
+    const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
     setInitialData(state, data)
     state.fields = [{
@@ -197,12 +207,14 @@ describe('Explore tests', () => {
       data: {values: [{field_1: 'value_1_1'}, {field_1: 'value_1_2'}]},
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
+
     applyFilters(state)
+
     expect(state.data).toEqual([])
   })
 
-  it('it should apply "not equal to" filter and transform data in store', async () => {
-    const state = setInitialState()
+  it('applies "not equal to" filter and transforms data', async () => {
+    const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
     setInitialData(state, data)
     state.fields = [{
@@ -233,12 +245,14 @@ describe('Explore tests', () => {
       data: {values: [{field_1: 'value_1_1'}, {field_1: 'value_1_2'}]},
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
+
     applyFilters(state)
+
     expect(state.data).toEqual(data)
   })
 
-  it('it should apply "more than" filter and transform data in store', async () => {
-    const state = setInitialState()
+  it('applies "more than" filter and transforms data', async () => {
+    const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
     setInitialData(state, data)
     state.fields = [{
@@ -269,12 +283,14 @@ describe('Explore tests', () => {
       data: {values: [{field_1: 'value_1_1'}, {field_1: 'value_1_2'}]},
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
+
     applyFilters(state)
+
     expect(state.data).toEqual([{field_1: 15, field_2: 200}])
   })
 
-  it('it should apply "less than" filter and transform data in store', async () => {
-    const state = setInitialState()
+  it('applies "less than" filter and transforms data', async () => {
+    const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
     setInitialData(state, data)
     state.fields = [{
@@ -305,7 +321,9 @@ describe('Explore tests', () => {
       data: {values: [{field_1: 'value_1_1'}, {field_1: 'value_1_2'}]},
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
+
     applyFilters(state)
+
     expect(state.data).toEqual([{field_1: 10, field_2: 100}])
   })
 })
