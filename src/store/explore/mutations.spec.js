@@ -1,12 +1,4 @@
-import {
-  applyFilters,
-  setFields,
-  setFilterCondition,
-  setFilterValue,
-  setInitialData,
-  toggleFieldSelection,
-  toggleFilter
-} from './mutations'
+import * as mutations from './mutations'
 import createState from './state'
 import {makeCopy} from '../../utils/index'
 
@@ -19,7 +11,7 @@ describe('Explore Mutations', () => {
     prevState.initialData = data
     prevState.data = [{}, {}]
 
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
 
     expect(state).toEqual(prevState)
   })
@@ -48,7 +40,7 @@ describe('Explore Mutations', () => {
       type: 'dimention'
     }
 
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.fields = [ fieldOne, fieldTwo ]
     state.data = [{}, {}]
 
@@ -60,7 +52,7 @@ describe('Explore Mutations', () => {
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
 
-    toggleFieldSelection(state, {field})
+    mutations.toggleFieldSelection(state, {field})
 
     expect(state).toEqual(prevState)
   })
@@ -68,7 +60,7 @@ describe('Explore Mutations', () => {
   it('toggle filter', async () => {
     const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
 
     const fieldOne = {
       filtered: false,
@@ -99,7 +91,7 @@ describe('Explore Mutations', () => {
       type: 'dimention'
     }]
 
-    toggleFilter(state, {field})
+    mutations.toggleFilter(state, {field})
 
     expect(state).toEqual(prevState)
   })
@@ -107,7 +99,7 @@ describe('Explore Mutations', () => {
   it('set filter condition', async () => {
     const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.filters = [{
       filtered: false,
       selected: false,
@@ -124,7 +116,7 @@ describe('Explore Mutations', () => {
     prevState.filters[0].condition = 'more than'
     const condition = 'more than'
 
-    setFilterCondition(state, {filter, condition})
+    mutations.setFilterCondition(state, {filter, condition})
 
     expect(state).toEqual(prevState)
   })
@@ -132,7 +124,7 @@ describe('Explore Mutations', () => {
   it('set filter value', async () => {
     const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 'value_2_1'}, {field_1: 'value_1_2', field_2: 'value_2_2'}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.filters = [{
       filtered: false,
       selected: false,
@@ -150,7 +142,7 @@ describe('Explore Mutations', () => {
     prevState.filters[0].value = 100
     const value = 100
 
-    setFilterValue(state, {filter, value})
+    mutations.setFilterValue(state, {filter, value})
 
     expect(state).toEqual(prevState)
   })
@@ -158,7 +150,7 @@ describe('Explore Mutations', () => {
   it('set fields', async () => {
     const state = createState()
     const data = [{field_1: 'value_1_1', field_2: 100}, {field_1: 'value_1_2', field_2: 200}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     const prevState = makeCopy(state)
     prevState.fields = [{
       text: 'field_1',
@@ -170,7 +162,7 @@ describe('Explore Mutations', () => {
       selected: false,
       filtered: false}]
 
-    setFields(state)
+    mutations.setFields(state)
 
     expect(state).toEqual(prevState)
   })
@@ -178,7 +170,7 @@ describe('Explore Mutations', () => {
   it('applies "equal to" filter and transforms data', async () => {
     const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.fields = [{
       filtered: true,
       selected: true,
@@ -208,7 +200,7 @@ describe('Explore Mutations', () => {
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
 
-    applyFilters(state)
+    mutations.applyFilters(state)
 
     expect(state.data).toEqual([])
   })
@@ -216,7 +208,7 @@ describe('Explore Mutations', () => {
   it('applies "not equal to" filter and transforms data', async () => {
     const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.fields = [{
       filtered: true,
       selected: true,
@@ -246,7 +238,7 @@ describe('Explore Mutations', () => {
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
 
-    applyFilters(state)
+    mutations.applyFilters(state)
 
     expect(state.data).toEqual(data)
   })
@@ -254,7 +246,7 @@ describe('Explore Mutations', () => {
   it('applies "more than" filter and transforms data', async () => {
     const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.fields = [{
       filtered: true,
       selected: true,
@@ -284,7 +276,7 @@ describe('Explore Mutations', () => {
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
 
-    applyFilters(state)
+    mutations.applyFilters(state)
 
     expect(state.data).toEqual([{field_1: 15, field_2: 200}])
   })
@@ -292,7 +284,7 @@ describe('Explore Mutations', () => {
   it('applies "less than" filter and transforms data', async () => {
     const state = createState()
     const data = [{field_1: 10, field_2: 100}, {field_1: 15, field_2: 200}]
-    setInitialData(state, data)
+    mutations.setInitialData(state, data)
     state.fields = [{
       filtered: true,
       selected: true,
@@ -322,7 +314,7 @@ describe('Explore Mutations', () => {
       encoding: {x: {field: 'field_1', type: 'ordinal'}},
       mark: 'tick'}
 
-    applyFilters(state)
+    mutations.applyFilters(state)
 
     expect(state.data).toEqual([{field_1: 10, field_2: 100}])
   })

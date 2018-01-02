@@ -1,4 +1,4 @@
-import {initLook} from './mutations'
+import * as mutations from './mutations'
 import createState from '../explore/state'
 
 describe('Look Mutations', () => {
@@ -44,7 +44,7 @@ describe('Look Mutations', () => {
       initialData: look.initialData
     }
 
-    initLook(state, look)
+    mutations.initLook(state, look)
 
     expect(state).toEqual(newState)
   })

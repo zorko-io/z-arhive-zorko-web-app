@@ -47,5 +47,4 @@ describe('Navigation Actions', () => {
     expect(context.commit).toHaveBeenCalledWith('setFullscreen', false)
     expect(context.commit).toHaveBeenCalledTimes(1)
   })
-
 })
