@@ -1,4 +1,4 @@
-export const addAccount = async ({items}) => {
+export const addAccount = ({items}) => {
   items.push({
     icon: 'perm_identity',
     title: 'Account',
@@ -6,3 +6,16 @@ export const addAccount = async ({items}) => {
     component: 'item'
   })
 }
+
+export const toggleDrawerVisibility = (state) => {
+  state.drawerVisibility = !state.drawerVisibility
+}
+
+export const setDrawerVisibility = (state, value) => {
+  state.drawerVisibility = value
+}
+
+export const setFullscreen = (state, value) => {
+  state.fullscreen = value
+}
+

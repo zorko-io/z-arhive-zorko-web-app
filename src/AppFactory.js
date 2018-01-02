@@ -1,10 +1,13 @@
 import Router from 'vue-router'
 import Vuetify from 'vuetify'
 import Vuex from 'vuex'
+import {sync} from 'vuex-router-sync'
 
 import App from './components/App.vue'
 import routes from './router'
-import store from './store/'
+import storeOptions from './store/'
+
+import FullscreenNavigationGuard from './navigation-guards/FullscreenNavigationGuard'
 
 export default () => ({Vue, el}) => {
   Vue.config.productionTip = false
@@ -14,10 +17,15 @@ export default () => ({Vue, el}) => {
   Vue.use(Vuetify)
 
   const router = new Router(routes)
-  const globalStore = new Vuex.Store(store)
+  const store = new Vuex.Store(storeOptions)
+  const fullscreenNavigationGuard = FullscreenNavigationGuard(store)
+
+  sync(store, router)
+
+  router.beforeEach(fullscreenNavigationGuard)
 
   const globalVueOptions = {
-    store: globalStore,
+    store: store,
     router,
     template: '<App/>',
     components: {App}

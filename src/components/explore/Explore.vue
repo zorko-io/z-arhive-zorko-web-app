@@ -1,30 +1,21 @@
 <template>
-  <v-container>
-    <v-toolbar fixed app>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn small color="primary" @click="save">Save</v-btn>
-    </v-toolbar>
-    <v-slide-y-transition mode="out-in">
-      <v-layout wrap>
-        <v-flex xs3>
-          <ExploreFieldsPanel
-            :dimentions="dimentions"
-            :measures="measures"
-            @changeFieldSelection="onFieldSelectionChange"
-            @changeFilter="onFilterChange"
-          />
-        </v-flex>
-        <v-flex xs8 style="margin-left: 10px">
-          <Analysis
-            :look="look"
-            @changeFilterCondition="onChangeFilterCondition"
-            @changeFilterValue="onChangeFilterValue"
-          />
-        </v-flex>
-      </v-layout>
-    </v-slide-y-transition>
-  </v-container>
+  <v-layout wrap>
+    <v-flex xs3>
+      <ExploreFieldsPanel
+        :dimentions="dimentions"
+        :measures="measures"
+        @changeFieldSelection="onFieldSelectionChange"
+        @changeFilter="onFilterChange"
+      />
+    </v-flex>
+    <v-flex xs8 style="margin-left: 10px">
+      <Analysis
+        :look="look"
+        @changeFilterCondition="onChangeFilterCondition"
+        @changeFilterValue="onChangeFilterValue"
+      />
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -94,12 +85,6 @@
           type: 'explore/setFilterValue',
           filter,
           value
-        })
-      },
-      save () {
-        this.$store.dispatch({
-          type: 'explore/save',
-          look: {}
         })
       }
     },

@@ -3,6 +3,9 @@ import Explore from '../components/explore/Explore.vue'
 import Account from '../components/account/Account.vue'
 import Look from '../components/look/Look.vue'
 
+import NavigationMainToolbarLookControls from '../components/navigation/NavigationMainToolbarLookControls.vue'
+import NavigationMainToolbarExploreControls from '../components/navigation/NavigationMainToolbarExploreControls.vue'
+
 export default {
   routes: [
     {
@@ -11,7 +14,8 @@ export default {
       props: {
         default: true,
         looksPreview: true
-      }
+      },
+      meta: {title: 'Looks'}
     },
     {
       path: '/datums',
@@ -19,21 +23,43 @@ export default {
       props: {
         default: true,
         datumsPreview: true
-      }
+      },
+      meta: {title: 'Datums'}
     },
     {
       path: '/looks/:name',
-      component: Look,
-      props: true
+      components: {
+        default: Look,
+        controls: NavigationMainToolbarLookControls
+      },
+      props: {
+        default: true,
+        controls: true
+      },
+      meta: {
+        title: 'Look',
+        fullscreen: true
+      }
     },
     {
       path: '/explore/:lookName',
-      component: Explore,
-      props: true
+      components: {
+        default: Explore,
+        controls: NavigationMainToolbarExploreControls
+      },
+      props: {
+        default: true,
+        controls: true
+      },
+      meta: {
+        title: 'Explore',
+        fullscreen: true
+      }
     },
     {
       path: '/account',
-      component: Account
+      component: Account,
+      meta: {title: 'Account'}
     },
     {
       path: '/',

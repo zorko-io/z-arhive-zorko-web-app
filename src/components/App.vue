@@ -1,18 +1,20 @@
 <template>
   <v-app>
     <LoginDialog/>
-
     <template v-if="isLoading">
       <main>
-        <AppLoading/>
+        <Loader/>
       </main>
     </template>
-
     <template v-if="isAppReady">
-      <Navigation v-if="isNavigationVisible"></Navigation>
+      <NavigationMain>
+        <router-view name="controls"></router-view>
+      </NavigationMain>
       <main>
         <v-content>
-          <router-view></router-view>
+          <v-container fluid>
+            <router-view></router-view>
+          </v-container>
         </v-content>
       </main>
       <v-footer app>
@@ -23,15 +25,15 @@
 </template>
 
 <script>
-  import AppLoading from './AppLoading.vue'
-  import Navigation from './navigation/Navigation.vue'
+  import Loader from './Loader.vue'
+  import NavigationMain from './navigation/NavigationMain.vue'
   import LoginDialog from './login/LoginDialog.vue'
   import {mapGetters} from 'vuex'
 
   export default {
     components: {
-      AppLoading,
-      Navigation,
+      Loader,
+      NavigationMain,
       LoginDialog
     },
 
@@ -39,10 +41,6 @@
       ...mapGetters([
         'isAuthenticated'
       ]),
-
-      isNavigationVisible () {
-        return this.$store.state.navigation.visible
-      },
 
       isLoading () {
         return this.$store.state.isLoading
