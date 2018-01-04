@@ -53,4 +53,16 @@ describe('HomeLooksPreview.vue', () => {
 
     })
   })
+
+  it('should emmit `openLook` when click on image', () => {
+    const wrapper = mount(HomeLooksPreview, {
+      propsData: defaultProps
+    })
+
+    wrapper.find('.js-HomeLooksPreview-datum').trigger('click')
+
+    expect(wrapper.emitted('openDatum')[0][0]).toEqual({
+      name: defaultProps.datum.name
+    })
+  })
 })

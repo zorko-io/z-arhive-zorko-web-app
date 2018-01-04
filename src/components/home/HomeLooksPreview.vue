@@ -5,11 +5,11 @@
       :src="src"
       height="270px"
       width="361px"
-      @click="onClick"
+      @click="onLookClick"
     >
     </v-card-media>
     <v-card-title
-      @click="onClick"
+      @click="onLookClick"
       class="util-pointer js-HomeLooksPreview-title-parent"
     >
       <div>
@@ -26,7 +26,9 @@
         {{ author.login }}
       </v-chip>
       <v-spacer></v-spacer>
-      <v-chip class="util-pointer">
+      <v-chip
+        class="util-pointer js-HomeLooksPreview-datum"
+        @click="onDatumClick">
           <v-avatar>
             <v-icon class="green white--text">call_merge</v-icon>
           </v-avatar>
@@ -57,10 +59,15 @@
       }
     },
     methods: {
-      onClick () {
+      onLookClick () {
         this.$emit('openLook', {
           path: this.path,
           title: this.title
+        })
+      },
+      onDatumClick () {
+        this.$emit('openDatum', {
+          name: this.datum.name
         })
       }
     }

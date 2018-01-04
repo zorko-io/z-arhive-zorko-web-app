@@ -29,7 +29,7 @@ describe('Home.vue', () => {
     expect(wrapper.vm).toBeTruthy()
   })
 
-  it('changes route on open', () => {
+  it('redirects to look if look opened', () => {
     const lookInfo = {title: 'blblbl', path: 'bazzz'}
     const $router = {
       push: jest.fn()
@@ -45,5 +45,23 @@ describe('Home.vue', () => {
     wrapper.vm.onOpenLook(lookInfo)
 
     expect($router.push).toHaveBeenCalledWith(lookInfo.path)
+  })
+
+  it('redirects to datum if datum opened', () => {
+    const datumInfo = {name: 'bazzz'}
+    const $router = {
+      push: jest.fn()
+    }
+    const wrapper = shallow(Home, {
+      store,
+      localVue,
+      mocks: {
+        $router
+      }
+    })
+
+    wrapper.vm.onOpenDatum(datumInfo)
+
+    expect($router.push).toHaveBeenCalledWith('/datums/bazzz')
   })
 })

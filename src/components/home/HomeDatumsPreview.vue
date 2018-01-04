@@ -1,5 +1,5 @@
 <template>
-  <v-list-tile avatar @click="">
+  <v-list-tile avatar @click="onClick">
     <v-list-tile-avatar>
       <v-icon :class="[iconClass]">{{ icon }}</v-icon>
     </v-list-tile-avatar>
@@ -24,6 +24,10 @@
       },
       subtitle: {
         type: String
+      },
+      name: {
+        type: String,
+        defaults: 'foo'
       }
     },
     computed: {
@@ -32,6 +36,13 @@
       },
       icon () {
         return 'call_merge'
+      }
+    },
+    methods: {
+      onClick () {
+        this.$emit('openDatum', {
+          name: this.name
+        })
       }
     }
   }

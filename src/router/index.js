@@ -2,6 +2,7 @@ import Home from '../components/home/Home.vue'
 import Explore from '../components/explore/Explore.vue'
 import Account from '../components/account/Account.vue'
 import Look from '../components/look/Look.vue'
+import Datum from '../components/datum/Datum.vue'
 
 import NavigationMainToolbarLookControls from '../components/navigation/NavigationMainToolbarLookControls.vue'
 import NavigationMainToolbarExploreControls from '../components/navigation/NavigationMainToolbarExploreControls.vue'
@@ -18,15 +19,6 @@ export default {
       meta: {title: 'Looks'}
     },
     {
-      path: '/datums',
-      component: Home,
-      props: {
-        default: true,
-        datumsPreview: true
-      },
-      meta: {title: 'Datums'}
-    },
-    {
       path: '/looks/:name',
       components: {
         default: Look,
@@ -38,6 +30,30 @@ export default {
       },
       meta: {
         title: 'Look',
+        fullscreen: true
+      }
+    },
+    {
+      path: '/datums',
+      component: Home,
+      props: {
+        default: true,
+        datumsPreview: true
+      },
+      meta: {title: 'Datums'}
+    },
+    {
+      path: '/datums/:name',
+      components: {
+        default: Datum,
+        controls: NavigationMainToolbarLookControls
+      },
+      props: {
+        default: true,
+        controls: true
+      },
+      meta: {
+        title: 'Datum',
         fullscreen: true
       }
     },

@@ -16,6 +16,7 @@
                 :author="look.author"
                 :datum="look.datum"
                 @openLook="onOpenLook"
+                @openDatum="onOpenDatum"
               />
             </v-flex>
             <v-flex
@@ -26,6 +27,7 @@
                   v-for="datum in popularDatums"
                   :title="datum.title"
                   :subtitle="datum.subtitle"
+                  @openDatum="onOpenDatum"
                 />
               </v-list>
             </v-flex>
@@ -62,11 +64,9 @@
         'popularLooks',
         'popularDatums'
       ]),
-
       title () {
         return this.looksPreview ? 'Looks' : 'Datums'
       },
-
       category () {
         return this.looksPreview ? 'Popular Looks' : 'Popular Datums'
       }
@@ -74,6 +74,9 @@
     methods: {
       onOpenLook (item) {
         this.$router.push(item.path)
+      },
+      onOpenDatum ({name}) {
+        this.$router.push('/datums/' + name)
       }
     },
     data () {
