@@ -8,6 +8,14 @@ export default {
 
   async getLookByName (name) {
     let looks = await this.getLooks()
-    return looks.find((look) => (look.name === name))
+    let look
+
+    const lookPreview = looks.find((look) => (look.name === name))
+
+    if (lookPreview) {
+      const {data} = await axios.get(`/static/__mocks__/looks/${lookPreview.name}.json`)
+      look = data
+    }
+    return look
   }
 }

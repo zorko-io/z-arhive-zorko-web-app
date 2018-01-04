@@ -10,7 +10,7 @@
               :key="look.title"
             >
               <HomeLooksPreview
-                :src="look.src"
+                :src="look.preview"
                 :title="look.title"
                 :path="look.path"
                 @openLook="onOpenLook"
