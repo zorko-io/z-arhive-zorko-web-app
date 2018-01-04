@@ -1,0 +1,30 @@
+{
+  "name": "miles_per_gallon_and_horsepower_scatterplot",
+  "title": "Miles per gallon and Horsepower scatterplot",
+  "fields": [
+    {
+      "text": "Cylinders",
+      "type": "dimention"
+    },
+    {
+      "text": "Horsepower",
+      "type": "measure"
+    }
+  ],
+  "filters": [],
+  "data": [],
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+    "description": "Shows the relationship between horsepower and the number of cylinders using tick marks.",
+    "data": {"url": "static/__mocks__/data/cars.json"},
+    "mark": "tick",
+    "encoding": {
+      "x": {"field": "Horsepower", "type": "quantitative"},
+      "y": {"field": "Cylinders", "type": "ordinal"}
+    }
+  },
+  "initialData": [],
+  "datum": {
+     "name": "car"
+  }
+}
