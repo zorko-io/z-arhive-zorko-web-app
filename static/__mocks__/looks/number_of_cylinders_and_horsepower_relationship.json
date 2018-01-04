@@ -1642,29 +1642,21 @@
         }
       ]
     },
-    "layer": [{
-      "mark": "rect",
-      "encoding": {
-        "y": {"field": "Origin", "type": "ordinal"},
-        "x": {"field": "Cylinders", "type": "ordinal"},
-        "color":  {"aggregate": "count", "field": "*", "type": "quantitative"}
+    "description": "Shows the relationship between horsepower and the number of cylinders using tick marks.",
+    "mark": "tick",
+    "encoding": {
+      "x": {
+        "field": "Horsepower",
+        "type": "quantitative"
+      },
+      "y": {
+        "field": "Cylinders",
+        "type": "ordinal"
       }
-    }, {
-      "mark": "text",
-      "encoding": {
-        "y": {"field": "Origin", "type": "ordinal"},
-        "x": {"field": "Cylinders", "type": "ordinal"},
-        "text": {"aggregate": "count", "field": "*", "type": "quantitative"},
-        "color": {"value": "white"}
-      }
-    }],
-    "config": {
-      "scale": {"bandPaddingInner": 0, "bandPaddingOuter": 0},
-      "text": {"baseline": "middle"}
     }
   },
   "datum": {
-     "name": "car"
+    "name": "car"
   },
   "data": [
     {
