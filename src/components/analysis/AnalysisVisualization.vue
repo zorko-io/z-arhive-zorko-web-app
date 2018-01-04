@@ -4,6 +4,7 @@
       <Visualization
         v-if="isSpecAvailable"
         :spec="spec"
+        :width="600"
       />
       <div v-else>Select any filed to display visualization</div>
     </v-card-title>
