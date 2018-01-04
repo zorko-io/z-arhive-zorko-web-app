@@ -13,6 +13,8 @@
                 :src="look.preview"
                 :title="look.title"
                 :path="look.path"
+                :author="look.author"
+                :datum="look.datum"
                 @openLook="onOpenLook"
               />
             </v-flex>

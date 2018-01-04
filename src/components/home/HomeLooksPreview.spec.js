@@ -8,12 +8,21 @@ describe('HomeLooksPreview.vue', () => {
     defaultProps = {
       src: 'url/to/image.png',
       title: 'Look Title',
-      path: 'path to look'
+      path: 'path to look',
+      author: {
+        login: 'foo',
+        avatar: 'foo/baz.png'
+      },
+      datum: {
+        name: 'ddd'
+      }
     }
   })
 
   it('can initialize', () => {
-    const wrapper = mount(HomeLooksPreview)
+    const wrapper = mount(HomeLooksPreview, {
+      propsData: defaultProps
+    })
 
     expect(wrapper.vm).toBeTruthy()
   })

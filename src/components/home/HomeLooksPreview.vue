@@ -19,14 +19,19 @@
     <v-card-actions class="white">
       <v-chip class="util-pointer">
         <v-avatar>
-          <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="trevor">
+          <img
+            :src="author.avatar"
+            alt="trevor">
         </v-avatar>
-        Trevor Hansen
+        {{ author.login }}
       </v-chip>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>favorite</v-icon>
-      </v-btn>
+      <v-chip class="util-pointer">
+          <v-avatar>
+            <v-icon class="green white--text">call_merge</v-icon>
+          </v-avatar>
+        {{ datum.name }}
+      </v-chip>
     </v-card-actions>
   </v-card>
 </template>
@@ -43,6 +48,12 @@
       },
       path: {
         type: String
+      },
+      author: {
+        type: Object
+      },
+      datum: {
+        type: Object
       }
     },
     methods: {
