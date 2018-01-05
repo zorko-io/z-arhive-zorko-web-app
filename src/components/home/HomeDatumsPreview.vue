@@ -1,41 +1,51 @@
 <template>
-  <v-list-tile avatar @click="onClick">
-    <v-list-tile-avatar>
-      <v-icon :class="[iconClass]">{{ icon }}</v-icon>
-    </v-list-tile-avatar>
-    <v-list-tile-content>
-      <v-list-tile-title>{{ title }}</v-list-tile-title>
-      <v-list-tile-sub-title>{{ subtitle }}</v-list-tile-sub-title>
-    </v-list-tile-content>
-    <v-list-tile-action>
-      <v-btn icon ripple>
-        <v-icon color="grey lighten-1">info</v-icon>
-      </v-btn>
-    </v-list-tile-action>
-  </v-list-tile>
+  <v-card>
+    <v-card-title>
+      <div>
+        <div class="headline util-pointer js-HomeDatumsPreview-title"
+             @click="onClick">{{ title }}</div>
+        <span class="grey--text">connected to
+          <a class="grey--text"
+             :href="connection">
+            {{ connection }}
+          </a>
+        </span>
+        <br>
+        <span>{{ description }}</span>
+        <br>
+        <span style="margin-right: 10px">
+          <v-icon>info</v-icon>
+          <a :href="info.site">
+            {{ info.name }}
+          </a>
+        </span>
+        <span class="grey--text">{{ looksCount }} looks created</span>
+      </div>
+    </v-card-title>
+  </v-card>
 </template>
 
 <script>
   export default {
     name: 'HomeDatumsPreview',
     props: {
+      name: {
+        type: String
+      },
       title: {
         type: String
       },
-      subtitle: {
+      connection: {
         type: String
       },
-      name: {
-        type: String,
-        defaults: 'foo'
-      }
-    },
-    computed: {
-      iconClass () {
-        return 'green white--text'
+      description: {
+        type: String
       },
-      icon () {
-        return 'call_merge'
+      info: {
+        type: Object
+      },
+      looksCount: {
+        type: Number
       }
     },
     methods: {
@@ -47,3 +57,10 @@
     }
   }
 </script>
+
+<style scoped>
+  .util-pointer {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>

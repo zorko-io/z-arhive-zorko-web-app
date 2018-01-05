@@ -25,8 +25,12 @@
               <v-list two-line subheader>
                 <HomeDatumsPreview
                   v-for="datum in popularDatums"
+                  :name="datum.name"
                   :title="datum.title"
-                  :subtitle="datum.subtitle"
+                  :connection="datum.connection"
+                  :description="datum.description"
+                  :info="datum.info"
+                  :looksCount="datum.looksCount"
                   @openDatum="onOpenDatum"
                 />
               </v-list>

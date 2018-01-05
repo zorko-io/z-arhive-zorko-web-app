@@ -1,38 +1,24 @@
 [
   {
     "name": "car",
-    "path": "connections/car.connection.json",
     "title": "Cars",
-    "icon": "call_merge",
-    "iconClass": "green white--text",
-    "subtitle": "https://example1.com/data/cats.json",
-    "type": "http",
-    "properties": {
-      "url": "/static/__mocks__/car.json"
-    }
+    "connection": "https://vega.github.io/vega-datasets/data/cars.json",
+    "description": "Common repository for example datasets used by vega related projects",
+    "info": {
+      "name": "vega-datasets",
+      "site": "https://github.com/vega/vega-datasets"
+    },
+    "looksCount": 5
   },
   {
     "name": "population",
-    "path": "connections/population.connection.json",
     "title": "Population",
-    "icon": "call_merge",
-    "iconClass": "green white--text",
-    "subtitle": "https://example2.com/data/population.json",
-    "type": "http",
-    "properties": {
-      "url": "/static/__mocks__/population.json"
-    }
-  },
-  {
-    "name": "weather",
-    "path": "connections/weather.connection.json",
-    "title": "Weather",
-    "icon": "call_merge",
-    "iconClass": "green white--text",
-    "subtitle": "https://example3.com/data/weather.csv",
-    "type": "http",
-    "properties": {
-      "url": "/static/__mocks__/weather.json"
-    }
+    "connection": "https://vega.github.io/vega-datasets/data/population.json",
+    "description": "Common repository for example datasets used by vega related projects",
+    "info": {
+      "name": "vega-datasets",
+      "site": "https://github.com/vega/vega-datasets"
+    },
+    "looksCount": 0
   }
 ]
