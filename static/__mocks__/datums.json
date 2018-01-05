@@ -2,7 +2,7 @@
   {
     "name": "car",
     "title": "Cars",
-    "connection": "https://vega.github.io/vega-datasets/data/cars.json",
+    "connection": "/static/__mocks__/data/cars.json",
     "description": "Common repository for example datasets used by vega related projects",
     "info": {
       "name": "vega-datasets",
@@ -13,7 +13,7 @@
   {
     "name": "population",
     "title": "Population",
-    "connection": "https://vega.github.io/vega-datasets/data/population.json",
+    "connection": "/static/__mocks__/data/population.json",
     "description": "Common repository for example datasets used by vega related projects",
     "info": {
       "name": "vega-datasets",
