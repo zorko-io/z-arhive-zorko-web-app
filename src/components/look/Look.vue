@@ -41,16 +41,10 @@
       }
     },
     created () {
-      const name = this.name
       this.$store.dispatch({
         type: 'look/loadLook',
-        name
+        name: this.name
       })
-    },
-    data () {
-      return {
-        title: 'Look'
-      }
     }
   }
 </script>

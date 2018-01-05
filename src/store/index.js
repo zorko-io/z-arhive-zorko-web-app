@@ -7,6 +7,7 @@ import exploreModule from './explore/module'
 import lookModule from './look/module'
 import homeModule from './home/module'
 import navigationModule from './navigation/module'
+import datumModule from './datum/module'
 
 export default {
   strict: true,
@@ -25,6 +26,9 @@ export default {
       namespaced: true
     }),
     navigation: navigationModule({
+      namespaced: true
+    }),
+    datum: datumModule({
       namespaced: true
     })
   }

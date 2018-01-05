@@ -1,0 +1,17 @@
+{
+  "name": "cars",
+  "title": "Cars",
+  "connection": "/static/__mocks__/data/population.json",
+  "description": "Common repository for example datasets used by vega related projects",
+  "info": {
+    "name": "vega-datasets",
+    "site": "https://github.com/vega/vega-datasets"
+  },
+  "fields":[
+    {"text": "year"},
+    {"text":"age"},
+    {"text":"sex"},
+    {"text":"people"}
+  ],
+  "looks": []
+}
