@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <BaseLoginDialog/>
+    <ZBaseLoginDialog/>
     <template v-if="isLoading">
       <main>
-        <BaseLoader/>
+        <ZBaseLoader/>
       </main>
     </template>
     <template v-if="isAppReady">
@@ -25,16 +25,16 @@
 </template>
 
 <script>
-import BaseLoader from './base/BaseLoader.vue'
+import ZBaseLoader from './base/ZBaseLoader.vue'
 import NavigationMain from './navigation/NavigationMain.vue'
-import BaseLoginDialog from './base/BaseLoginDialog.vue'
+import ZBaseLoginDialog from './base/ZBaseLoginDialog.vue'
 import {mapGetters} from 'vuex'
 
 export default {
   components: {
-    BaseLoader,
+    ZBaseLoader,
     NavigationMain,
-    BaseLoginDialog
+    ZBaseLoginDialog
   },
 
   computed: {

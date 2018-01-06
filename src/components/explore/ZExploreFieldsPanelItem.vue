@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'ExploreFields',
+  name: 'ZExploreFields',
   props: {
     field: {
       type: Object

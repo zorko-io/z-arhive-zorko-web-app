@@ -1,6 +1,6 @@
 import {mount, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
-import HomeDatumsPreview from './HomeDatumsPreview.vue'
+import ZHomeDatumsPreview from './ZHomeDatumsPreview.vue'
 
 describe('HomeDatumsPreview.vue', () => {
   let defaultProps
@@ -20,7 +20,7 @@ describe('HomeDatumsPreview.vue', () => {
   })
 
   it('can initialize', () => {
-    const wrapper = mount(HomeDatumsPreview, {
+    const wrapper = mount(ZHomeDatumsPreview, {
       propsData: defaultProps
     })
 
@@ -28,11 +28,11 @@ describe('HomeDatumsPreview.vue', () => {
   })
 
   it('should emmit `openDatum` when click on title', () => {
-    const wrapper = mount(HomeDatumsPreview, {
+    const wrapper = mount(ZHomeDatumsPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-HomeDatumsPreview-title').trigger('click')
+    wrapper.find('.js-ZHomeDatumsPreview-title').trigger('click')
 
     expect(wrapper.emitted('openDatum')[0][0]).toEqual({
       name: defaultProps.name
@@ -41,7 +41,7 @@ describe('HomeDatumsPreview.vue', () => {
 
   it('has same HTML structure', () => {
     const renderer = createRenderer()
-    const wrapper = shallow(HomeDatumsPreview, {
+    const wrapper = shallow(ZHomeDatumsPreview, {
       propsData: defaultProps
     })
 

@@ -28,7 +28,7 @@
 import {FILTER_VALUES} from '../../constants'
 
 export default {
-  name: 'AnalysisFiltersPanelItem',
+  name: 'ZAnalysisFiltersPanelItem',
   props: {
     filter: {
       type: Object

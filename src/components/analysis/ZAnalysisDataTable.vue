@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: 'AnalysisDataTable',
+  name: 'ZAnalysisDataTable',
   props: {
     fields: {
       type: Array

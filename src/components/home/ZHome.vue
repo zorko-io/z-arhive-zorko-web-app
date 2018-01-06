@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import HomeLooksPreview from './HomeLooksPreview.vue'
-import HomeDatumsPreview from './HomeDatumsPreview.vue'
+import HomeLooksPreview from './ZHomeLooksPreview.vue'
+import HomeDatumsPreview from './ZHomeDatumsPreview.vue'
 
 import { createNamespacedHelpers } from 'vuex'
 const { mapGetters } = createNamespacedHelpers('home/')

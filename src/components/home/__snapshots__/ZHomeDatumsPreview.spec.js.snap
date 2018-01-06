@@ -4,7 +4,7 @@ exports[`HomeDatumsPreview.vue has same HTML structure 1`] = `
 <v-card>
     <v-card-title>
         <div>
-            <div class="headline util-pointer js-HomeDatumsPreview-title">Cars</div> <span class="grey--text">connected to
+            <div class="headline util-pointer js-ZHomeDatumsPreview-title">Cars</div> <span class="grey--text">connected to
         <a href="https://vega.github.io/vega-datasets/data/cars.json" class="grey--text">
           https://vega.github.io/vega-datasets/data/cars.json
         </a></span>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home.vue has same HTML for datums preview 1`] = `
+exports[`ZHome.vue has same HTML for datums preview 1`] = `
 <v-layout>
     <v-flex xs12="">
         <v-container fluid="" grid-list-lg="true">
@@ -22,7 +22,7 @@ exports[`Home.vue has same HTML for datums preview 1`] = `
 </v-layout>
 `;
 
-exports[`Home.vue has same HTML for looks preview 1`] = `
+exports[`ZHome.vue has same HTML for looks preview 1`] = `
 <v-layout>
     <v-flex xs12="">
         <v-container fluid="" grid-list-lg="true">

@@ -1,7 +1,7 @@
 <template>
   <v-card tile>
     <v-card-media
-      class="util-pointer js-HomeLooksPreview-image"
+      class="util-pointer js-ZHomeLooksPreview-image"
       :src="src"
       height="270px"
       width="361px"
@@ -10,7 +10,7 @@
     </v-card-media>
     <v-card-title
       @click="onLookClick"
-      class="util-pointer js-HomeLooksPreview-title-parent"
+      class="util-pointer js-ZHomeLooksPreview-title-parent"
     >
       <div>
         <h6 class="grey--text util-bold">{{ title }}</h6>
@@ -27,7 +27,7 @@
       </v-chip>
       <v-spacer></v-spacer>
       <v-chip
-        class="util-pointer js-HomeLooksPreview-datum"
+        class="util-pointer js-ZHomeLooksPreview-datum"
         @click="onDatumClick">
           <v-avatar>
             <v-icon class="green white--text">call_merge</v-icon>
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'HomeLooksPreview',
+  name: 'ZHomeLooksPreview',
   props: {
     src: {
       type: String

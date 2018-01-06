@@ -1,7 +1,7 @@
 <template>
   <v-layout wrap>
     <v-flex xs3>
-      <DatumFieldsPanel :fields="datum.fields"/>
+      <ZDatumFieldsPanel :fields="datum.fields"/>
     </v-flex>
     <v-flex xs8 style="margin-left: 10px">
 
@@ -10,20 +10,20 @@
 </template>
 
 <script>
-import DatumFieldsPanel from './DatumFieldsPanel.vue'
+import ZDatumFieldsPanel from './ZDatumFieldsPanel.vue'
 
 import {createNamespacedHelpers} from 'vuex'
 const {mapState} = createNamespacedHelpers('datum/')
 
 export default {
-  name: 'Datum',
+  name: 'ZDatum',
   props: {
     name: {
       type: String
     }
   },
   components: {
-    DatumFieldsPanel
+    ZDatumFieldsPanel
   },
   computed: {
     ...mapState(['datum'])

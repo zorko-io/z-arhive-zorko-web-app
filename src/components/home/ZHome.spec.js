@@ -1,9 +1,9 @@
 import {createLocalVue, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
-import Home from './Home.vue'
-import HomeLooksPreview from './HomeLooksPreview.vue'
-import HomeDatumsPreview from './HomeDatumsPreview.vue'
+import ZHome from './ZHome.vue'
+import ZHomeLooksPreview from './ZHomeLooksPreview.vue'
+import ZHomeDatumsPreview from './ZHomeDatumsPreview.vue'
 import module from '../../store/home/module'
 import mockLooks from '../../../static/__mocks__/looks.json'
 import mockDatums from '../../../static/__mocks__/datums.json'
@@ -13,7 +13,7 @@ const homeModule = module({namespaced: true})
 
 localVue.use(Vuex)
 
-describe('Home.vue', () => {
+describe('ZHome.vue', () => {
   let store
   let state
   let propsData
@@ -43,24 +43,24 @@ describe('Home.vue', () => {
 
   it('shows proper amount of looks', () => {
     propsData.looksPreview = true
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData
     })
-    const homeLooksPreviewWrappers = homeWrapper.findAll(HomeLooksPreview)
+    const homeLooksPreviewWrappers = homeWrapper.findAll(ZHomeLooksPreview)
 
     expect(homeLooksPreviewWrappers.length).toEqual(5)
   })
 
   it('shows proper amount of datums', () => {
     propsData.datumsPreview = true
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData
     })
-    const homeDatumsPreviewWrappers = homeWrapper.findAll(HomeDatumsPreview)
+    const homeDatumsPreviewWrappers = homeWrapper.findAll(ZHomeDatumsPreview)
 
     expect(homeDatumsPreviewWrappers.length).toEqual(2)
   })
@@ -71,7 +71,7 @@ describe('Home.vue', () => {
     const $router = {
       push: jest.fn()
     }
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData,
@@ -79,7 +79,7 @@ describe('Home.vue', () => {
         $router
       }
     })
-    const homeLooksPreviewWrapper = homeWrapper.find(HomeLooksPreview)
+    const homeLooksPreviewWrapper = homeWrapper.find(ZHomeLooksPreview)
 
     homeLooksPreviewWrapper.vm.$emit('openLook', lookInfo)
 
@@ -92,7 +92,7 @@ describe('Home.vue', () => {
     const $router = {
       push: jest.fn()
     }
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData,
@@ -100,7 +100,7 @@ describe('Home.vue', () => {
         $router
       }
     })
-    const homeDatumsPreviewWrapper = homeWrapper.find(HomeDatumsPreview)
+    const homeDatumsPreviewWrapper = homeWrapper.find(ZHomeDatumsPreview)
 
     homeDatumsPreviewWrapper.vm.$emit('openDatum', datumInfo)
 
@@ -110,7 +110,7 @@ describe('Home.vue', () => {
   it('has same HTML for looks preview', () => {
     propsData.looksPreview = true
     const renderer = createRenderer()
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData
@@ -125,7 +125,7 @@ describe('Home.vue', () => {
   it('has same HTML for datums preview', () => {
     propsData.datumsPreview = true
     const renderer = createRenderer()
-    const homeWrapper = shallow(Home, {
+    const homeWrapper = shallow(ZHome, {
       store,
       localVue,
       propsData

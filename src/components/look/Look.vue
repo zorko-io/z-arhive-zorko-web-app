@@ -1,7 +1,7 @@
 <template>
   <v-layout wrap>
     <v-flex xs12>
-      <Analysis
+      <ZAnalysis
         :look="look"
       />
     </v-flex>
@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import Analysis from '../analysis/Analysis'
+import ZAnalysis from '../analysis/ZAnalysis'
 
 import {createNamespacedHelpers} from 'vuex'
 const {mapState} = createNamespacedHelpers('look/')
 
 export default {
-  name: 'Look',
+  name: 'ZLook',
   components: {
-    Analysis
+    ZAnalysis
   },
   props: {
     name: {

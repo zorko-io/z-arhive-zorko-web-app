@@ -1,8 +1,8 @@
-import Home from '../components/home/Home.vue'
-import Explore from '../components/explore/Explore.vue'
-import Account from '../components/account/Account.vue'
+import Home from '../components/home/ZHome.vue'
+import ZExplore from '../components/explore/ZExplore.vue'
+import ZAccount from '../components/account/ZAccount.vue'
 import Look from '../components/look/Look.vue'
-import Datum from '../components/datum/Datum.vue'
+import ZDatum from '../components/datum/ZDatum.vue'
 
 import NavigationMainToolbarLookControls from '../components/navigation/NavigationMainToolbarLookControls.vue'
 import NavigationMainToolbarExploreControls from '../components/navigation/NavigationMainToolbarExploreControls.vue'
@@ -45,7 +45,7 @@ export default {
     {
       path: '/datums/:name',
       components: {
-        default: Datum,
+        default: ZDatum,
         controls: NavigationMainToolbarLookControls
       },
       props: {
@@ -60,7 +60,7 @@ export default {
     {
       path: '/explore/:lookName',
       components: {
-        default: Explore,
+        default: ZExplore,
         controls: NavigationMainToolbarExploreControls
       },
       props: {
@@ -74,7 +74,7 @@ export default {
     },
     {
       path: '/account',
-      component: Account,
+      component: ZAccount,
       meta: {title: 'Account'}
     },
     {

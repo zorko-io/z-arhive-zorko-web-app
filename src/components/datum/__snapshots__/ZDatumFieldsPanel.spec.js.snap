@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DatumFieldsPanel.vue has same HTML structure 1`] = `
+exports[`ZDatumFieldsPanel.vue has same HTML structure 1`] = `
 <v-card>
     <v-card-text>
         <v-subheader>Fields</v-subheader>

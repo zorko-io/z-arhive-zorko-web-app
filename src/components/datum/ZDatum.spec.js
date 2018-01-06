@@ -1,8 +1,8 @@
 import {createLocalVue, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
-import Datum from './Datum.vue'
-import DatumFieldsPanel from './DatumFieldsPanel.vue'
+import ZDatum from './ZDatum.vue'
+import ZDatumFieldsPanel from './ZDatumFieldsPanel.vue'
 import module from '../../store/datum/module'
 
 const localVue = createLocalVue()
@@ -10,7 +10,7 @@ const datumModule = module({namespaced: true})
 
 localVue.use(Vuex)
 
-describe('Datum.vue', () => {
+describe('ZDatum.vue', () => {
   let store
   let actions
 
@@ -30,20 +30,20 @@ describe('Datum.vue', () => {
   })
 
   it('initialize', () => {
-    const wrapper = shallow(Datum, {store, localVue})
+    const wrapper = shallow(ZDatum, {store, localVue})
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('loads datum on create', () => {
-    shallow(Datum, {store, localVue})
+    shallow(ZDatum, {store, localVue})
 
     expect(actions.loadDatum).toHaveBeenCalled()
   })
 
   it('has same shallow HTML structure', () => {
     const renderer = createRenderer()
-    const wrapper = shallow(Datum, {
+    const wrapper = shallow(ZDatum, {
       store,
       localVue
     })
@@ -54,7 +54,7 @@ describe('Datum.vue', () => {
     })
   })
 
-  it('passes fields to DatumFieldsPanel', () => {
+  it('passes fields to ZDatumFieldsPanel', () => {
     const fields = [
       {
         'text': 'Name'
@@ -82,12 +82,12 @@ describe('Datum.vue', () => {
         }
       }
     })
-    const datumWrapper = shallow(Datum, {
+    const datumWrapper = shallow(ZDatum, {
       store,
       localVue
     })
 
-    const datumFieldsPanelWrapper = datumWrapper.find(DatumFieldsPanel)
+    const datumFieldsPanelWrapper = datumWrapper.find(ZDatumFieldsPanel)
 
     expect(datumFieldsPanelWrapper.vm.$props.fields).toEqual(fields)
   })

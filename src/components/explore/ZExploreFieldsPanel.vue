@@ -3,7 +3,7 @@
     <v-card-text>
       <v-subheader>Dimentions</v-subheader>
       <v-list>
-        <ExploreFieldsPanelItem
+        <ZExploreFieldsPanelItem
           v-for="dimention in dimentions"
           :field="dimention"
           :key="dimention.text"
@@ -13,7 +13,7 @@
       </v-list>
       <v-subheader>Mesures</v-subheader>
       <v-list>
-        <ExploreFieldsPanelItem
+        <ZExploreFieldsPanelItem
           v-for="measure in measures"
           :field="measure"
           :key="measure.text"
@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import ExploreFieldsPanelItem from './ExploreFieldsPanelItem'
+import ZExploreFieldsPanelItem from './ZExploreFieldsPanelItem'
 
 export default {
-  name: 'ExploreFieldsPanel',
+  name: 'ZExploreFieldsPanel',
   components: {
-    ExploreFieldsPanelItem
+    ZExploreFieldsPanelItem
   },
   props: {
     dimentions: {

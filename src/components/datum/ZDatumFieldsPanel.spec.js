@@ -1,8 +1,8 @@
 import {mount, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
-import DatumFieldsPanel from './DatumFieldsPanel.vue'
+import ZDatumFieldsPanel from './ZDatumFieldsPanel.vue'
 
-describe('DatumFieldsPanel.vue', () => {
+describe('ZDatumFieldsPanel.vue', () => {
   let defaultProps
 
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('DatumFieldsPanel.vue', () => {
   })
 
   it('can initialize', () => {
-    const wrapper = mount(DatumFieldsPanel, {
+    const wrapper = mount(ZDatumFieldsPanel, {
       propsData: defaultProps
     })
 
@@ -31,7 +31,7 @@ describe('DatumFieldsPanel.vue', () => {
 
   it('has same HTML structure', () => {
     const renderer = createRenderer()
-    const wrapper = shallow(DatumFieldsPanel, {
+    const wrapper = shallow(ZDatumFieldsPanel, {
       propsData: defaultProps
     })
 

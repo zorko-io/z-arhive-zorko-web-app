@@ -1,8 +1,8 @@
 import {mount, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
-import HomeLooksPreview from './HomeLooksPreview.vue'
+import ZHomeLooksPreview from './ZHomeLooksPreview.vue'
 
-describe('HomeLooksPreview.vue', () => {
+describe('ZHomeLooksPreview.vue', () => {
   let defaultProps
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('HomeLooksPreview.vue', () => {
   })
 
   it('initialize', () => {
-    const wrapper = mount(HomeLooksPreview, {
+    const wrapper = mount(ZHomeLooksPreview, {
       propsData: defaultProps
     })
 
@@ -29,11 +29,11 @@ describe('HomeLooksPreview.vue', () => {
   })
 
   it('emits `openLook` when click on title', () => {
-    const wrapper = mount(HomeLooksPreview, {
+    const wrapper = mount(ZHomeLooksPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-HomeLooksPreview-title-parent').trigger('click')
+    wrapper.find('.js-ZHomeLooksPreview-title-parent').trigger('click')
 
     expect(wrapper.emitted('openLook')[0][0]).toEqual({
       title: defaultProps.title,
@@ -42,11 +42,11 @@ describe('HomeLooksPreview.vue', () => {
   })
 
   it('emits `openLook` when click on image', () => {
-    const wrapper = mount(HomeLooksPreview, {
+    const wrapper = mount(ZHomeLooksPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-HomeLooksPreview-image').trigger('click')
+    wrapper.find('.js-ZHomeLooksPreview-image').trigger('click')
 
     expect(wrapper.emitted('openLook')[0][0]).toEqual({
       title: defaultProps.title,
@@ -56,11 +56,11 @@ describe('HomeLooksPreview.vue', () => {
   })
 
   it('emits `openDatum` when click in datum', () => {
-    const wrapper = mount(HomeLooksPreview, {
+    const wrapper = mount(ZHomeLooksPreview, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-HomeLooksPreview-datum').trigger('click')
+    wrapper.find('.js-ZHomeLooksPreview-datum').trigger('click')
 
     expect(wrapper.emitted('openDatum')[0][0]).toEqual({
       name: defaultProps.datum.name
@@ -69,7 +69,7 @@ describe('HomeLooksPreview.vue', () => {
 
   it('has same HTML structure', () => {
     const renderer = createRenderer()
-    const wrapper = shallow(HomeLooksPreview, {
+    const wrapper = shallow(ZHomeLooksPreview, {
       propsData: defaultProps
     })
 

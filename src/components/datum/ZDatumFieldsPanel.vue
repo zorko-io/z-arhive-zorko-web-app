@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'DatumFieldsPanel',
+  name: 'ZDatumFieldsPanel',
   props: {
     fields: {
       type: Array

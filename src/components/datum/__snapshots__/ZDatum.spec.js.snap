@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Datum.vue has same shallow HTML structure 1`] = `
+exports[`ZDatum.vue has same shallow HTML structure 1`] = `
 <v-layout wrap="">
     <v-flex xs3="">
         <!---->

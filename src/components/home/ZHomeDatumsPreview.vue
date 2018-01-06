@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div>
-        <div class="headline util-pointer js-HomeDatumsPreview-title"
+        <div class="headline util-pointer js-ZHomeDatumsPreview-title"
              @click="onClick">{{ title }}</div>
         <span class="grey--text">connected to
           <a class="grey--text"
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'HomeDatumsPreview',
+  name: 'ZHomeDatumsPreview',
   props: {
     name: {
       type: String

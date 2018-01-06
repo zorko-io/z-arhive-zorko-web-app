@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import AnalysisDataTable from './AnalysisDataTable'
-import AnalysisVisualization from './AnalysisVisualization'
-import AnalysisFiltersPanel from './AnalysisFiltersPanel'
+import AnalysisDataTable from './ZAnalysisDataTable'
+import AnalysisVisualization from './ZAnalysisVisualization'
+import AnalysisFiltersPanel from './ZAnalysisFiltersPanel'
 
 export default {
-  name: 'Analysis',
+  name: 'ZAnalysis',
   props: {
     look: {
       type: Object

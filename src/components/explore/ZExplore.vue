@@ -1,7 +1,7 @@
 <template>
   <v-layout wrap>
     <v-flex xs3>
-      <ExploreFieldsPanel
+      <ZExploreFieldsPanel
         :dimentions="dimentions"
         :measures="measures"
         @changeFieldSelection="onFieldSelectionChange"
@@ -9,7 +9,7 @@
       />
     </v-flex>
     <v-flex xs8 style="margin-left: 10px">
-      <Analysis
+      <ZAnalysis
         :look="look"
         @changeFilterCondition="onChangeFilterCondition"
         @changeFilterValue="onChangeFilterValue"
@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import Analysis from '../analysis/Analysis'
-import ExploreFieldsPanel from './ExploreFieldsPanel'
+import ZAnalysis from '../analysis/ZAnalysis'
+import ZExploreFieldsPanel from './ZExploreFieldsPanel'
 
 import {createNamespacedHelpers} from 'vuex'
 const {mapGetters} = createNamespacedHelpers('explore/')
@@ -28,8 +28,8 @@ const {mapGetters} = createNamespacedHelpers('explore/')
 export default {
   name: 'Explore',
   components: {
-    ExploreFieldsPanel,
-    Analysis
+    ZExploreFieldsPanel,
+    ZAnalysis
   },
   props: {
     lookName: {

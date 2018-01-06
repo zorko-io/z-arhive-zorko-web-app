@@ -2,7 +2,7 @@
   <v-card color="grey lighten-4" flat>
     <v-card-text>
       <v-container fluid>
-        <AnalysisFiltersPanelItem
+        <ZAnalysisFiltersPanelItem
           v-for="filter in filters"
           :key="filter.text"
           :filter="filter"
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import AnalysisFiltersPanelItem from './AnalysisFiltersPanelItem'
+import ZAnalysisFiltersPanelItem from './ZAnalysisFiltersPanelItem'
 
 export default {
-  name: 'AnalysisFiltersPanel',
+  name: 'ZAnalysisFiltersPanel',
   components: {
-    AnalysisFiltersPanelItem
+    ZAnalysisFiltersPanelItem
   },
   props: {
     filters: {

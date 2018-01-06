@@ -16,7 +16,7 @@ import VueVega from 'vue-vega'
 const {VegaLiteComponent} = VueVega
 
 export default {
-  name: 'AnalysisVisualization',
+  name: 'ZAnalysisVisualization',
   components: {
     Visualization: VegaLiteComponent
   },
