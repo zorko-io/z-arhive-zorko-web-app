@@ -25,6 +25,7 @@
               <v-list two-line subheader>
                 <HomeDatumsPreview
                   v-for="datum in popularDatums"
+                  :key="datum.name"
                   :name="datum.name"
                   :title="datum.title"
                   :connection="datum.connection"
@@ -43,44 +44,44 @@
 </template>
 
 <script>
-  import HomeLooksPreview from './HomeLooksPreview.vue'
-  import HomeDatumsPreview from './HomeDatumsPreview.vue'
+import HomeLooksPreview from './HomeLooksPreview.vue'
+import HomeDatumsPreview from './HomeDatumsPreview.vue'
 
-  import { createNamespacedHelpers } from 'vuex'
-  const { mapGetters } = createNamespacedHelpers('home/')
+import { createNamespacedHelpers } from 'vuex'
+const { mapGetters } = createNamespacedHelpers('home/')
 
-  export default {
-    name: 'Home',
-    components: {
-      HomeLooksPreview,
-      HomeDatumsPreview
+export default {
+  name: 'Home',
+  components: {
+    HomeLooksPreview,
+    HomeDatumsPreview
+  },
+  props: {
+    looksPreview: {
+      type: Boolean
     },
-    props: {
-      looksPreview: {
-        type: Boolean
-      },
-      datumsPreview: {
-        type: Boolean
-      }
+    datumsPreview: {
+      type: Boolean
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'popularLooks',
+      'popularDatums'
+    ])
+  },
+  methods: {
+    onOpenLook (item) {
+      this.$router.push(item.path)
     },
-    computed: {
-      ...mapGetters([
-        'popularLooks',
-        'popularDatums'
-      ])
-    },
-    methods: {
-      onOpenLook (item) {
-        this.$router.push(item.path)
-      },
-      onOpenDatum ({name}) {
-        this.$router.push('/datums/' + name)
-      }
-    },
-    data () {
-      return {
-        size: 'lg'
-      }
+    onOpenDatum ({name}) {
+      this.$router.push('/datums/' + name)
+    }
+  },
+  data () {
+    return {
+      size: 'lg'
     }
   }
+}
 </script>

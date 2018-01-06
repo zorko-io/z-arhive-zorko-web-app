@@ -16,30 +16,30 @@
 </template>
 
 <script>
-  import AnalysisFiltersPanelItem from './AnalysisFiltersPanelItem'
+import AnalysisFiltersPanelItem from './AnalysisFiltersPanelItem'
 
-  export default {
-    name: 'AnalysisFiltersPanel',
-    components: {
-      AnalysisFiltersPanelItem
+export default {
+  name: 'AnalysisFiltersPanel',
+  components: {
+    AnalysisFiltersPanelItem
+  },
+  props: {
+    filters: {
+      type: Array
+    }
+  },
+  methods: {
+    onConditionChange (field, condition) {
+      this.$emit('changeFilterCondition', field, condition)
     },
-    props: {
-      filters: {
-        type: Array
-      }
+    onValueChange (field, value) {
+      this.$emit('changeFilterValue', field, value)
     },
-    methods: {
-      onConditionChange (field, condition) {
-        this.$emit('changeFilterCondition', field, condition)
-      },
-      onValueChange (field, value) {
-        this.$emit('changeFilterValue', field, value)
-      },
-      applyFilters () {
-        this.$store.commit({
-          type: 'explore/applyFilters'
-        })
-      }
+    applyFilters () {
+      this.$store.commit({
+        type: 'explore/applyFilters'
+      })
     }
   }
+}
 </script>

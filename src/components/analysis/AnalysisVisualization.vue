@@ -12,23 +12,23 @@
 </template>
 
 <script>
-  import VueVega from 'vue-vega'
-  const {VegaLiteComponent} = VueVega
+import VueVega from 'vue-vega'
+const {VegaLiteComponent} = VueVega
 
-  export default {
-    name: 'AnalysisVisualization',
-    components: {
-      Visualization: VegaLiteComponent
-    },
-    props: {
-      spec: {
-        type: Object
-      }
-    },
-    computed: {
-      isSpecAvailable () {
-        return Boolean(this.spec)
-      }
+export default {
+  name: 'AnalysisVisualization',
+  components: {
+    Visualization: VegaLiteComponent
+  },
+  props: {
+    spec: {
+      type: Object
+    }
+  },
+  computed: {
+    isSpecAvailable () {
+      return Boolean(this.spec)
     }
   }
+}
 </script>

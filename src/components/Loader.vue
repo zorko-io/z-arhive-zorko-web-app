@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  export default {
-    name: 'AppLoading'
-  }
+export default {
+  name: 'AppLoading'
+}
 </script>
 

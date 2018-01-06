@@ -20,38 +20,38 @@
 </template>
 
 <script>
-  const GITHUB_PROVIDER = 'github'
+const GITHUB_PROVIDER = 'github'
 
-  export default {
-    name: 'LoginDialog',
-    computed: {
-      shouldShowLoginDialog: {
-        get () {
-          return this.$store.getters.shouldShowLoginDialog
-        },
-        set (value) {
-          if (!value) {
-            this.$store.commit({
-              type: 'rejectLogin'
-            })
-          }
+export default {
+  name: 'LoginDialog',
+  computed: {
+    shouldShowLoginDialog: {
+      get () {
+        return this.$store.getters.shouldShowLoginDialog
+      },
+      set (value) {
+        if (!value) {
+          this.$store.commit({
+            type: 'rejectLogin'
+          })
         }
       }
-    },
-    data () {
-      return {
-        title: 'Log In',
-        subtitle: 'Saving or sharing look require authentification',
-        callToActionText: 'Log in with Github'
-      }
-    },
-    methods: {
-      login () {
-        this.$store.dispatch({
-          type: 'login',
-          provider: GITHUB_PROVIDER
-        })
-      }
+    }
+  },
+  data () {
+    return {
+      title: 'Log In',
+      subtitle: 'Saving or sharing look require authentification',
+      callToActionText: 'Log in with Github'
+    }
+  },
+  methods: {
+    login () {
+      this.$store.dispatch({
+        type: 'login',
+        provider: GITHUB_PROVIDER
+      })
     }
   }
+}
 </script>

@@ -39,39 +39,39 @@
 </template>
 
 <script>
-  export default {
-    name: 'HomeLooksPreview',
-    props: {
-      src: {
-        type: String
-      },
-      title: {
-        type: String
-      },
-      path: {
-        type: String
-      },
-      author: {
-        type: Object
-      },
-      datum: {
-        type: Object
-      }
+export default {
+  name: 'HomeLooksPreview',
+  props: {
+    src: {
+      type: String
     },
-    methods: {
-      onLookClick () {
-        this.$emit('openLook', {
-          path: this.path,
-          title: this.title
-        })
-      },
-      onDatumClick () {
-        this.$emit('openDatum', {
-          name: this.datum.name
-        })
-      }
+    title: {
+      type: String
+    },
+    path: {
+      type: String
+    },
+    author: {
+      type: Object
+    },
+    datum: {
+      type: Object
+    }
+  },
+  methods: {
+    onLookClick () {
+      this.$emit('openLook', {
+        path: this.path,
+        title: this.title
+      })
+    },
+    onDatumClick () {
+      this.$emit('openDatum', {
+        name: this.datum.name
+      })
     }
   }
+}
 </script>
 
 <style scoped>

@@ -26,36 +26,36 @@
 </template>
 
 <script>
-  export default {
-    name: 'HomeDatumsPreview',
-    props: {
-      name: {
-        type: String
-      },
-      title: {
-        type: String
-      },
-      connection: {
-        type: String
-      },
-      description: {
-        type: String
-      },
-      info: {
-        type: Object
-      },
-      looksCount: {
-        type: Number
-      }
+export default {
+  name: 'HomeDatumsPreview',
+  props: {
+    name: {
+      type: String
     },
-    methods: {
-      onClick () {
-        this.$emit('openDatum', {
-          name: this.name
-        })
-      }
+    title: {
+      type: String
+    },
+    connection: {
+      type: String
+    },
+    description: {
+      type: String
+    },
+    info: {
+      type: Object
+    },
+    looksCount: {
+      type: Number
+    }
+  },
+  methods: {
+    onClick () {
+      this.$emit('openDatum', {
+        name: this.name
+      })
     }
   }
+}
 </script>
 
 <style scoped>

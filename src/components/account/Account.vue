@@ -44,27 +44,27 @@
 </template>
 
 <script>
-  const apiBaseUri = process.env.ZORKO_API_BASE_URI
+const apiBaseUri = process.env.ZORKO_API_BASE_URI
 
-  export default {
-    name: 'Account',
-    computed: {
-      login () {
-        return this.$store.state.account.login
-      },
-      fullName () {
-        return this.$store.state.account.name
-      }
+export default {
+  name: 'Account',
+  computed: {
+    login () {
+      return this.$store.state.account.login
     },
-    methods: {
-      doLogout () {
-        location.href = apiBaseUri + '/auth/logout'
-      }
-    },
-    data () {
-      return {
-        title: 'Profile'
-      }
+    fullName () {
+      return this.$store.state.account.name
+    }
+  },
+  methods: {
+    doLogout () {
+      location.href = apiBaseUri + '/auth/logout'
+    }
+  },
+  data () {
+    return {
+      title: 'Profile'
     }
   }
+}
 </script>

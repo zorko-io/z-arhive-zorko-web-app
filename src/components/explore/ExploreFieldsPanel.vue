@@ -26,30 +26,30 @@
 </template>
 
 <script>
-  import ExploreFieldsPanelItem from './ExploreFieldsPanelItem'
+import ExploreFieldsPanelItem from './ExploreFieldsPanelItem'
 
-  export default {
-    name: 'ExploreFieldsPanel',
-    components: {
-      ExploreFieldsPanelItem
+export default {
+  name: 'ExploreFieldsPanel',
+  components: {
+    ExploreFieldsPanelItem
+  },
+  props: {
+    dimentions: {
+      type: Array,
+      defaults: () => []
     },
-    props: {
-      dimentions: {
-        type: Array,
-        defaults: () => []
-      },
-      measures: {
-        type: Array,
-        defaults: () => []
-      }
+    measures: {
+      type: Array,
+      defaults: () => []
+    }
+  },
+  methods: {
+    onSelectionChange (field) {
+      this.$emit('changeFieldSelection', field)
     },
-    methods: {
-      onSelectionChange (field) {
-        this.$emit('changeFieldSelection', field)
-      },
-      onFilterChange (field) {
-        this.$emit('changeFilter', field)
-      }
+    onFilterChange (field) {
+      this.$emit('changeFilter', field)
     }
   }
+}
 </script>

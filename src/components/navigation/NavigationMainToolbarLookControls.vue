@@ -3,18 +3,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'NavigationMainToolbarLookControls',
-    props: {
-      name: {
-        type: String
-      }
-    },
-    computed: {
-      pathToExplore () {
-        return '/explore/' + this.name
-      }
+export default {
+  name: 'NavigationMainToolbarLookControls',
+  props: {
+    name: {
+      type: String
+    }
+  },
+  computed: {
+    pathToExplore () {
+      return '/explore/' + this.name
     }
   }
+}
 </script>
 

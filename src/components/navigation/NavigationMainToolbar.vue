@@ -14,18 +14,18 @@
 </template>
 
 <script>
-  export default {
-    name: 'NavigationMainToolbar',
-    props: {
-      title: {
-        type: String
-      }
-    },
-    methods: {
-      onSideIconClick () {
-        this.$emit('toggleDrawerVisibility')
-      }
+export default {
+  name: 'NavigationMainToolbar',
+  props: {
+    title: {
+      type: String
+    }
+  },
+  methods: {
+    onSideIconClick () {
+      this.$emit('toggleDrawerVisibility')
     }
   }
+}
 </script>
 

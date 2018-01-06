@@ -19,87 +19,87 @@
 </template>
 
 <script>
-  import Analysis from '../analysis/Analysis'
-  import ExploreFieldsPanel from './ExploreFieldsPanel'
+import Analysis from '../analysis/Analysis'
+import ExploreFieldsPanel from './ExploreFieldsPanel'
 
-  import {createNamespacedHelpers} from 'vuex'
-  const {mapGetters} = createNamespacedHelpers('explore/')
+import {createNamespacedHelpers} from 'vuex'
+const {mapGetters} = createNamespacedHelpers('explore/')
 
-  export default {
-    name: 'Explore',
-    components: {
-      ExploreFieldsPanel,
-      Analysis
-    },
-    props: {
-      lookName: {
-        type: String
-      }
-    },
-    computed: {
-      ...mapGetters([
-        'dimentions',
-        'measures',
-        'selectedFields'
-      ]),
-      spec () {
-        return this.$store.state.explore.spec
-      },
-      data () {
-        return this.$store.state.explore.data
-      },
-      filters () {
-        return this.$store.state.explore.filters
-      },
-      look () {
-        return {
-          spec: this.spec,
-          data: this.data,
-          filters: this.filters,
-          fields: this.selectedFields
-        }
-      }
-    },
-    methods: {
-      onFieldSelectionChange (field) {
-        this.$store.commit({
-          type: 'explore/toggleFieldSelection',
-          field
-        })
-      },
-      onFilterChange (field) {
-        this.$store.commit({
-          type: 'explore/toggleFilter',
-          field
-        })
-      },
-      onChangeFilterCondition (filter, condition) {
-        this.$store.commit({
-          type: 'explore/setFilterCondition',
-          filter,
-          condition
-        })
-      },
-      onChangeFilterValue (filter, value) {
-        this.$store.commit({
-          type: 'explore/setFilterValue',
-          filter,
-          value
-        })
-      }
-    },
-    created () {
-      const lookName = this.lookName
-      this.$store.dispatch({
-        type: 'explore/loadData',
-        lookName
-      })
+export default {
+  name: 'Explore',
+  components: {
+    ExploreFieldsPanel,
+    Analysis
+  },
+  props: {
+    lookName: {
+      type: String
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'dimentions',
+      'measures',
+      'selectedFields'
+    ]),
+    spec () {
+      return this.$store.state.explore.spec
     },
     data () {
+      return this.$store.state.explore.data
+    },
+    filters () {
+      return this.$store.state.explore.filters
+    },
+    look () {
       return {
-        title: 'Explore'
+        spec: this.spec,
+        data: this.data,
+        filters: this.filters,
+        fields: this.selectedFields
       }
     }
+  },
+  methods: {
+    onFieldSelectionChange (field) {
+      this.$store.commit({
+        type: 'explore/toggleFieldSelection',
+        field
+      })
+    },
+    onFilterChange (field) {
+      this.$store.commit({
+        type: 'explore/toggleFilter',
+        field
+      })
+    },
+    onChangeFilterCondition (filter, condition) {
+      this.$store.commit({
+        type: 'explore/setFilterCondition',
+        filter,
+        condition
+      })
+    },
+    onChangeFilterValue (filter, value) {
+      this.$store.commit({
+        type: 'explore/setFilterValue',
+        filter,
+        value
+      })
+    }
+  },
+  created () {
+    const lookName = this.lookName
+    this.$store.dispatch({
+      type: 'explore/loadData',
+      lookName
+    })
+  },
+  data () {
+    return {
+      title: 'Explore'
+    }
   }
+}
 </script>
 

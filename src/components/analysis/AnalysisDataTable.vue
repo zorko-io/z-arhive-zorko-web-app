@@ -19,15 +19,15 @@
 </template>
 
 <script>
-  export default {
-    name: 'AnalysisDataTable',
-    props: {
-      fields: {
-        type: Array
-      },
-      data: {
-        type: Array
-      }
+export default {
+  name: 'AnalysisDataTable',
+  props: {
+    fields: {
+      type: Array
+    },
+    data: {
+      type: Array
     }
   }
+}
 </script>

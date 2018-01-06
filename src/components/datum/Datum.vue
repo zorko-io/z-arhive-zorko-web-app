@@ -10,30 +10,30 @@
 </template>
 
 <script>
-  import DatumFieldsPanel from './DatumFieldsPanel.vue'
+import DatumFieldsPanel from './DatumFieldsPanel.vue'
 
-  import {createNamespacedHelpers} from 'vuex'
-  const {mapState} = createNamespacedHelpers('datum/')
+import {createNamespacedHelpers} from 'vuex'
+const {mapState} = createNamespacedHelpers('datum/')
 
-  export default {
-    name: 'Datum',
-    props: {
-      name: {
-        type: String
-      }
-    },
-    components: {
-      DatumFieldsPanel
-    },
-    computed: {
-      ...mapState(['datum'])
-    },
-    created () {
-      this.$store.dispatch({
-        type: 'datum/loadDatum',
-        name: this.name
-      })
+export default {
+  name: 'Datum',
+  props: {
+    name: {
+      type: String
     }
+  },
+  components: {
+    DatumFieldsPanel
+  },
+  computed: {
+    ...mapState(['datum'])
+  },
+  created () {
+    this.$store.dispatch({
+      type: 'datum/loadDatum',
+      name: this.name
+    })
   }
+}
 </script>
 

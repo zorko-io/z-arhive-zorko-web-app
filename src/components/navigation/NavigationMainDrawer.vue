@@ -34,58 +34,58 @@
 </template>
 
 <script>
-  import NavigationMainDrawerItem from './NavigationMainDrawerItem.vue'
+import NavigationMainDrawerItem from './NavigationMainDrawerItem.vue'
 
-  export default {
-    name: 'NavigationMainDrawer',
-    components: {
-      NavigationMainDrawerItem
+export default {
+  name: 'NavigationMainDrawer',
+  components: {
+    NavigationMainDrawerItem
+  },
+  props: {
+    visibility: {
+      type: Boolean
     },
-    props: {
-      visibility: {
-        type: Boolean
-      },
-      items: {
-        type: Array
-      },
-      title: {
-        type: String
-      },
-      fullscreen: {
-        type: Boolean
-      }
+    items: {
+      type: Array
     },
-    computed: {
-      drawer: {
-        get () {
-          return this.visibility
-        },
-        set (value) {
-          this.$emit('changeDrawerVisibility', value)
-        }
-      }
+    title: {
+      type: String
     },
-    data () {
-      return {
-        drawerValue: false
-      }
-    },
-    methods: {
-      onItemClick () {
-        this.drawerValue = false
-
-        this._forceOverlayRemoval()
+    fullscreen: {
+      type: Boolean
+    }
+  },
+  computed: {
+    drawer: {
+      get () {
+        return this.visibility
       },
-
-      onDrawerInput (value) {
-        this.drawerValue = value
-      },
-
-      _forceOverlayRemoval () {
-        const $navDrawer = this.$refs.navDrawer
-        $navDrawer.removeOverlay()
+      set (value) {
+        this.$emit('changeDrawerVisibility', value)
       }
     }
+  },
+  data () {
+    return {
+      drawerValue: false
+    }
+  },
+  methods: {
+    onItemClick () {
+      this.drawerValue = false
+
+      this._forceOverlayRemoval()
+    },
+
+    onDrawerInput (value) {
+      this.drawerValue = value
+    },
+
+    _forceOverlayRemoval () {
+      const $navDrawer = this.$refs.navDrawer
+      $navDrawer.removeOverlay()
+    }
   }
+}
 </script>
 

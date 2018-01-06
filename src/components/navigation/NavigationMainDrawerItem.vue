@@ -10,19 +10,19 @@
 </template>
 
 <script>
-  export default {
-    name: 'NavigationMainDrawerItem',
-    props: {
-      path: {
-        type: String
-      },
-      icon: {
-        type: String
-      },
-      title: {
-        type: String
-      }
+export default {
+  name: 'NavigationMainDrawerItem',
+  props: {
+    path: {
+      type: String
+    },
+    icon: {
+      type: String
+    },
+    title: {
+      type: String
     }
   }
+}
 </script>
 

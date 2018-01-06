@@ -19,35 +19,35 @@
 </template>
 
 <script>
-  export default {
-    name: 'ExploreFields',
-    props: {
-      field: {
-        type: Object
-      }
+export default {
+  name: 'ExploreFields',
+  props: {
+    field: {
+      type: Object
+    }
+  },
+  computed: {
+    selectionClass () {
+      return this.field.selected ? 'selected' : 'unselected'
     },
-    computed: {
-      selectionClass () {
-        return this.field.selected ? 'selected' : 'unselected'
-      },
-      label () {
-        return this.field.filtered ? '- Filter' : '+ Filter'
-      }
+    label () {
+      return this.field.filtered ? '- Filter' : '+ Filter'
+    }
+  },
+  methods: {
+    toggleSelection () {
+      this.$emit('toggleSelection', this.field)
     },
-    methods: {
-      toggleSelection () {
-        this.$emit('toggleSelection', this.field)
-      },
-      toggleFilter () {
-        this.$emit('toggleFilter', this.field)
-      }
-    },
-    data () {
-      return {
-        icon: 'justify'
-      }
+    toggleFilter () {
+      this.$emit('toggleFilter', this.field)
+    }
+  },
+  data () {
+    return {
+      icon: 'justify'
     }
   }
+}
 </script>
 
 <style scoped>

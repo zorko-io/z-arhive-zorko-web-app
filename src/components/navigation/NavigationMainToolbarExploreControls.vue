@@ -5,16 +5,16 @@
 </template>
 
 <script>
-  export default {
-    name: 'NavigationMainToolbarExploreControls',
-    methods: {
-      save () {
-        this.$store.dispatch({
-          type: 'explore/save',
-          look: {}
-        })
-      }
+export default {
+  name: 'NavigationMainToolbarExploreControls',
+  methods: {
+    save () {
+      this.$store.dispatch({
+        type: 'explore/save',
+        look: {}
+      })
     }
   }
+}
 </script>
 

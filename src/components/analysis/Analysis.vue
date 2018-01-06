@@ -32,29 +32,29 @@
 </template>
 
 <script>
-  import AnalysisDataTable from './AnalysisDataTable'
-  import AnalysisVisualization from './AnalysisVisualization'
-  import AnalysisFiltersPanel from './AnalysisFiltersPanel'
+import AnalysisDataTable from './AnalysisDataTable'
+import AnalysisVisualization from './AnalysisVisualization'
+import AnalysisFiltersPanel from './AnalysisFiltersPanel'
 
-  export default {
-    name: 'Analysis',
-    props: {
-      look: {
-        type: Object
-      }
+export default {
+  name: 'Analysis',
+  props: {
+    look: {
+      type: Object
+    }
+  },
+  components: {
+    AnalysisFiltersPanel,
+    AnalysisVisualization,
+    AnalysisDataTable
+  },
+  methods: {
+    onChangeFilterCondition (filter, condition) {
+      this.$emit('changeFilterCondition', filter, condition)
     },
-    components: {
-      AnalysisFiltersPanel,
-      AnalysisVisualization,
-      AnalysisDataTable
-    },
-    methods: {
-      onChangeFilterCondition (filter, condition) {
-        this.$emit('changeFilterCondition', filter, condition)
-      },
-      onChangeFilterValue (filter, value) {
-        this.$emit('changeFilterValue', filter, value)
-      }
+    onChangeFilterValue (filter, value) {
+      this.$emit('changeFilterValue', filter, value)
     }
   }
+}
 </script>
