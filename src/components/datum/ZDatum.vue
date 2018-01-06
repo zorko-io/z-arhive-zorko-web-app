@@ -4,12 +4,13 @@
       <ZDatumFieldsPanel :fields="datum.fields"/>
     </v-flex>
     <v-flex xs8 style="margin-left: 10px">
-
+      <ZBaseLooks :items="looks"/>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import ZBaseLooks from '../base/ZBaseLooks.vue'
 import ZDatumFieldsPanel from './ZDatumFieldsPanel.vue'
 
 import {createNamespacedHelpers} from 'vuex'
@@ -23,10 +24,14 @@ export default {
     }
   },
   components: {
+    ZBaseLooks,
     ZDatumFieldsPanel
   },
   computed: {
-    ...mapState(['datum'])
+    ...mapState([
+      'datum',
+      'looks'
+    ])
   },
   created () {
     this.$store.dispatch({

@@ -1,7 +1,7 @@
 <template>
   <v-card tile>
     <v-card-media
-      class="util-pointer js-ZHomeLooksPreview-image"
+      class="util-pointer js-ZBaseLooksItem-image"
       :src="src"
       height="270px"
       width="361px"
@@ -10,7 +10,7 @@
     </v-card-media>
     <v-card-title
       @click="onLookClick"
-      class="util-pointer js-ZHomeLooksPreview-title-parent"
+      class="util-pointer js-ZBaseLooksItem-title-parent"
     >
       <div>
         <h6 class="grey--text util-bold">{{ title }}</h6>
@@ -27,7 +27,7 @@
       </v-chip>
       <v-spacer></v-spacer>
       <v-chip
-        class="util-pointer js-ZHomeLooksPreview-datum"
+        class="util-pointer js-ZBaseLooksItem-datum"
         @click="onDatumClick">
           <v-avatar>
             <v-icon class="green white--text">call_merge</v-icon>
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'ZHomeLooksPreview',
+  name: 'ZBaseLooksItem',
   props: {
     src: {
       type: String
@@ -60,13 +60,13 @@ export default {
   },
   methods: {
     onLookClick () {
-      this.$emit('openLook', {
+      this.$emit('lookActivated', {
         path: this.path,
         title: this.title
       })
     },
     onDatumClick () {
-      this.$emit('openDatum', {
+      this.$emit('datumActivated', {
         name: this.datum.name
       })
     }
@@ -75,7 +75,6 @@ export default {
 </script>
 
 <style scoped>
-
   .util-pointer {
     cursor: pointer;
   }

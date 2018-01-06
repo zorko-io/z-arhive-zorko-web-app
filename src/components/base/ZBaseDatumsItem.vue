@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <div>
-        <div class="headline util-pointer js-ZHomeDatumsPreview-title"
+        <div class="headline util-pointer js-ZBaseDatumsItem-title"
              @click="onClick">{{ title }}</div>
         <span class="grey--text">connected to
           <a class="grey--text"
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'ZHomeDatumsPreview',
+  name: 'ZBaseDatumsItem',
   props: {
     name: {
       type: String
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     onClick () {
-      this.$emit('openDatum', {
+      this.$emit('datumActivated', {
         name: this.name
       })
     }

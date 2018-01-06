@@ -1,8 +1,8 @@
 import {mount, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
-import ZHomeLooksPreview from './ZHomeLooksPreview.vue'
+import ZBaseLooksItem from './ZBaseLooksItem.vue'
 
-describe('ZHomeLooksPreview.vue', () => {
+describe('ZBaseLooksItem.vue', () => {
   let defaultProps
 
   beforeEach(() => {
@@ -21,7 +21,7 @@ describe('ZHomeLooksPreview.vue', () => {
   })
 
   it('initialize', () => {
-    const wrapper = mount(ZHomeLooksPreview, {
+    const wrapper = mount(ZBaseLooksItem, {
       propsData: defaultProps
     })
 
@@ -29,26 +29,26 @@ describe('ZHomeLooksPreview.vue', () => {
   })
 
   it('emits `openLook` when click on title', () => {
-    const wrapper = mount(ZHomeLooksPreview, {
+    const wrapper = mount(ZBaseLooksItem, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-ZHomeLooksPreview-title-parent').trigger('click')
+    wrapper.find('.js-ZBaseLooksItem-title-parent').trigger('click')
 
-    expect(wrapper.emitted('openLook')[0][0]).toEqual({
+    expect(wrapper.emitted('lookActivated')[0][0]).toEqual({
       title: defaultProps.title,
       path: defaultProps.path
     })
   })
 
   it('emits `openLook` when click on image', () => {
-    const wrapper = mount(ZHomeLooksPreview, {
+    const wrapper = mount(ZBaseLooksItem, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-ZHomeLooksPreview-image').trigger('click')
+    wrapper.find('.js-ZBaseLooksItem-image').trigger('click')
 
-    expect(wrapper.emitted('openLook')[0][0]).toEqual({
+    expect(wrapper.emitted('lookActivated')[0][0]).toEqual({
       title: defaultProps.title,
       path: defaultProps.path
 
@@ -56,20 +56,20 @@ describe('ZHomeLooksPreview.vue', () => {
   })
 
   it('emits `openDatum` when click in datum', () => {
-    const wrapper = mount(ZHomeLooksPreview, {
+    const wrapper = mount(ZBaseLooksItem, {
       propsData: defaultProps
     })
 
-    wrapper.find('.js-ZHomeLooksPreview-datum').trigger('click')
+    wrapper.find('.js-ZBaseLooksItem-datum').trigger('click')
 
-    expect(wrapper.emitted('openDatum')[0][0]).toEqual({
+    expect(wrapper.emitted('datumActivated')[0][0]).toEqual({
       name: defaultProps.datum.name
     })
   })
 
   it('has same HTML structure', () => {
     const renderer = createRenderer()
-    const wrapper = shallow(ZHomeLooksPreview, {
+    const wrapper = shallow(ZBaseLooksItem, {
       propsData: defaultProps
     })
 

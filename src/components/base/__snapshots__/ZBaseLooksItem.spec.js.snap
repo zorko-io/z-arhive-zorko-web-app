@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ZHomeLooksPreview.vue has same HTML structure 1`] = `
+exports[`ZBaseLooksItem.vue has same HTML structure 1`] = `
 <v-card tile="">
-    <v-card-media src="url/to/image.png" height="270px" width="361px" class="util-pointer js-ZHomeLooksPreview-image"></v-card-media>
-    <v-card-title class="util-pointer js-ZHomeLooksPreview-title-parent">
+    <v-card-media src="url/to/image.png" height="270px" width="361px" class="util-pointer js-ZBaseLooksItem-image"></v-card-media>
+    <v-card-title class="util-pointer js-ZBaseLooksItem-title-parent">
         <div>
             <h6 class="grey--text util-bold">Look Title</h6>
         </div>
@@ -16,7 +16,7 @@ exports[`ZHomeLooksPreview.vue has same HTML structure 1`] = `
             foo
         </v-chip>
         <v-spacer></v-spacer>
-        <v-chip class="util-pointer js-ZHomeLooksPreview-datum">
+        <v-chip class="util-pointer js-ZBaseLooksItem-datum">
             <v-avatar>
                 <v-icon class="green white--text">call_merge</v-icon>
             </v-avatar>

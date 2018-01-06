@@ -1,51 +1,23 @@
 <template>
     <v-layout>
       <v-flex xs12>
-        <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
-          <v-layout row wrap>
-            <v-flex
-              v-if="looksPreview"
-              xs4
-              v-for="look in popularLooks"
-              :key="look.title"
-            >
-              <HomeLooksPreview
-                :src="look.preview"
-                :title="look.title"
-                :path="look.path"
-                :author="look.author"
-                :datum="look.datum"
-                @openLook="onOpenLook"
-                @openDatum="onOpenDatum"
-              />
-            </v-flex>
-            <v-flex
-              v-if="datumsPreview"
-              xs12>
-              <v-list two-line subheader>
-                <HomeDatumsPreview
-                  v-for="datum in popularDatums"
-                  :key="datum.name"
-                  :name="datum.name"
-                  :title="datum.title"
-                  :connection="datum.connection"
-                  :description="datum.description"
-                  :info="datum.info"
-                  :looksCount="datum.looksCount"
-                  @openDatum="onOpenDatum"
-                />
-              </v-list>
-            </v-flex>
-
-          </v-layout>
-        </v-container>
+          <ZBaseLooks
+            v-if="looksPreview"
+            :items="popularLooks"
+            @lookInput="onLookInput"
+            @datumInput="onOpenDatum"/>
+          <ZBaseDatums
+            v-if="datumsPreview"
+            :items="popularDatums"
+            @datumInput="onOpenDatum"
+          />
       </v-flex>
     </v-layout>
 </template>
 
 <script>
-import HomeLooksPreview from './ZHomeLooksPreview.vue'
-import HomeDatumsPreview from './ZHomeDatumsPreview.vue'
+import ZBaseLooks from '../base/ZBaseLooks.vue'
+import ZBaseDatums from '../base/ZBaseDatums.vue'
 
 import { createNamespacedHelpers } from 'vuex'
 const { mapGetters } = createNamespacedHelpers('home/')
@@ -53,8 +25,8 @@ const { mapGetters } = createNamespacedHelpers('home/')
 export default {
   name: 'Home',
   components: {
-    HomeLooksPreview,
-    HomeDatumsPreview
+    ZBaseLooks,
+    ZBaseDatums
   },
   props: {
     looksPreview: {
@@ -71,16 +43,11 @@ export default {
     ])
   },
   methods: {
-    onOpenLook (item) {
+    onLookInput (item) {
       this.$router.push(item.path)
     },
     onOpenDatum ({name}) {
       this.$router.push('/datums/' + name)
-    }
-  },
-  data () {
-    return {
-      size: 'lg'
     }
   }
 }

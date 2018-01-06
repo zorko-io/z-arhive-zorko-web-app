@@ -1,50 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ZHome.vue has same HTML for datums preview 1`] = `
-<v-layout>
-    <v-flex xs12="">
-        <v-container fluid="" grid-list-lg="true">
-            <v-layout row="" wrap="">
-                <!---->
-                <!---->
-                <!---->
-                <!---->
-                <!---->
-                <v-flex xs12="">
-                    <v-list two-line="" subheader="">
-                        <!---->
-                        <!---->
-                    </v-list>
-                </v-flex>
-            </v-layout>
-        </v-container>
-    </v-flex>
-</v-layout>
-`;
-
 exports[`ZHome.vue has same HTML for looks preview 1`] = `
 <v-layout>
     <v-flex xs12="">
-        <v-container fluid="" grid-list-lg="true">
-            <v-layout row="" wrap="">
-                <v-flex xs4="">
-                    <!---->
-                </v-flex>
-                <v-flex xs4="">
-                    <!---->
-                </v-flex>
-                <v-flex xs4="">
-                    <!---->
-                </v-flex>
-                <v-flex xs4="">
-                    <!---->
-                </v-flex>
-                <v-flex xs4="">
-                    <!---->
-                </v-flex>
-                <!---->
-            </v-layout>
-        </v-container>
+        <!---->
+        <!---->
     </v-flex>
 </v-layout>
 `;

@@ -2,6 +2,7 @@ import {createLocalVue, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
 import ZDatum from './ZDatum.vue'
+import ZBaseLooks from '../base/ZBaseLooks.vue'
 import ZDatumFieldsPanel from './ZDatumFieldsPanel.vue'
 import module from '../../store/datum/module'
 
@@ -55,17 +56,7 @@ describe('ZDatum.vue', () => {
   })
 
   it('passes fields to ZDatumFieldsPanel', () => {
-    const fields = [
-      {
-        'text': 'Name'
-      },
-      {
-        'text': 'Miles_per_Gallon'
-      },
-      {
-        'text': 'Cylinders'
-      }
-    ]
+    const fields = ['foo', 'bazz']
     const state = {
       ...datumModule.state,
       datum: {
@@ -87,8 +78,34 @@ describe('ZDatum.vue', () => {
       localVue
     })
 
-    const datumFieldsPanelWrapper = datumWrapper.find(ZDatumFieldsPanel)
+    const {vm} = datumWrapper.find(ZDatumFieldsPanel)
 
-    expect(datumFieldsPanelWrapper.vm.$props.fields).toEqual(fields)
+    expect(vm.$props.fields).toEqual(fields)
+  })
+
+  it('passes looks to ZBaseLooks', () => {
+    const looks = ['foo', 'bazz']
+    const state = {
+      ...datumModule.state,
+      looks
+    }
+    store = new Vuex.Store({
+      state: {},
+      modules: {
+        datum: {
+          ...datumModule,
+          actions,
+          state
+        }
+      }
+    })
+    const datumWrapper = shallow(ZDatum, {
+      store,
+      localVue
+    })
+
+    const {vm} = datumWrapper.find(ZBaseLooks)
+
+    expect(vm.$props.items).toEqual(looks)
   })
 })

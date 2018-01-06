@@ -2,9 +2,10 @@ import {createLocalVue, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
 import ZHome from './ZHome.vue'
-import ZHomeLooksPreview from './ZHomeLooksPreview.vue'
-import ZHomeDatumsPreview from './ZHomeDatumsPreview.vue'
+import ZBaseLooks from '../base/ZBaseLooks.vue'
+import ZBaseDatums from '../base/ZBaseDatums.vue'
 import module from '../../store/home/module'
+
 import mockLooks from '../../../static/__mocks__/looks.json'
 import mockDatums from '../../../static/__mocks__/datums.json'
 
@@ -41,37 +42,39 @@ describe('ZHome.vue', () => {
     })
   })
 
-  it('shows proper amount of looks', () => {
+  it('passes props to `ZBaseLooks`', () => {
     propsData.looksPreview = true
-    const homeWrapper = shallow(ZHome, {
+    const wrapper = shallow(ZHome, {
       store,
       localVue,
       propsData
     })
-    const homeLooksPreviewWrappers = homeWrapper.findAll(ZHomeLooksPreview)
 
-    expect(homeLooksPreviewWrappers.length).toEqual(5)
+    const {vm} = wrapper.find(ZBaseLooks)
+
+    expect(vm.$props.items).toEqual(mockLooks)
   })
 
-  it('shows proper amount of datums', () => {
+  it('passes props to `ZBaseDatums`', () => {
     propsData.datumsPreview = true
-    const homeWrapper = shallow(ZHome, {
+    const wrapper = shallow(ZHome, {
       store,
       localVue,
       propsData
     })
-    const homeDatumsPreviewWrappers = homeWrapper.findAll(ZHomeDatumsPreview)
 
-    expect(homeDatumsPreviewWrappers.length).toEqual(2)
+    const {vm} = wrapper.find(ZBaseDatums)
+
+    expect(vm.$props.items).toEqual(mockDatums)
   })
 
-  it('redirects to look', () => {
+  it('changes route because look`s item `lookInput` event', () => {
     propsData.looksPreview = true
     const lookInfo = {path: 'bazzz'}
     const $router = {
       push: jest.fn()
     }
-    const homeWrapper = shallow(ZHome, {
+    const wrapper = shallow(ZHome, {
       store,
       localVue,
       propsData,
@@ -79,20 +82,41 @@ describe('ZHome.vue', () => {
         $router
       }
     })
-    const homeLooksPreviewWrapper = homeWrapper.find(ZHomeLooksPreview)
+    const {vm} = wrapper.find(ZBaseLooks)
 
-    homeLooksPreviewWrapper.vm.$emit('openLook', lookInfo)
+    vm.$emit('lookInput', lookInfo)
 
     expect($router.push).toHaveBeenCalledWith(lookInfo.path)
   })
 
-  it('redirects to datum', () => {
+  it('changes route because look`s item `datumInput` event', () => {
+    propsData.looksPreview = true
+    const datumInfo = {name: 'bazzz'}
+    const $router = {
+      push: jest.fn()
+    }
+    const wrapper = shallow(ZHome, {
+      store,
+      localVue,
+      propsData,
+      mocks: {
+        $router
+      }
+    })
+    const {vm} = wrapper.find(ZBaseLooks)
+
+    vm.$emit('datumInput', datumInfo)
+
+    expect($router.push).toHaveBeenCalledWith('/datums/bazzz')
+  })
+
+  it('changes route because datum`s item `openDatum` event', () => {
     propsData.datumsPreview = true
     const datumInfo = {name: 'bazzz'}
     const $router = {
       push: jest.fn()
     }
-    const homeWrapper = shallow(ZHome, {
+    const wrapper = shallow(ZHome, {
       store,
       localVue,
       propsData,
@@ -100,30 +124,14 @@ describe('ZHome.vue', () => {
         $router
       }
     })
-    const homeDatumsPreviewWrapper = homeWrapper.find(ZHomeDatumsPreview)
+    const {vm} = wrapper.find(ZBaseDatums)
 
-    homeDatumsPreviewWrapper.vm.$emit('openDatum', datumInfo)
+    vm.$emit('datumInput', datumInfo)
 
     expect($router.push).toHaveBeenCalledWith('/datums/bazzz')
   })
 
   it('has same HTML for looks preview', () => {
-    propsData.looksPreview = true
-    const renderer = createRenderer()
-    const homeWrapper = shallow(ZHome, {
-      store,
-      localVue,
-      propsData
-    })
-
-    renderer.renderToString(homeWrapper.vm, (err, str) => {
-      if (err) throw new Error(err)
-      expect(str).toMatchSnapshot()
-    })
-  })
-
-  it('has same HTML for datums preview', () => {
-    propsData.datumsPreview = true
     const renderer = createRenderer()
     const homeWrapper = shallow(ZHome, {
       store,
