@@ -1,4 +1,5 @@
-import {mount} from 'vue-test-utils'
+import {mount, shallow} from 'vue-test-utils'
+import {createRenderer} from 'vue-server-renderer'
 import HomeDatumsPreview from './HomeDatumsPreview.vue'
 
 describe('HomeDatumsPreview.vue', () => {
@@ -35,6 +36,18 @@ describe('HomeDatumsPreview.vue', () => {
 
     expect(wrapper.emitted('openDatum')[0][0]).toEqual({
       name: defaultProps.name
+    })
+  })
+
+  it('has same HTML structure', () => {
+    const renderer = createRenderer()
+    const wrapper = shallow(HomeDatumsPreview, {
+      propsData: defaultProps
+    })
+
+    renderer.renderToString(wrapper.vm, (err, str) => {
+      if (err) throw new Error(err)
+      expect(str).toMatchSnapshot()
     })
   })
 })

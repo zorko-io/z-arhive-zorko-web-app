@@ -1,4 +1,5 @@
-import {mount} from 'vue-test-utils'
+import {mount, shallow} from 'vue-test-utils'
+import {createRenderer} from 'vue-server-renderer'
 import HomeLooksPreview from './HomeLooksPreview.vue'
 
 describe('HomeLooksPreview.vue', () => {
@@ -19,7 +20,7 @@ describe('HomeLooksPreview.vue', () => {
     }
   })
 
-  it('can initialize', () => {
+  it('initialize', () => {
     const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
@@ -27,7 +28,7 @@ describe('HomeLooksPreview.vue', () => {
     expect(wrapper.vm).toBeTruthy()
   })
 
-  it('should emmit `openLook` when click on title', () => {
+  it('emits `openLook` when click on title', () => {
     const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
@@ -40,7 +41,7 @@ describe('HomeLooksPreview.vue', () => {
     })
   })
 
-  it('should emmit `openLook` when click on image', () => {
+  it('emits `openLook` when click on image', () => {
     const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
@@ -54,7 +55,7 @@ describe('HomeLooksPreview.vue', () => {
     })
   })
 
-  it('should emmit `openLook` when click on image', () => {
+  it('emits `openDatum` when click in datum', () => {
     const wrapper = mount(HomeLooksPreview, {
       propsData: defaultProps
     })
@@ -63,6 +64,18 @@ describe('HomeLooksPreview.vue', () => {
 
     expect(wrapper.emitted('openDatum')[0][0]).toEqual({
       name: defaultProps.datum.name
+    })
+  })
+
+  it('has same HTML structure', () => {
+    const renderer = createRenderer()
+    const wrapper = shallow(HomeLooksPreview, {
+      propsData: defaultProps
+    })
+
+    renderer.renderToString(wrapper.vm, (err, str) => {
+      if (err) throw new Error(err)
+      expect(str).toMatchSnapshot()
     })
   })
 })

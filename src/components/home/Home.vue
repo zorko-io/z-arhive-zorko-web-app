@@ -67,13 +67,7 @@
       ...mapGetters([
         'popularLooks',
         'popularDatums'
-      ]),
-      title () {
-        return this.looksPreview ? 'Looks' : 'Datums'
-      },
-      category () {
-        return this.looksPreview ? 'Popular Looks' : 'Popular Datums'
-      }
+      ])
     },
     methods: {
       onOpenLook (item) {
@@ -90,14 +84,3 @@
     }
   }
 </script>
-
-<style scoped>
-
-  .util-pointer {
-    cursor: pointer;
-  }
-
-  .util-bold {
-    font-weight: bold;
-  }
-</style>

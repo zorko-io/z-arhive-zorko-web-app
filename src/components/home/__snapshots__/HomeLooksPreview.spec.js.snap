@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeLooksPreview.vue has same HTML structure 1`] = `
+<v-card tile="">
+    <v-card-media src="url/to/image.png" height="270px" width="361px" class="util-pointer js-HomeLooksPreview-image"></v-card-media>
+    <v-card-title class="util-pointer js-HomeLooksPreview-title-parent">
+        <div>
+            <h6 class="grey--text util-bold">Look Title</h6>
+        </div>
+    </v-card-title>
+    <v-card-actions class="white">
+        <v-chip class="util-pointer">
+            <v-avatar>
+                <img src="foo/baz.png" alt="trevor">
+            </v-avatar>
+            foo
+        </v-chip>
+        <v-spacer></v-spacer>
+        <v-chip class="util-pointer js-HomeLooksPreview-datum">
+            <v-avatar>
+                <v-icon class="green white--text">call_merge</v-icon>
+            </v-avatar>
+            ddd
+        </v-chip>
+    </v-card-actions>
+</v-card>
+`;

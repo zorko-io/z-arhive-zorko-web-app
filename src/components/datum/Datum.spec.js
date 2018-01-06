@@ -2,6 +2,7 @@ import {createLocalVue, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
 import Datum from './Datum.vue'
+import DatumFieldsPanel from './DatumFieldsPanel.vue'
 import module from '../../store/datum/module'
 
 const localVue = createLocalVue()
@@ -51,5 +52,43 @@ describe('Datum.vue', () => {
       if (err) throw new Error(err)
       expect(str).toMatchSnapshot()
     })
+  })
+
+  it('passes fields to DatumFieldsPanel', () => {
+    const fields = [
+      {
+        'text': 'Name'
+      },
+      {
+        'text': 'Miles_per_Gallon'
+      },
+      {
+        'text': 'Cylinders'
+      }
+    ]
+    const state = {
+      ...datumModule.state,
+      datum: {
+        fields
+      }
+    }
+    store = new Vuex.Store({
+      state: {},
+      modules: {
+        datum: {
+          ...datumModule,
+          actions,
+          state
+        }
+      }
+    })
+    const datumWrapper = shallow(Datum, {
+      store,
+      localVue
+    })
+
+    const datumFieldsPanelWrapper = datumWrapper.find(DatumFieldsPanel)
+
+    expect(datumFieldsPanelWrapper.vm.$props.fields).toEqual(fields)
   })
 })
