@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Datum.vue has same shallow HTML structure 1`] = `
+<v-layout wrap="">
+    <v-flex xs3="">
+        <!---->
+    </v-flex>
+    <v-flex xs8="" style="margin-left:10px;"></v-flex>
+</v-layout>
+`;

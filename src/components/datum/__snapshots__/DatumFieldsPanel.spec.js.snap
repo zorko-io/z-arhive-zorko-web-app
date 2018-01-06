@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatumFieldsPanel.vue has same HTML structure 1`] = `
+<v-card>
+    <v-card-text>
+        <v-subheader>Fields</v-subheader>
+        <v-list>
+            <v-list-tile avatar="">
+                <v-list-tile-content>
+                    <v-list-tile-title>Name</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile avatar="">
+                <v-list-tile-content>
+                    <v-list-tile-title>Miles_per_Gallon</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile avatar="">
+                <v-list-tile-content>
+                    <v-list-tile-title>Cylinders</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+    </v-card-text>
+</v-card>
+`;

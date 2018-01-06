@@ -1,4 +1,5 @@
 import {createLocalVue, shallow} from 'vue-test-utils'
+import {createRenderer} from 'vue-server-renderer'
 import Vuex from 'vuex'
 import Datum from './Datum.vue'
 import module from '../../store/datum/module'
@@ -37,5 +38,18 @@ describe('Datum.vue', () => {
     shallow(Datum, {store, localVue})
 
     expect(actions.loadDatum).toHaveBeenCalled()
+  })
+
+  it('has same shallow HTML structure', () => {
+    const renderer = createRenderer()
+    const wrapper = shallow(Datum, {
+      store,
+      localVue
+    })
+
+    renderer.renderToString(wrapper.vm, (err, str) => {
+      if (err) throw new Error(err)
+      expect(str).toMatchSnapshot()
+    })
   })
 })
