@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <LoginDialog/>
+    <BaseLoginDialog/>
     <template v-if="isLoading">
       <main>
-        <Loader/>
+        <BaseLoader/>
       </main>
     </template>
     <template v-if="isAppReady">
@@ -25,16 +25,16 @@
 </template>
 
 <script>
-import Loader from './Loader.vue'
+import BaseLoader from './base/BaseLoader.vue'
 import NavigationMain from './navigation/NavigationMain.vue'
-import LoginDialog from './login/LoginDialog.vue'
+import BaseLoginDialog from './base/BaseLoginDialog.vue'
 import {mapGetters} from 'vuex'
 
 export default {
   components: {
-    Loader,
+    BaseLoader,
     NavigationMain,
-    LoginDialog
+    BaseLoginDialog
   },
 
   computed: {
