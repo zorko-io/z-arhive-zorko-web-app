@@ -4,8 +4,7 @@
           <ZBaseLooks
             v-if="looksPreview"
             :items="popularLooks"
-            @lookInput="onLookInput"
-            @datumInput="onOpenDatum"/>
+          />
           <ZBaseDatums
             v-if="datumsPreview"
             :items="popularDatums"
@@ -43,9 +42,6 @@ export default {
     ])
   },
   methods: {
-    onLookInput (item) {
-      this.$router.push(item.path)
-    },
     onOpenDatum ({name}) {
       this.$router.push('/datums/' + name)
     }

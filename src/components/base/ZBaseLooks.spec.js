@@ -36,6 +36,29 @@ describe('ZBaseLooks.vue', () => {
     expect(wrapper.emitted('lookInput')[0][0]).toEqual('bazz')
   })
 
+  it('changes route because look`s item `lookActivated` event', () => {
+    propsData = {
+      items: mockLooks
+    }
+    const lookInfo = {path: 'bazzz'}
+
+    const $router = {
+      push: jest.fn()
+    }
+    const wrapper = shallow(ZBaseLooks, {
+      store,
+      propsData,
+      mocks: {
+        $router
+      }
+    })
+    const {vm} = wrapper.find(ZBaseLooksItem)
+
+    vm.$emit('lookActivated', lookInfo)
+
+    expect($router.push).toHaveBeenCalledWith(lookInfo.path)
+  })
+
   it('emits `openDatum`', () => {
     propsData = {
       items: mockLooks
@@ -49,6 +72,30 @@ describe('ZBaseLooks.vue', () => {
     vm.$emit('datumActivated', 'baz')
 
     expect(wrapper.emitted('datumInput')[0][0]).toEqual('baz')
+  })
+
+  it('changes route because look`s item `datumActivated` event', () => {
+    propsData = {
+      items: mockLooks
+    }
+    const $router = {
+      push: jest.fn()
+    }
+    const datumInfo = {
+      name: 'baz'
+    }
+    const wrapper = shallow(ZBaseLooks, {
+      store,
+      propsData,
+      mocks: {
+        $router
+      }
+    })
+    const {vm} = wrapper.find(ZBaseLooksItem)
+
+    vm.$emit('datumActivated', datumInfo)
+
+    expect($router.push).toHaveBeenCalledWith('/datums/baz')
   })
 
   it('has same HTML for looks', () => {

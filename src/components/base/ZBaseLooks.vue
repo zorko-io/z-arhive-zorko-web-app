@@ -35,10 +35,16 @@ export default {
   methods: {
     onLookActivated (item) {
       this.$emit('lookInput', item)
-    },
 
+      this._routeTo(item.path)
+    },
     onDatumActivated (item) {
       this.$emit('datumInput', item)
+
+      this._routeTo('/datums/' + item.name)
+    },
+    _routeTo (path) {
+      this.$router && this.$router.push(path)
     }
   },
   data () {

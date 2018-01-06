@@ -68,48 +68,6 @@ describe('ZHome.vue', () => {
     expect(vm.$props.items).toEqual(mockDatums)
   })
 
-  it('changes route because look`s item `lookInput` event', () => {
-    propsData.looksPreview = true
-    const lookInfo = {path: 'bazzz'}
-    const $router = {
-      push: jest.fn()
-    }
-    const wrapper = shallow(ZHome, {
-      store,
-      localVue,
-      propsData,
-      mocks: {
-        $router
-      }
-    })
-    const {vm} = wrapper.find(ZBaseLooks)
-
-    vm.$emit('lookInput', lookInfo)
-
-    expect($router.push).toHaveBeenCalledWith(lookInfo.path)
-  })
-
-  it('changes route because look`s item `datumInput` event', () => {
-    propsData.looksPreview = true
-    const datumInfo = {name: 'bazzz'}
-    const $router = {
-      push: jest.fn()
-    }
-    const wrapper = shallow(ZHome, {
-      store,
-      localVue,
-      propsData,
-      mocks: {
-        $router
-      }
-    })
-    const {vm} = wrapper.find(ZBaseLooks)
-
-    vm.$emit('datumInput', datumInfo)
-
-    expect($router.push).toHaveBeenCalledWith('/datums/bazzz')
-  })
-
   it('changes route because datum`s item `openDatum` event', () => {
     propsData.datumsPreview = true
     const datumInfo = {name: 'bazzz'}
