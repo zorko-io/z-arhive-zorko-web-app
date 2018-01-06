@@ -7,9 +7,9 @@
       </main>
     </template>
     <template v-if="isAppReady">
-      <NavigationMain>
+      <ZNavigationMain>
         <router-view name="controls"></router-view>
-      </NavigationMain>
+      </ZNavigationMain>
       <main>
         <v-content>
           <v-container fluid>
@@ -26,14 +26,14 @@
 
 <script>
 import ZBaseLoader from './base/ZBaseLoader.vue'
-import NavigationMain from './navigation/NavigationMain.vue'
+import ZNavigationMain from './navigation/ZNavigationMain.vue'
 import ZBaseLoginDialog from './base/ZBaseLoginDialog.vue'
 import {mapGetters} from 'vuex'
 
 export default {
   components: {
     ZBaseLoader,
-    NavigationMain,
+    ZNavigationMain,
     ZBaseLoginDialog
   },
 

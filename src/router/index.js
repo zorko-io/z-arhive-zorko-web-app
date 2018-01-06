@@ -1,11 +1,11 @@
 import Home from '../components/home/ZHome.vue'
 import ZExplore from '../components/explore/ZExplore.vue'
 import ZAccount from '../components/account/ZAccount.vue'
-import Look from '../components/look/Look.vue'
+import ZLook from '../components/look/ZLook.vue'
 import ZDatum from '../components/datum/ZDatum.vue'
 
-import NavigationMainToolbarLookControls from '../components/navigation/NavigationMainToolbarLookControls.vue'
-import NavigationMainToolbarExploreControls from '../components/navigation/NavigationMainToolbarExploreControls.vue'
+import ZNavigationMainToolbarLookControls from '../components/navigation/ZNavigationMainToolbarLookControls.vue'
+import ZNavigationMainToolbarExploreControls from '../components/navigation/ZNavigationMainToolbarExploreControls.vue'
 
 export default {
   routes: [
@@ -21,8 +21,8 @@ export default {
     {
       path: '/looks/:name',
       components: {
-        default: Look,
-        controls: NavigationMainToolbarLookControls
+        default: ZLook,
+        controls: ZNavigationMainToolbarLookControls
       },
       props: {
         default: true,
@@ -46,7 +46,7 @@ export default {
       path: '/datums/:name',
       components: {
         default: ZDatum,
-        controls: NavigationMainToolbarLookControls
+        controls: ZNavigationMainToolbarLookControls
       },
       props: {
         default: true,
@@ -61,7 +61,7 @@ export default {
       path: '/explore/:lookName',
       components: {
         default: ZExplore,
-        controls: NavigationMainToolbarExploreControls
+        controls: ZNavigationMainToolbarExploreControls
       },
       props: {
         default: true,

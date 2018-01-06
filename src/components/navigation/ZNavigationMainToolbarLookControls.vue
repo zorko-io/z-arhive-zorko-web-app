@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'NavigationMainToolbarLookControls',
+  name: 'ZNavigationMainToolbarLookControls',
   props: {
     name: {
       type: String

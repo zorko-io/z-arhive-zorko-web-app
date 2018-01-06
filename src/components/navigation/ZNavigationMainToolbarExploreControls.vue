@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'NavigationMainToolbarExploreControls',
+  name: 'ZNavigationMainToolbarExploreControls',
   methods: {
     save () {
       this.$store.dispatch({

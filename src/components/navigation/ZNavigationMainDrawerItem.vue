@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'NavigationMainDrawerItem',
+  name: 'ZNavigationMainDrawerItem',
   props: {
     path: {
       type: String

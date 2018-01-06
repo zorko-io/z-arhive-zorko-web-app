@@ -1,32 +1,32 @@
 <template>
    <div>
-      <NavigationMainDrawer
+      <ZNavigationMainDrawer
         :visibility="drawerVisibility"
         :fullscreen="fullscreen"
         :items="items"
         :title="drawerTitle"
         @changeDrawerVisibility="onChangeDrawerVisibility"
       />
-      <NavigationMainToolbar
+      <ZNavigationMainToolbar
         :title="toolbarTitle"
         @toggleDrawerVisibility="onChangeDrawerVisibility"
       >
         <slot></slot>
-      </NavigationMainToolbar>
+      </ZNavigationMainToolbar>
    </div>
 </template>
 
 <script>
-import NavigationMainDrawer from './NavigationMainDrawer.vue'
-import NavigationMainToolbar from './NavigationMainToolbar.vue'
+import ZNavigationMainDrawer from './ZNavigationMainDrawer.vue'
+import ZNavigationMainToolbar from './ZNavigationMainToolbar.vue'
 
 import {mapState} from 'vuex'
 
 export default {
-  name: 'NavigationMain',
+  name: 'ZNavigationMain',
   components: {
-    NavigationMainDrawer,
-    NavigationMainToolbar
+    ZNavigationMainDrawer,
+    ZNavigationMainToolbar
   },
   computed: {
     ...mapState({

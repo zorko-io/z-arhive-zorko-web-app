@@ -20,7 +20,7 @@
     </v-toolbar>
     <v-divider></v-divider>
     <v-list>
-        <NavigationMainDrawerItem
+        <ZNavigationMainDrawerItem
           v-for="(item, i) in items"
           :key="i"
           :to="item.path"
@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import NavigationMainDrawerItem from './NavigationMainDrawerItem.vue'
+import ZNavigationMainDrawerItem from './ZNavigationMainDrawerItem.vue'
 
 export default {
-  name: 'NavigationMainDrawer',
+  name: 'ZNavigationMainDrawer',
   components: {
-    NavigationMainDrawerItem
+    ZNavigationMainDrawerItem
   },
   props: {
     visibility: {

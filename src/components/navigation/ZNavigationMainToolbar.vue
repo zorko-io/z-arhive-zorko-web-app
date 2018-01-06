@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'NavigationMainToolbar',
+  name: 'ZNavigationMainToolbar',
   props: {
     title: {
       type: String
