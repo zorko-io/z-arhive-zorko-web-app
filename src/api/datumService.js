@@ -14,5 +14,11 @@ export default {
   async getDatumByName (name) {
     let response = await axios.get(`/static/__mocks__/datums/${name}.json`)
     return response.data
+  },
+
+  async getDataByDatumName (name) {
+    const {connection} = await this.getDatumByName(name)
+    const response = await axios.get(connection)
+    return response.data
   }
 }

@@ -13,5 +13,9 @@
     {"text":"sex"},
     {"text":"people"}
   ],
-  "looks": []
+  "looks": [
+    "population_grouped_by_gender_and_age",
+    "population_layered_by_gender",
+    "population_stacked_by_gender"
+  ]
 }

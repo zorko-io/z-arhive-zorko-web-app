@@ -18,7 +18,7 @@ describe('ZBaseLooks.vue', () => {
     })
     const homeLooksPreviewWrappers = wrapper.findAll(ZBaseLooksItem)
 
-    expect(homeLooksPreviewWrappers.length).toEqual(5)
+    expect(homeLooksPreviewWrappers.length).toEqual(8)
   })
 
   it('emits `openLook`', () => {

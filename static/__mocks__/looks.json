@@ -5,7 +5,7 @@
     "path": "/looks/miles_per_gallon_and_horsepower_scatterplot",
     "preview": "/static/__mocks__/previews/miles_per_gallon_and_horsepower_scatterplot.svg",
     "datum": {
-      "name": "car"
+      "name": "cars"
     },
     "author": {
       "login": "Anonym",
@@ -18,7 +18,7 @@
     "path": "/looks/number_of_cylinders_and_horsepower_relationship",
     "preview": "/static/__mocks__/previews/number_of_cylinders_and_horsepower_relationship.svg",
     "datum": {
-      "name": "car"
+      "name": "cars"
     },
     "author": {
       "login": "Anonym",
@@ -31,7 +31,7 @@
     "path": "/looks/origin_and_cylinders_by_mean_of_horsepower",
     "preview": "/static/__mocks__/previews/origin_and_cylinders_by_mean_of_horsepower.svg",
     "datum": {
-      "name": "car"
+      "name": "cars"
     },
     "author": {
       "login": "Anonym",
@@ -44,7 +44,7 @@
     "path": "/looks/origin_and_cylinders_by_number_of_records",
     "preview": "/static/__mocks__/previews/origin_and_cylinders_by_number_of_records.svg",
     "datum": {
-      "name": "car"
+      "name": "cars"
     },
     "author": {
       "login": "Anonym",
@@ -57,7 +57,46 @@
     "path": "/looks/miles_per_gallon_and_horsepower_color_scatterplot",
     "preview": "/static/__mocks__/previews/miles_per_gallon_and_horsepower_color_scatterplot.svg",
     "datum": {
-      "name": "car"
+      "name": "cars"
+    },
+    "author": {
+      "login": "Anonym",
+      "avatar": "https://randomuser.me/api/portraits/lego/1.jpg"
+    }
+  },
+  {
+    "name": "population_grouped_by_gender_and_age",
+    "title": "Population grouped by gender and age",
+    "path": "/looks/population_grouped_by_gender_and_age",
+    "preview": "/static/__mocks__/previews/population_grouped_by_gender_and_age.svg",
+    "datum": {
+      "name": "population"
+    },
+    "author": {
+      "login": "Anonym",
+      "avatar": "https://randomuser.me/api/portraits/lego/1.jpg"
+    }
+  },
+  {
+    "name": "population_layered_by_gender",
+    "title": "Population layered by gender",
+    "path": "/looks/population_layered_by_gender",
+    "preview": "/static/__mocks__/previews/population_layered_by_gender.svg",
+    "datum": {
+      "name": "population"
+    },
+    "author": {
+      "login": "Anonym",
+      "avatar": "https://randomuser.me/api/portraits/lego/1.jpg"
+    }
+  },
+  {
+    "name": "population_stacked_by_gender",
+    "title": "Population grouped by gender and age",
+    "path": "/looks/population_stacked_by_gender",
+    "preview": "/static/__mocks__/previews/population_stacked_by_gender.svg",
+    "datum": {
+      "name": "population"
     },
     "author": {
       "login": "Anonym",

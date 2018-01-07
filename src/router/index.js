@@ -58,7 +58,7 @@ export default {
       }
     },
     {
-      path: '/explore/:lookName',
+      path: '/explore/:name',
       components: {
         default: ZExplore,
         controls: ZNavigationMainToolbarExploreControls

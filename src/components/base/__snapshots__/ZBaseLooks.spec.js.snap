@@ -18,6 +18,15 @@ exports[`ZBaseLooks.vue has same HTML for looks 1`] = `
         <v-flex xs4="">
             <!---->
         </v-flex>
+        <v-flex xs4="">
+            <!---->
+        </v-flex>
+        <v-flex xs4="">
+            <!---->
+        </v-flex>
+        <v-flex xs4="">
+            <!---->
+        </v-flex>
     </v-layout>
 </v-container>
 `;

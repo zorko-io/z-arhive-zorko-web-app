@@ -32,7 +32,7 @@ export default {
     ZAnalysis
   },
   props: {
-    lookName: {
+    name: {
       type: String
     }
   },
@@ -89,10 +89,9 @@ export default {
     }
   },
   created () {
-    const lookName = this.lookName
     this.$store.dispatch({
       type: 'explore/loadData',
-      lookName
+      name: this.name
     })
   },
   data () {
