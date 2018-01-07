@@ -55,7 +55,7 @@ describe('ZDatum.vue', () => {
     })
   })
 
-  it('passes fields to ZDatumFieldsPanel', () => {
+  it('passes props to ZDatumFieldsPanel', () => {
     const fields = ['foo', 'bazz']
     const state = {
       ...datumModule.state,
@@ -83,7 +83,7 @@ describe('ZDatum.vue', () => {
     expect(vm.$props.fields).toEqual(fields)
   })
 
-  it('passes looks to ZBaseLooks', () => {
+  it('passes props to ZBaseLooks', () => {
     const looks = ['foo', 'bazz']
     const state = {
       ...datumModule.state,
@@ -107,5 +107,6 @@ describe('ZDatum.vue', () => {
     const {vm} = datumWrapper.find(ZBaseLooks)
 
     expect(vm.$props.items).toEqual(looks)
+    expect(vm.$props.title).toEqual('Related Looks')
   })
 })

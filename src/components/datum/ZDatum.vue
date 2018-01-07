@@ -4,7 +4,9 @@
       <ZDatumFieldsPanel :fields="datum.fields"/>
     </v-flex>
     <v-flex xs8 style="margin-left: 10px">
-      <ZBaseLooks :items="looks"/>
+      <ZBaseLooks
+        :title="looksTitle"
+        :items="looks"/>
     </v-flex>
   </v-layout>
 </template>
@@ -38,6 +40,11 @@ export default {
       type: 'datum/loadDatum',
       name: this.name
     })
+  },
+  data () {
+    return {
+      looksTitle: 'Related Looks'
+    }
   }
 }
 </script>

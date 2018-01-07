@@ -53,6 +53,7 @@ describe('ZHome.vue', () => {
     const {vm} = wrapper.find(ZBaseLooks)
 
     expect(vm.$props.items).toEqual(mockLooks)
+    expect(vm.$props.title).toEqual('Popular')
   })
 
   it('passes props to `ZBaseDatums`', () => {

@@ -1,11 +1,10 @@
-import {shallow} from 'vue-test-utils'
+import {mount, shallow} from 'vue-test-utils'
 import {createRenderer} from 'vue-server-renderer'
 import ZBaseLooks from './ZBaseLooks.vue'
 import ZBaseLooksItem from './ZBaseLooksItem.vue'
 import mockLooks from '../../../static/__mocks__/looks.json'
 
 describe('ZBaseLooks.vue', () => {
-  let store
   let propsData
 
   it('shows proper amount of looks', () => {
@@ -13,7 +12,6 @@ describe('ZBaseLooks.vue', () => {
       items: mockLooks
     }
     const wrapper = shallow(ZBaseLooks, {
-      store,
       propsData
     })
     const homeLooksPreviewWrappers = wrapper.findAll(ZBaseLooksItem)
@@ -26,7 +24,6 @@ describe('ZBaseLooks.vue', () => {
       items: mockLooks
     }
     const wrapper = shallow(ZBaseLooks, {
-      store,
       propsData
     })
     const {vm} = wrapper.find(ZBaseLooksItem)
@@ -34,6 +31,18 @@ describe('ZBaseLooks.vue', () => {
     vm.$emit('lookActivated', 'bazz')
 
     expect(wrapper.emitted('lookInput')[0][0]).toEqual('bazz')
+  })
+
+  it('pass title to subheader', () => {
+    propsData = {
+      title: 'Test'
+    }
+    const wrapper = mount(ZBaseLooks, {
+      propsData
+    })
+    const title = wrapper.find('.js-ZBaseLooks-subheader').text()
+
+    expect(title).toEqual(propsData.title)
   })
 
   it('changes route because look`s item `lookActivated` event', () => {
@@ -46,7 +55,6 @@ describe('ZBaseLooks.vue', () => {
       push: jest.fn()
     }
     const wrapper = shallow(ZBaseLooks, {
-      store,
       propsData,
       mocks: {
         $router
@@ -64,7 +72,6 @@ describe('ZBaseLooks.vue', () => {
       items: mockLooks
     }
     const wrapper = shallow(ZBaseLooks, {
-      store,
       propsData
     })
     const {vm} = wrapper.find(ZBaseLooksItem)
@@ -85,7 +92,6 @@ describe('ZBaseLooks.vue', () => {
       name: 'baz'
     }
     const wrapper = shallow(ZBaseLooks, {
-      store,
       propsData,
       mocks: {
         $router
@@ -101,7 +107,6 @@ describe('ZBaseLooks.vue', () => {
   it('has same HTML for looks', () => {
     const renderer = createRenderer()
     const homeWrapper = shallow(ZBaseLooks, {
-      store,
       propsData
     })
 

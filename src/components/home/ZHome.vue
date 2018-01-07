@@ -3,6 +3,7 @@
       <v-flex xs12>
           <ZBaseLooks
             v-if="looksPreview"
+            :title="looksTitle"
             :items="popularLooks"
           />
           <ZBaseDatums
@@ -44,6 +45,11 @@ export default {
   methods: {
     onOpenDatum ({name}) {
       this.$router.push('/datums/' + name)
+    }
+  },
+  data () {
+    return {
+      looksTitle: 'Popular'
     }
   }
 }

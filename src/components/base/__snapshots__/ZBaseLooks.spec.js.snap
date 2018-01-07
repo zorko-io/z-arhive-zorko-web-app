@@ -1,32 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ZBaseLooks.vue has same HTML for looks 1`] = `
-<v-container fluid="" grid-list-lg="true">
-    <v-layout row="" wrap="">
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-        <v-flex xs4="">
-            <!---->
-        </v-flex>
-    </v-layout>
-</v-container>
+<v-card class="grid">
+    <!---->
+    <v-container fluid="" grid-list-lg="true">
+        <v-layout row="" wrap="">
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+            <v-flex xs4="">
+                <!---->
+            </v-flex>
+        </v-layout>
+    </v-container>
+</v-card>
 `;
