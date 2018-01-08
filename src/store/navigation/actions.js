@@ -14,3 +14,7 @@ export const changeFullscreenMode = ({commit}, {fullscreen}) => {
   }
   commit('setFullscreen', fullscreen)
 }
+
+export const activateToolbarButtons = ({commit}, {buttons}) => {
+  commit('setActiveButtons', buttons)
+}

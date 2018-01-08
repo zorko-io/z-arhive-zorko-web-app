@@ -8,6 +8,7 @@ import routes from './router'
 import storeOptions from './store/'
 
 import FullscreenNavigationGuard from './navigation-guards/FullscreenNavigationGuard'
+import ToolbarNavigationGuard from './navigation-guards/ToolbarNavigationGuard'
 
 export default () => ({Vue, el}) => {
   Vue.config.productionTip = false
@@ -19,10 +20,12 @@ export default () => ({Vue, el}) => {
   const router = new Router(routes)
   const store = new Vuex.Store(storeOptions)
   const fullscreenNavigationGuard = FullscreenNavigationGuard(store)
+  const toolbarNavigationGuard = ToolbarNavigationGuard(store)
 
   sync(store, router)
 
   router.beforeEach(fullscreenNavigationGuard)
+  router.beforeEach(toolbarNavigationGuard)
 
   const globalVueOptions = {
     store: store,

@@ -1,4 +1,5 @@
 import * as mutations from './mutations'
+import createState from './state'
 
 describe('Navigation Mutations', () => {
   let state
@@ -37,5 +38,26 @@ describe('Navigation Mutations', () => {
     mutations.setFullscreen(state, true)
 
     expect(state.fullscreen).toBeTruthy()
+  })
+
+  it('set active buttons', () => {
+    state = createState()
+
+    mutations.setActiveButtons(state, ['save', 'explore'])
+
+    expect(state.toolbarButtons).toEqual([{
+      visible: true,
+      name: 'save',
+      title: 'Save'
+    }, {
+      visible: true,
+      name: 'explore',
+      title: 'Explore'
+    }, {
+      visible: false,
+      name: 'create',
+      title: 'Create'
+    }]
+    )
   })
 })

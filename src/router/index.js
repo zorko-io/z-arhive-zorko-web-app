@@ -1,17 +1,14 @@
-import Home from '../components/home/ZHome.vue'
+import ZHome from '../components/home/ZHome.vue'
 import ZExplore from '../components/explore/ZExplore.vue'
 import ZAccount from '../components/account/ZAccount.vue'
 import ZLook from '../components/look/ZLook.vue'
 import ZDatum from '../components/datum/ZDatum.vue'
 
-import ZNavigationMainToolbarLookControls from '../components/navigation/ZNavigationMainToolbarLookControls.vue'
-import ZNavigationMainToolbarExploreControls from '../components/navigation/ZNavigationMainToolbarExploreControls.vue'
-
 export default {
   routes: [
     {
       path: '/looks',
-      component: Home,
+      component: ZHome,
       props: {
         default: true,
         looksPreview: true
@@ -20,14 +17,9 @@ export default {
     },
     {
       path: '/looks/:name',
-      components: {
-        default: ZLook,
-        controls: ZNavigationMainToolbarLookControls
-      },
-      props: {
-        default: true,
-        controls: true
-      },
+      name: 'look',
+      component: ZLook,
+      props: true,
       meta: {
         title: 'Look',
         fullscreen: true
@@ -35,7 +27,7 @@ export default {
     },
     {
       path: '/datums',
-      component: Home,
+      component: ZHome,
       props: {
         default: true,
         datumsPreview: true
@@ -44,14 +36,9 @@ export default {
     },
     {
       path: '/datums/:name',
-      components: {
-        default: ZDatum,
-        controls: ZNavigationMainToolbarLookControls
-      },
-      props: {
-        default: true,
-        controls: true
-      },
+      name: 'datum',
+      component: ZDatum,
+      props: true,
       meta: {
         title: 'Datum',
         fullscreen: true
@@ -59,14 +46,9 @@ export default {
     },
     {
       path: '/explore/:name',
-      components: {
-        default: ZExplore,
-        controls: ZNavigationMainToolbarExploreControls
-      },
-      props: {
-        default: true,
-        controls: true
-      },
+      name: 'explore',
+      component: ZExplore,
+      props: true,
       meta: {
         title: 'Explore',
         fullscreen: true

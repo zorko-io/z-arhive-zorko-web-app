@@ -16,6 +16,19 @@ export default () => {
         name: 'datums',
         component: 'item'
       }
-    ]
+    ],
+    toolbarButtons: [{
+      visible: false,
+      name: 'save',
+      title: 'Save'
+    }, {
+      visible: false,
+      name: 'explore',
+      title: 'Explore'
+    }, {
+      visible: true,
+      name: 'create',
+      title: 'Create'
+    }]
   }
 }
