@@ -126,6 +126,7 @@
     },
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
-    ]
+    ],
+    "testPathIgnorePatterns": ["/node_modules/", "/test/e2e/"]
   }
 }
