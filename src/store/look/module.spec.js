@@ -1,5 +1,5 @@
 jest.mock('axios')
-import look from '../../../static/__mocks__/look/year-weather-in-seattle-1.json'
+import look from '../../../static/__mocks__/looks/miles_per_gallon_and_horsepower_scatterplot.json'
 
 import {createLocalVue} from 'vue-test-utils'
 import Vuex from 'vuex'
@@ -27,7 +27,7 @@ describe('look module', () => {
 
     await store.dispatch({
       type: 'loadLook',
-      name: 'year-weather-in-seattle-1'
+      name: 'miles_per_gallon_and_horsepower_scatterplot'
     })
 
     expect(store.state.name).toEqual(look.name)

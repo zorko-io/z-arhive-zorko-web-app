@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeDatumsPreview.vue has same HTML structure 1`] = `
+<v-card>
+    <v-card-title>
+        <div>
+            <div class="headline util-pointer js-ZBaseDatumsItem-title">Cars</div> <span class="grey--text">connected to
+        <a href="https://vega.github.io/vega-datasets/data/cars.json" class="grey--text">
+          https://vega.github.io/vega-datasets/data/cars.json
+        </a></span>
+            <br> <span>Common repository for example datasets used by vega related projects</span>
+            <br> <span style="margin-right:10px;"><v-icon>info</v-icon> <a href="https://github.com/vega/vega-datasets">
+          vega-datasets
+        </a></span> <span class="grey--text">5 looks created</span></div>
+    </v-card-title>
+</v-card>
+`;

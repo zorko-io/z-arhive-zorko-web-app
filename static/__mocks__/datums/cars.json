@@ -1,0 +1,46 @@
+{
+  "name": "cars",
+  "title": "Cars",
+  "connection": "/static/__mocks__/data/cars.json",
+  "description": "Common repository for example datasets used by vega related projects",
+  "info": {
+    "name": "vega-datasets",
+    "site": "https://github.com/vega/vega-datasets"
+  },
+  "fields": [
+    {
+      "text": "Name"
+    },
+    {
+      "text": "Miles_per_Gallon"
+    },
+    {
+      "text": "Cylinders"
+    },
+    {
+      "text": "Displacement"
+    },
+    {
+      "text": "Horsepower"
+    },
+    {
+      "text": "Weight_in_lbs"
+    },
+    {
+      "text": "Acceleration"
+    },
+    {
+      "text": "Year"
+    },
+    {
+      "text": "Origin"
+    }
+  ],
+  "looks": [
+    "miles_per_gallon_and_horsepower_color_scatterplot",
+    "miles_per_gallon_and_horsepower_scatterplot",
+    "number_of_cylinders_and_horsepower_relationship",
+    "origin_and_cylinders_by_mean_of_horsepower",
+    "origin_and_cylinders_by_number_of_records"
+  ]
+}

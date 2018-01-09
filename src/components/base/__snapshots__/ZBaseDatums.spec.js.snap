@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ZBaseDatums.vue has same HTML for looks 1`] = `
+<v-flex xs12="">
+    <v-list two-line="" subheader="">
+        <!---->
+        <!---->
+    </v-list>
+</v-flex>
+`;

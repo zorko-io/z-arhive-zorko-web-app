@@ -1,15 +1,15 @@
 <template>
   <v-app>
-    <LoginDialog/>
+    <ZBaseLoginDialog/>
     <template v-if="isLoading">
       <main>
-        <Loader/>
+        <ZBaseLoader/>
       </main>
     </template>
     <template v-if="isAppReady">
-      <NavigationMain>
+      <ZNavigationMain>
         <router-view name="controls"></router-view>
-      </NavigationMain>
+      </ZNavigationMain>
       <main>
         <v-content>
           <v-container fluid>
@@ -25,42 +25,42 @@
 </template>
 
 <script>
-  import Loader from './Loader.vue'
-  import NavigationMain from './navigation/NavigationMain.vue'
-  import LoginDialog from './login/LoginDialog.vue'
-  import {mapGetters} from 'vuex'
+import ZBaseLoader from './base/ZBaseLoader.vue'
+import ZNavigationMain from './navigation/ZNavigationMain.vue'
+import ZBaseLoginDialog from './base/ZBaseLoginDialog.vue'
+import {mapGetters} from 'vuex'
 
-  export default {
-    components: {
-      Loader,
-      NavigationMain,
-      LoginDialog
+export default {
+  components: {
+    ZBaseLoader,
+    ZNavigationMain,
+    ZBaseLoginDialog
+  },
+
+  computed: {
+    ...mapGetters([
+      'isAuthenticated'
+    ]),
+
+    isLoading () {
+      return this.$store.state.isLoading
     },
 
-    computed: {
-      ...mapGetters([
-        'isAuthenticated'
-      ]),
+    isAppReady () {
+      return !this.isLoading
+    }
+  },
 
-      isLoading () {
-        return this.$store.state.isLoading
-      },
+  created () {
+    this.$store.dispatch({
+      type: 'bootstrapAppInitialState'
+    })
+  },
 
-      isAppReady () {
-        return !this.isLoading
-      }
-    },
-
-    created () {
-      this.$store.dispatch({
-        type: 'bootstrapAppInitialState'
-      })
-    },
-
-    data () {
-      return {
-        footerText: '2017'
-      }
+  data () {
+    return {
+      footerText: '2017'
     }
   }
+}
 </script>

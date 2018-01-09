@@ -1,11 +1,24 @@
-import looks from '../static/__mocks__/looks.json'
+import fs from 'fs'
+
+const urlToPath = (url) => (`.${url}`)
+const readJsonFile = async (path) => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(path, (err, data) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(JSON.parse(data.toString()))
+      }
+    })
+  })
+}
 
 export default {
   async get (url) {
-    if (url === '/static/__mocks__/looks.json') {
-      return {
-        data: looks
-      }
+    const filePath = urlToPath(url)
+    const fileContent = await readJsonFile(filePath)
+    return {
+      data: fileContent
     }
   }
 }

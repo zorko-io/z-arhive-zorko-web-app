@@ -1,10 +1,11 @@
-import Home from '../components/home/Home.vue'
-import Explore from '../components/explore/Explore.vue'
-import Account from '../components/account/Account.vue'
-import Look from '../components/look/Look.vue'
+import Home from '../components/home/ZHome.vue'
+import ZExplore from '../components/explore/ZExplore.vue'
+import ZAccount from '../components/account/ZAccount.vue'
+import ZLook from '../components/look/ZLook.vue'
+import ZDatum from '../components/datum/ZDatum.vue'
 
-import NavigationMainToolbarLookControls from '../components/navigation/NavigationMainToolbarLookControls.vue'
-import NavigationMainToolbarExploreControls from '../components/navigation/NavigationMainToolbarExploreControls.vue'
+import ZNavigationMainToolbarLookControls from '../components/navigation/ZNavigationMainToolbarLookControls.vue'
+import ZNavigationMainToolbarExploreControls from '../components/navigation/ZNavigationMainToolbarExploreControls.vue'
 
 export default {
   routes: [
@@ -18,19 +19,10 @@ export default {
       meta: {title: 'Looks'}
     },
     {
-      path: '/datums',
-      component: Home,
-      props: {
-        default: true,
-        datumsPreview: true
-      },
-      meta: {title: 'Datums'}
-    },
-    {
       path: '/looks/:name',
       components: {
-        default: Look,
-        controls: NavigationMainToolbarLookControls
+        default: ZLook,
+        controls: ZNavigationMainToolbarLookControls
       },
       props: {
         default: true,
@@ -42,10 +34,34 @@ export default {
       }
     },
     {
-      path: '/explore/:lookName',
+      path: '/datums',
+      component: Home,
+      props: {
+        default: true,
+        datumsPreview: true
+      },
+      meta: {title: 'Datums'}
+    },
+    {
+      path: '/datums/:name',
       components: {
-        default: Explore,
-        controls: NavigationMainToolbarExploreControls
+        default: ZDatum,
+        controls: ZNavigationMainToolbarLookControls
+      },
+      props: {
+        default: true,
+        controls: true
+      },
+      meta: {
+        title: 'Datum',
+        fullscreen: true
+      }
+    },
+    {
+      path: '/explore/:name',
+      components: {
+        default: ZExplore,
+        controls: ZNavigationMainToolbarExploreControls
       },
       props: {
         default: true,
@@ -58,7 +74,7 @@ export default {
     },
     {
       path: '/account',
-      component: Account,
+      component: ZAccount,
       meta: {title: 'Account'}
     },
     {
