@@ -31,23 +31,10 @@ export const initExploreByLook = (state, look) => {
 export const toggleFieldSelection = (state, {field}) => {
   let fields = state.fields
   const stateField = fields.find(equalByText(field.text))
-  const key = field.text
   let spec = Spec.of(state.spec)
-
   stateField.selected = !field.selected
-  if (field.selected) {
-    state.initialData.forEach((record, index) => {
-      state.data[index][key] = record[key]
-    })
 
-    spec = spec.encodeField(field)
-  } else {
-    state.initialData.forEach((record, index) => {
-      delete state.data[index][key]
-    })
-
-    spec = spec.decodeField(field)
-  }
+  state.data = filterData(state)
 
   state.spec = spec.value()
 
@@ -103,8 +90,9 @@ export const setFields = (state) => {
   state.fields = fields
 }
 
-export const applyFilters = (state, payload) => {
+const filterData = (state) => {
   const selectedFields = state.fields.filter((field) => (field.selected))
+
   const setDataBySelectedFields = (state) => {
     return state.initialData.map((item) => {
       const selectedKeys = selectedFields.map((field) => (field.text))
@@ -116,7 +104,6 @@ export const applyFilters = (state, payload) => {
   }
 
   let data = setDataBySelectedFields(state)
-
   state.filters.forEach(filter => {
     if (filter.type === 'measure') {
       filter.value = Number(filter.value)
@@ -136,8 +123,11 @@ export const applyFilters = (state, payload) => {
       }
     })
   })
+  return data
+}
 
-  state.data = data
+export const applyFilters = (state, payload) => {
+  state.data = filterData(state)
 
   state.spec.data.values = JSON.parse(
     JSON.stringify(state.data)
