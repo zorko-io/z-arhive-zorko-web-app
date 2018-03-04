@@ -1,21 +1,26 @@
 <template>
    <div>
-      <ZNavigationMainDrawer
-        :visibility="drawerVisibility"
-        :fullscreen="fullscreen"
-        :items="items"
-        :title="drawerTitle"
-        @changeDrawerVisibility="onChangeDrawerVisibility"
-      />
-      <ZNavigationMainToolbar
-        :title="toolbarTitle"
-        @toggleDrawerVisibility="onChangeDrawerVisibility"
-      >
-        <v-btn
-          :key="button.name"
-          v-for="button in toolbarButtons"
-          v-show="button.visible"
-          @click="onButtonClick(button.name)">{{ button.title }}</v-btn>
+      <ZNavigationMainToolbar :title="toolbarTitle">
+        <v-avatar>
+          <img src="/static/zorko-logo.svg" alt="Zorko">
+        </v-avatar>
+        <v-toolbar-items>
+          <v-btn
+            flat
+            @click="routeToLooks">Looks</v-btn>
+          <v-btn
+            flat
+            @click="routeToDatums">Datums</v-btn>
+        </v-toolbar-items>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+          <v-btn
+            flat
+            :key="button.name"
+            v-for="button in toolbarButtons"
+            v-show="button.visible"
+            @click="onButtonClick(button.name)">{{ button.title }}</v-btn>
+        </v-toolbar-items>
       </ZNavigationMainToolbar>
    </div>
 </template>
@@ -46,12 +51,6 @@ export default {
     }
   },
   methods: {
-    onChangeDrawerVisibility (value) {
-      this.$store.dispatch({
-        type: 'navigation/changeDrawerVisibility',
-        visibility: value
-      })
-    },
     onButtonClick (name) {
       switch (name) {
         case 'create':
@@ -78,6 +77,12 @@ export default {
       if (isLookOrDatum) {
         this.$router.push('/explore/' + params.name)
       }
+    },
+    routeToLooks () {
+      this.$router.push('/looks')
+    },
+    routeToDatums () {
+      this.$router.push('/datums')
     },
     create () {
       console.log('create')

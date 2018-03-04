@@ -120,6 +120,13 @@
       "json",
       "vue"
     ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "src/**/*.vue"
+    ],
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
@@ -127,6 +134,9 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
-    "testPathIgnorePatterns": ["/node_modules/", "/test/e2e/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/test/e2e/"
+    ]
   }
 }

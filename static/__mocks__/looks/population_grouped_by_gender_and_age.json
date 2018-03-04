@@ -3468,8 +3468,7 @@
       "view": {"stroke": "transparent"},
       "axis": {"domainWidth": 1}
     }
-  }
-,
+  },
   "datum": {
      "name": "population"
   },

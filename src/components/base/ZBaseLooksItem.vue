@@ -10,22 +10,12 @@
     </v-card-media>
     <v-card-title
       @click="onLookClick"
-      class="util-pointer js-ZBaseLooksItem-title-parent"
-    >
+      class="util-pointer js-ZBaseLooksItem-title-parent">
       <div>
         <h6 class="grey--text util-bold">{{ title }}</h6>
       </div>
     </v-card-title>
     <v-card-actions class="white">
-      <v-chip class="util-pointer">
-        <v-avatar>
-          <img
-            :src="author.avatar"
-            alt="trevor">
-        </v-avatar>
-        {{ author.login }}
-      </v-chip>
-      <v-spacer></v-spacer>
       <v-chip
         class="util-pointer js-ZBaseLooksItem-datum"
         @click="onDatumClick">

@@ -9,13 +9,6 @@ exports[`ZBaseLooksItem.vue has same HTML structure 1`] = `
         </div>
     </v-card-title>
     <v-card-actions class="white">
-        <v-chip class="util-pointer">
-            <v-avatar>
-                <img src="foo/baz.png" alt="trevor">
-            </v-avatar>
-            foo
-        </v-chip>
-        <v-spacer></v-spacer>
         <v-chip class="util-pointer js-ZBaseLooksItem-datum">
             <v-avatar>
                 <v-icon class="green white--text">call_merge</v-icon>

@@ -3462,8 +3462,7 @@
       },
       "opacity": {"value": 0.7}
     }
-  }
-,
+  },
   "datum": {
      "name": "population"
   },

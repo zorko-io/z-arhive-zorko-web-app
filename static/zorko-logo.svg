@@ -1,0 +1,72 @@
+<svg width="400" height="400" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>zirko4varNEEEEww</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(146 4)">
+<clipPath id="clip-0" clip-rule="evenodd">
+<path d="M -146 -4L 254 -4L 254 396L -146 396L -146 -4Z" fill="#FFFFFF"/>
+</clipPath>
+<g id="Frame" clip-path="url(#clip-0)">
+<path d="M -146 -4L 254 -4L 254 396L -146 396L -146 -4Z" fill="#FFFFFF"/>
+<g id="Component 2">
+<g id="Component">
+<g id="Rectangle 3.1">
+<use xlink:href="#path0_fill" transform="translate(-89.8818 18.65)" fill="#B0BEC5"/>
+<use xlink:href="#path1_fill" transform="translate(-89.8818 18.65)" fill="#B0BEC5"/>
+</g>
+<g id="Rectangle 4">
+<use xlink:href="#path2_fill" transform="translate(-88.8649 284.653)" fill="#006064"/>
+</g>
+<g id="Rectangle 2.1">
+<use xlink:href="#path3_fill" transform="matrix(0.656504 -0.754322 0.736326 0.676627 -80.7297 284.564)" fill="#4DB6AC"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path3_fill" fill="white" transform="matrix(0.656504 -0.754322 0.736326 0.676627 -80.7297 284.564)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path4_stroke_2x" transform="matrix(0.656504 -0.754322 0.736326 0.676627 -80.7297 284.564)" fill="#4DB6AC"/>
+</g>
+</g>
+<g id="Rectangle 5">
+<use xlink:href="#path5_fill" transform="matrix(0.910761 -0.412935 0.394575 0.918864 -88.8649 357.917)" fill="#4DB6AC"/>
+</g>
+<g id="Rectangle 6">
+<use xlink:href="#path6_fill" transform="translate(-87.848 18.65)" fill="#4DB6AC"/>
+</g>
+<g id="Rectangle 3">
+<use xlink:href="#path7_fill" transform="translate(-87.848 18.65)" fill="#006064"/>
+<use xlink:href="#path8_fill" transform="translate(-87.848 18.65)" fill="#006064"/>
+<mask id="mask1_outline_ins">
+<use xlink:href="#path7_fill" fill="white" transform="translate(-87.848 18.65)"/>
+<use xlink:href="#path8_fill" fill="white" transform="translate(-87.848 18.65)"/>
+</mask>
+<g mask="url(#mask1_outline_ins)">
+<use xlink:href="#path9_stroke_2x" transform="translate(-87.848 18.65)" fill="#006064"/>
+</g>
+</g>
+</g>
+<g id="Subtract">
+<use xlink:href="#path10_fill" transform="translate(-88.8649 29.9504)" fill="#006064"/>
+<mask id="mask2_outline_ins">
+<use xlink:href="#path10_fill" fill="white" transform="translate(-88.8649 29.9504)"/>
+</mask>
+<g mask="url(#mask2_outline_ins)">
+<use xlink:href="#path11_stroke_2x" transform="translate(-88.8649 29.9504)" fill="#006064"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 43.5058 0L 282.696 0L 272.129 12.6L 0 0L 43.5058 0Z"/>
+<path id="path1_fill" d="M 0 0L 282.696 0L 272.129 12.6L 0 0Z"/>
+<path id="path2_fill" d="M 1.16374e-05 0L 281.935 0L 0 73.5L 1.16374e-05 0Z"/>
+<path id="path3_fill" d="M 0 0L 366.047 16.6413L 380.036 32.1053L 41.2984 46.0406L 0 0Z"/>
+<path id="path4_stroke_2x" d="M 0 0L 0.0454155 -0.998968L -0.744404 0.66773L 0 0ZM 366.047 16.6413L 366.788 15.9705L 366.092 15.6424L 366.047 16.6413ZM 380.036 32.1053L 380.077 33.1044L 380.777 31.4344L 380.036 32.1053ZM 41.2984 46.0406L 40.554 46.7084L 41.3395 47.0398L 41.2984 46.0406ZM -0.0454155 0.998968L 366.001 17.6403L 366.092 15.6424L 0.0454155 -0.998968L -0.0454155 0.998968ZM 365.305 17.3122L 379.294 32.7761L 380.777 31.4344L 366.788 15.9705L 365.305 17.3122ZM 379.995 31.1061L 41.2573 45.0415L 41.3395 47.0398L 380.077 33.1044L 379.995 31.1061ZM 42.0428 45.3729L 0.744404 -0.66773L -0.744404 0.66773L 40.554 46.7084L 42.0428 45.3729Z"/>
+<path id="path5_fill" d="M 0 0L 287.911 49.8399L 259.065 116.423L 0 0Z"/>
+<path id="path6_fill" d="M 0 0L 280.662 0L 223.716 68.25L 0 68.25L 0 0Z"/>
+<path id="path7_fill" d="M 0 0L 253.255 9.13323L 183.041 81.9L 0 0Z"/>
+<path id="path8_fill" d="M 0 0L 253.255 9.13323L 183.041 81.9L 0 0Z"/>
+<path id="path9_stroke_2x" d="M 0 0L 0.0180199 -0.499675L -0.204211 0.456397L 0 0ZM 253.255 9.13323L 253.615 9.48041L 254.393 8.67394L 253.273 8.63355L 253.255 9.13323ZM 183.041 81.9L 182.836 82.3564L 183.157 82.4997L 183.4 82.2472L 183.041 81.9ZM -0.0180199 0.499675L 253.237 9.6329L 253.273 8.63355L 0.0180199 -0.499675L -0.0180199 0.499675ZM 252.895 8.78604L 182.681 81.5528L 183.4 82.2472L 253.615 9.48041L 252.895 8.78604ZM 183.245 81.4436L 0.204211 -0.456397L -0.204211 0.456397L 182.836 82.3564L 183.245 81.4436Z"/>
+<path id="path10_fill" fill-rule="evenodd" d="M 0 263.982L 250.664 0L 170.838 32.7996L 0 253.826L 0 263.982Z"/>
+<path id="path11_stroke_2x" d="M 250.664 0L 251.389 0.688578L 250.284 -0.924963L 250.664 0ZM 0 263.982L -1 263.982L 0.725162 264.67L 0 263.982ZM 170.838 32.7996L 170.458 31.8747L 170.047 32.1881L 170.838 32.7996ZM 0 253.826L -0.791207 253.214L -1 253.826L 0 253.826ZM 249.939 -0.688578L -0.725162 263.293L 0.725162 264.67L 251.389 0.688578L 249.939 -0.688578ZM 171.218 33.7246L 251.044 0.924963L 250.284 -0.924963L 170.458 31.8747L 171.218 33.7246ZM 0.791207 254.437L 171.629 33.4112L 170.047 32.1881L -0.791207 253.214L 0.791207 254.437ZM -1 253.826L -1 263.982L 1 263.982L 1 253.826L -1 253.826Z"/>
+</defs>
+</svg>

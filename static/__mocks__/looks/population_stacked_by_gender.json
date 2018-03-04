@@ -3461,8 +3461,7 @@
         "scale": {"range": ["#EA98D2", "#659CCA"]}
       }
     }
-  }
-,
+  },
   "datum": {
      "name": "population"
   },
