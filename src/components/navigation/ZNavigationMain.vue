@@ -1,8 +1,10 @@
 <template>
    <div>
       <ZNavigationMainToolbar :title="toolbarTitle">
-        <v-avatar>
-          <img src="/static/zorko-logo.svg" alt="Zorko">
+        <v-avatar
+          :tile="true"
+          @click="routeToLooks">
+          <img src="/static/zorko-logo.png" alt="Zorko">
         </v-avatar>
         <v-toolbar-items>
           <v-btn
