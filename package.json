@@ -69,6 +69,7 @@
     "inject-loader": "^3.0.0",
     "jest": "^21.2.1",
     "jest-serializer-vue": "^0.3.0",
+    "json-loader": "^0.5.7",
     "karma": "^1.4.1",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.3.0",

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A simple bar chart with embedded data.",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Внутренний номер": "string",
+        "Кол-во": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "parseInt(datum['Кол-во'])",
+      "as": "quantity"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "filter": "datum.sku !== ''"
+    },
+    {
+      "lookup": "sku",
+      "from": {
+        "data": {
+          "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+          "format": {
+            "type": "csv"
+          }},
+        "key": "Внутренний номер",
+        "fields": [
+          "Дата продажи",
+          "Кол-во"
+        ]
+      },
+      "as": ["sales_date", "sales_count"]
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "quantity",
+          "as": "all_quantity"
+        },
+        {
+          "op": "sum",
+          "field": "sales_count",
+          "as": "all_sales_count"
+        }
+      ],
+      "groupby": [
+        "sku"
+      ]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "all_quantity",
+      "type": "quantitative",
+      "axis": {
+        "title": "Кол-во пар"
+      }
+    },
+    "x": {
+      "field": "sku",
+      "type": "ordinal",
+      "axis": {
+        "title": "Модель"
+      }
+    }
+  }
+}

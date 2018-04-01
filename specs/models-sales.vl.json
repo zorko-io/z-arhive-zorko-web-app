@@ -1,0 +1,93 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A simple bar chart with embedded data.",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Внутренний номер": "string",
+        "Кол-во": "number",
+        "Id": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "parseInt(datum['Кол-во'])",
+      "as": "quantity"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "filter": "datum.sku !== ''"
+    },
+    {
+      "lookup": "Id",
+      "from": {
+        "data": {
+          "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+          "format": {
+            "type": "csv"
+          }},
+        "key": "Id",
+        "fields": [
+          "Дата продажи",
+          "Кол-во"
+        ]
+      },
+      "as": ["sales_date", "sales_count_str"]
+    },
+    {
+      "calculate": "parseInt(datum['sales_count_str'])",
+      "as": "sales_count"
+    },
+    {
+      "calculate": "datum.sales_date ? 'Продано': 'В наличии'",
+      "as": "sales_status"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "quantity",
+          "as": "all_quantity"
+        }
+      ],
+      "groupby": [
+        "sku",
+        "sales_status"
+      ]
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "sku",
+      "type": "nominal",
+      "axis": {
+        "title": "Модель"
+      }
+    },
+    "y": {
+      "field": "all_quantity",
+      "type": "quantitative",
+      "axis": {
+        "title": "Кол-во пар"
+      }
+    },
+    "color": {
+      "field": "sales_status",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Продано","В наличии"],
+        "range": ["#18AC94","#aec7e8"]
+      },
+      "legend": {"title": "Cтатус Продаж"}
+    }
+  }
+}

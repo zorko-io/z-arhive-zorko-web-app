@@ -3,6 +3,7 @@ import ZExplore from '../components/explore/ZExplore.vue'
 import ZAccount from '../components/account/ZAccount.vue'
 import ZLook from '../components/look/ZLook.vue'
 import ZDatum from '../components/datum/ZDatum.vue'
+import ZSpec from '../components/spec/ZSpec.vue'
 
 export default {
   routes: [
@@ -58,6 +59,11 @@ export default {
       path: '/account',
       component: ZAccount,
       meta: {title: 'Account'}
+    },
+    {
+      path: '/spec',
+      component: ZSpec,
+      meta: {title: 'Spec'}
     },
     {
       path: '/',

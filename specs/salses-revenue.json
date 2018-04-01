@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A simple bar chart with embedded data.",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Дата продажи": "date:'%Y-%m-%d'",
+        "Внутренний номер": "string",
+        "Наименование товара": "string",
+        "Категория": "string",
+        "Цена за пару(продажи) грн": "number",
+        "Доход грн": "string",
+        "Размер": "string"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum['Дата продажи']",
+      "as": "date"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "calculate": "datum['Наименование товара']",
+      "as": "description"
+    },
+    {
+      "calculate": "datum['Категория']",
+      "as": "cateory"
+    },
+    {
+      "calculate": "datum['Цена за пару(продажи) грн']",
+      "as": "salesPrice"
+    },
+    {
+      "calculate": "parseFloat(replace(datum['Доход грн'],',','.'))",
+      "as": "revenue"
+    },
+    {
+      "calculate": "datum['Размер']",
+      "as": "size"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "date",
+      "timeUnit": "utcyearmonthdate",
+      "type": "ordinal"
+    },
+    "y": {
+      "field": "revenue",
+      "type": "quantitative"
+    }
+  }
+}

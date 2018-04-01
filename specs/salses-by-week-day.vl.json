@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "A simple bar chart with embedded data.",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Дата продажи": "date:'%Y-%m-%d'",
+        "Внутренний номер": "string",
+        "Наименование товара": "string",
+        "Категория": "string",
+        "Цена за пару(продажи),грн": "number",
+        "Доход,грн": "number",
+        "Размер": "string"
+      }
+    }
+  },
+  "transform": [
+    {"calculate": "test(/c(\\d*)/,datum['Внутренний номер']) ? 'Предыдущая Весна' : test(/z(\\d*)/,datum['Внутренний номер']) ? 'Зима': 'Весна'", "as": "Коллекция"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Дата продажи", "timeUnit":"day",
+      "type": "ordinal"
+    },
+    "y": {"field": "*", "type":"quantitative", "aggregate":"count"},
+    "color": {
+      "field": "Коллекция",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Весна","Зима","Предыдущая Весна"],
+        "range": ["#18AC94","#aec7e8","#2D9100"]
+      },
+      "legend": {"title": "Коллекции"}
+    }
+  }
+}
