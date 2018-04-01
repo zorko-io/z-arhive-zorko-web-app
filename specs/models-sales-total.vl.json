@@ -1,8 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  "description": "Продажи по моделям",
-  "width": 800,
-  "height": 400,
+  "description": "Общее кол-во проданных пар",
+  "width": 100,
   "data": {
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
     "format": {
@@ -51,43 +50,27 @@
       "as": "sales_status"
     },
     {
-      "aggregate": [
-        {
-          "op": "sum",
-          "field": "quantity",
-          "as": "all_quantity"
-        }
-      ],
-      "groupby": [
-        "sku",
-        "sales_status"
-      ]
+      "filter": "datum.sales_status == 'Продано'"
     }
   ],
-  "mark": "bar",
+  "title": "Проданно Пар",
+  "mark": "text",
   "encoding": {
-    "x": {
-      "field": "sku",
-      "type": "nominal",
-      "axis": {
-        "title": "Модель"
-      }
+    "text": {
+      "aggregate": "sum",
+      "field": "sales_count",
+      "type": "nominal"
+    }
+  },
+  "config": {
+    "title": {
+      "anchor": "start",
+      "limit": 1000,
+      "orient": "bottom"
     },
-    "y": {
-      "field": "all_quantity",
-      "type": "quantitative",
-      "axis": {
-        "title": "Кол-во пар"
-      }
-    },
-    "color": {
-      "field": "sales_status",
-      "type": "nominal",
-      "scale": {
-        "domain": ["Продано","В наличии"],
-        "range": ["#18AC94","#aec7e8"]
-      },
-      "legend": {"title": "Cтатус Продаж"}
+    "text": {
+      "align": "center",
+      "fontSize": 30
     }
   }
 }
