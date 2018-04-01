@@ -18,6 +18,25 @@
   },
   "transform": [
     {
+      "calculate": "parseInt(datum['Кол-во'])",
+      "as": "quantity"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "calculate": "parseFloat(datum['Доход за модель грн'])",
+      "as": "planed_revenue"
+    },
+    {
+      "calculate": "parseFloat(datum['Цена закупки грн'])",
+      "as": "purchase_price"
+    },
+    {
+      "filter": "datum.sku !== ''"
+    },
+    {
       "lookup": "Id",
       "from": {
         "data": {
@@ -54,27 +73,8 @@
       "as": "sales_price"
     },
     {
-      "calculate": "parseInt(datum['Кол-во'])",
-      "as": "quantity"
-    },
-    {
-      "calculate": "datum['Внутренний номер']",
-      "as": "sku"
-    },
-    {
-      "calculate": "parseFloat(datum['Доход за модель грн'])",
-      "as": "planed_revenue"
-    },
-    {
-      "calculate": "parseFloat(datum['Цена закупки грн'])",
-      "as": "purchase_price"
-    },
-    {
       "calculate": "datum.sales_date ? 'Продано': 'В наличии'",
       "as": "sales_status"
-    },
-    {
-      "filter": "datum.sku !== ''"
     },
     {
       "aggregate": [
