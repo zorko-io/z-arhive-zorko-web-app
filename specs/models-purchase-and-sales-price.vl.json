@@ -1,0 +1,145 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "Продажи по моделям",
+  "width": 1000,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Внутренний номер": "string",
+        "Кол-во": "number",
+        "Id": "number",
+        "Доход за модель грн": "number",
+        "Цена закупки грн": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "parseInt(datum['Кол-во'])",
+      "as": "quantity"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "calculate": "parseFloat(datum['Доход за модель грн'])",
+      "as": "planed_revenue"
+    },
+    {
+      "calculate": "parseFloat(datum['Цена закупки грн'])",
+      "as": "purchase_price"
+    },
+    {
+      "filter": "datum.sku !== ''"
+    },
+    {
+      "lookup": "Id",
+      "from": {
+        "data": {
+          "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+          "format": {
+            "type": "csv"
+          }},
+        "key": "Id",
+        "fields": [
+          "Дата продажи",
+          "Кол-во",
+          "Доход грн",
+          "Цена за пару(продажи) грн"
+        ]
+      },
+      "as": [
+        "sales_date",
+        "sales_count_str",
+        "real_revenue_str",
+        "sales_price_str"
+      ]
+    },
+    {
+      "calculate": "parseInt(datum['sales_count_str'])",
+      "as": "sales_count"
+    },
+    {
+      "calculate": "parseFloat(datum['real_revenue_str'])",
+      "as": "real_revenue"
+    },
+    {
+      "calculate": "parseFloat(datum['sales_price_str'])",
+      "as": "sales_price"
+    },
+    {
+      "calculate": "datum.sales_date ? 'Продано': 'В наличии'",
+      "as": "sales_status"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "purchase_price",
+          "as": "model_purchase_price"
+        },
+        {
+          "op": "sum",
+          "field": "sales_price",
+          "as": "model_sales_price"
+        }
+      ],
+      "groupby": [
+        "sku",
+        "purchase_price",
+        "sales_price"
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "sku",
+          "type": "ordinal",
+          "axis": {
+            "title": "Модель"
+          },
+          "sort": null
+        },
+        "y": {
+          "field": "model_purchase_price",
+          "type": "quantitative",
+          "axis": {
+            "title": "Цена"
+          }
+        },
+        "color": {"value": "#aec7e8"}
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "sku",
+          "type": "nominal",
+          "axis": {
+            "title": "Модель"
+          },
+          "sort": null
+        },
+        "y": {
+          "field": "model_sales_price",
+          "type": "quantitative",
+          "axis": {
+            "title": "Цена"
+          }
+        },
+        "color": {
+          "value": "#18AC94"
+        },
+        "opacity": { "value": 0.35}
+      }
+    }
+  ]
+}

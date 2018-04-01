@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
   "description": "Продажи по моделям",
-  "width": 800,
+  "width": 1000,
   "height": 400,
   "data": {
     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
@@ -71,7 +71,8 @@
       "type": "nominal",
       "axis": {
         "title": "Модель"
-      }
+      },
+      "sort": null
     },
     "y": {
       "field": "all_quantity",

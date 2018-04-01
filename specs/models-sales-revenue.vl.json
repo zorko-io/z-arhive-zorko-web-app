@@ -1,0 +1,130 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "description": "Продажи по моделям",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=0&single=true&output=csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Внутренний номер": "string",
+        "Кол-во": "number",
+        "Id": "number",
+        "Доход за модель грн": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "parseInt(datum['Кол-во'])",
+      "as": "quantity"
+    },
+    {
+      "calculate": "datum['Внутренний номер']",
+      "as": "sku"
+    },
+    {
+      "calculate": "parseFloat(datum['Доход за модель грн'])",
+      "as": "planed_revenue"
+    },
+    {
+      "filter": "datum.sku !== ''"
+    },
+    {
+      "lookup": "Id",
+      "from": {
+        "data": {
+          "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSLefpeYHjwgIQtymUOGd_hH9HiUHih3U93I_5I2iDugyc3TgSU2dWckv4Uf9Q8BC7DsuF7_PaZ_VtM/pub?gid=1769915099&single=true&output=csv",
+          "format": {
+            "type": "csv"
+          }},
+        "key": "Id",
+        "fields": [
+          "Дата продажи",
+          "Кол-во",
+          "Доход грн"
+        ]
+      },
+      "as": [
+        "sales_date",
+        "sales_count_str",
+        "real_revenue_str"
+      ]
+    },
+    {
+      "calculate": "parseInt(datum['sales_count_str'])",
+      "as": "sales_count"
+    },
+    {
+      "calculate": "parseFloat(datum['real_revenue_str'])",
+      "as": "real_revenue"
+    },
+    {
+      "calculate": "datum.sales_date ? 'Продано': 'В наличии'",
+      "as": "sales_status"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "planed_revenue",
+          "as": "model_planed_revenue"
+        },
+        {
+          "op": "sum",
+          "field": "real_revenue",
+          "as": "model_real_revenue"
+        }
+      ],
+      "groupby": [
+        "sku",
+        "planed_revenue",
+        "real_revenue"
+      ]
+    }
+  ],
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "sku",
+          "type": "nominal",
+          "axis": {
+            "title": "Модель"
+          }
+        },
+        "y": {
+          "field": "model_planed_revenue",
+          "type": "quantitative",
+          "axis": {
+            "title": "Доход, грн"
+          }
+        },
+        "color": {"value": "#aec7e8"}
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "sku",
+          "type": "nominal",
+          "axis": {
+            "title": "Модель"
+          }
+        },
+        "y": {
+          "field": "model_real_revenue",
+          "type": "quantitative",
+          "axis": {
+            "title": "Доход, грн"
+          },
+          "stack": null
+        },
+        "color": {"value": "#18AC94"}
+      }
+    }
+  ]
+}
