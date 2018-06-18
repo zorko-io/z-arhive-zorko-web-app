@@ -13,7 +13,9 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "build:preview": "node build/spec2preview.js"
+    "build:preview": "node build/spec2preview.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -24,7 +26,8 @@
     "vue-vega": "1.0.0-alpha.13",
     "vuetify": "^0.16.9",
     "vuex": "^3.0.1",
-    "vuex-router-sync": "^5.0.0"
+    "vuex-router-sync": "^5.0.0",
+    "snyk": "^1.83.0"
   },
   "devDependencies": {
     "@types/jest": "^21.1.10",
@@ -138,5 +141,6 @@
       "/node_modules/",
       "/test/e2e/"
     ]
-  }
+  },
+  "snyk": true
 }
